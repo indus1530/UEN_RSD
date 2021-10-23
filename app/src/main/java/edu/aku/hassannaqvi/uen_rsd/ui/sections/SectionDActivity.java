@@ -15,17 +15,19 @@ import com.validatorcrawler.aliazaz.Validator;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
-import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionEpiBinding;
+import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionDBinding;
 
 
-public class SectionEPIActivity extends AppCompatActivity {
-    ActivitySectionEpiBinding bi;
+public class SectionDActivity extends AppCompatActivity {
+    ActivitySectionDBinding bi;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_epi);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_d);
+        bi.setCallback(this);
+        bi.setForm(form);
         setupSkips();
         setSupportActionBar(bi.toolbar);
     }
@@ -41,7 +43,7 @@ public class SectionEPIActivity extends AppCompatActivity {
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SB, form.sBtoString());
+        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SD, form.sDtoString());
         if (updcount == 1) {
             return true;
         } else {
