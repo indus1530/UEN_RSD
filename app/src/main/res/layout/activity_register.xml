@@ -1,0 +1,375 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="callback"
+            type="edu.aku.hassannaqvi.uen_rsd.ui.RegisterActivity" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/app_bg_gray"
+        android:orientation="vertical">
+        <!-- CUSTOM TOOLBAR -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            style="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/ToolbarTheme"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:subtitleTextAppearance="@style/Toolbar.SubtitleText"
+            app:titleTextAppearance="@style/Toolbar.TitleText" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="150dp"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="86dp"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:padding="0dp"
+                            android:text="MHR"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="30dp" />
+
+                        <Button
+                            android:id="@+id/formMHR"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginBottom="0dp"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start"
+                            android:onClick="openRegister"
+                            android:text="@string/secone"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="86dp"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:padding="0dp"
+                            android:text="EPI"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="30dp" />
+
+                        <Button
+                            android:id="@+id/formEPI"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start"
+                            android:onClick="openRegister"
+                            android:text="@string/sectwo"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="86dp"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:padding="0dp"
+                            android:text="SHF"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="30dp" />
+
+                        <Button
+                            android:id="@+id/formSHF"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start"
+                            android:onClick="openRegister"
+                            android:text="@string/secthree"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="86dp"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:padding="0dp"
+                            android:text="OBS"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="30dp" />
+
+                        <Button
+                            android:id="@+id/formOBS"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start"
+                            android:onClick="openRegister"
+                            android:text="@string/secfour"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="86dp"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:padding="0dp"
+                            android:text="FPR"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="30dp" />
+
+                        <Button
+                            android:id="@+id/formFPR"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start"
+                            android:onClick="openRegister"
+                            android:text="@string/secfive"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="86dp"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:padding="0dp"
+                            android:text="CFP"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="30dp" />
+
+                        <Button
+                            android:id="@+id/formCFP"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start"
+                            android:onClick="openRegister"
+                            android:text="@string/secsix"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="86dp"
+                            android:layout_height="56dp"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:padding="0dp"
+                            android:text="STR"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="30dp" />
+
+                        <Button
+                            android:id="@+id/formSTR"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start"
+                            android:onClick="openRegister"
+                            android:text="@string/secseven"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/fldGrpbtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="end"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_End"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/button_shape_red"
+                android:drawableTint="#ea0000"
+                android:onClick="@{() -> callback.BtnEnd()}"
+                android:text="Save Partially"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btn_Continue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:background="@drawable/button_shape_green"
+                android:drawableTint="#00ea00"
+                android:onClick="@{() -> callback.BtnContinue()}"
+                android:text="Save"
+                android:textColor="@color/white"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</layout>
