@@ -15,8 +15,8 @@ import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionBActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionDActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionIdentificationActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSHFActivity;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.sec3:
                 if (form == null)
-                    oF = new Intent(this, SectionSHFActivity.class);
+                    oF = new Intent(this, SectionFActivity.class);
                 break;
             case R.id.sec4:
                 if (form == null)

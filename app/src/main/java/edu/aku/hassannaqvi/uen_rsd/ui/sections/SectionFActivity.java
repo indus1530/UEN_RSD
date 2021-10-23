@@ -15,41 +15,34 @@ import com.validatorcrawler.aliazaz.Validator;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
-import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionShfBinding;
+import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionFBinding;
 
-public class SectionSHFActivity extends AppCompatActivity {
-    ActivitySectionShfBinding bi;
+
+public class SectionFActivity extends AppCompatActivity {
+    ActivitySectionFBinding bi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_shf);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_f);
+        bi.setCallback(this);
+        bi.setForm(form);
         setupSkips();
-        setSupportActionBar(bi.toolbar);
-        setTitle(R.string.str_mainheading);
 
     }
 
 
     private void setupSkips() {
-
     }
 
 
     private void saveDraft() {
-
-        form.setShf01(bi.shf01.getText().toString().isEmpty() ? "-1" : bi.shf01.getText().toString());
-        form.setShf0197(bi.shf0197.isChecked() ? "97" : "-1");
-
-        form.setShf02(bi.shf02.getText().toString().isEmpty() ? "-1" : bi.shf02.getText().toString());
-        form.setShf0297(bi.shf0297.isChecked() ? "97" : "-1");
-
     }
 
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SC, form.sCtoString());
+        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SF, form.sFtoString());
         if (updcount == 1) {
             return true;
         } else {

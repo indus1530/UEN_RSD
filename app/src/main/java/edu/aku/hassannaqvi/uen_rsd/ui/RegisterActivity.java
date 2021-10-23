@@ -23,7 +23,7 @@ import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionBActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionDActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSHFActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSTRActivity;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -139,7 +139,7 @@ public class RegisterActivity extends AppCompatActivity {
                     oF = new Intent(this, SectionDActivity.class);
                     break;
                 case R.id.formSHF:
-                    oF = new Intent(this, SectionSHFActivity.class);
+                    oF = new Intent(this, SectionFActivity.class);
                     break;
                 case R.id.formOBS:
                     oF = new Intent(this, SectionBActivity.class);

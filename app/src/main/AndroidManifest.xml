@@ -73,7 +73,7 @@
 
 
         <activity
-            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSHFActivity"
+            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFActivity"
             android:label="@string/secthree"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"
