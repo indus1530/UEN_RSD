@@ -15,42 +15,34 @@ import com.validatorcrawler.aliazaz.Validator;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
-import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionCfpBinding;
+import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionCBinding;
 
-public class SectionCFPActivity extends AppCompatActivity {
-    ActivitySectionCfpBinding bi;
+
+public class SectionCActivity extends AppCompatActivity {
+    ActivitySectionCBinding bi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_cfp);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
+        bi.setCallback(this);
+        bi.setForm(form);
         setupSkips();
         setSupportActionBar(bi.toolbar);
     }
 
 
     private void setupSkips() {
-
     }
 
 
     private void saveDraft() {
-
-        form.setCfp01(bi.cfp01.getText().toString().isEmpty() ? "-1" : bi.cfp01.getText().toString());
-        form.setCfp0197(bi.cfp0197.isChecked() ? "97" : "-1");
-
-        form.setCfp02(bi.cfp02.getText().toString().isEmpty() ? "-1" : bi.cfp02.getText().toString());
-        form.setCfp0297(bi.cfp0297.isChecked() ? "97" : "-1");
-
-        form.setCfp03(bi.cfp03.getText().toString().isEmpty() ? "-1" : bi.cfp03.getText().toString());
-        form.setCfp0397(bi.cfp0397.isChecked() ? "97" : "-1");
-
     }
 
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SCFP, form.sCFPtoString());
+        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SC, form.sCtoString());
         if (updcount == 1) {
             return true;
         } else {

@@ -19,10 +19,10 @@ import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivityRegisterBinding;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionAActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCFPActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionBActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEPIActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFPRActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionOBSActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSHFActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSTRActivity;
 
@@ -54,43 +54,43 @@ public class RegisterActivity extends AppCompatActivity {
     private void updateSections() {
 
         try {
-            if (!new JSONObject(form.sMHRtoString()).get("mhr0597").equals("")) {
+            if (!new JSONObject(form.sAtoString()).get("mhr0597").equals("")) {
                 bi.formMHR.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
                 bi.formMHR.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sEPItoString()).get("epi0197").equals("")) {
+            if (!new JSONObject(form.sBtoString()).get("epi0197").equals("")) {
                 bi.formEPI.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
                 bi.formEPI.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sSHFtoString()).get("shf0297").equals("")) {
+            if (!new JSONObject(form.sCtoString()).get("shf0297").equals("")) {
                 bi.formSHF.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
                 bi.formSHF.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sOBStoString()).get("obs2097").equals("")) {
+            if (!new JSONObject(form.sDtoString()).get("obs2097").equals("")) {
                 bi.formOBS.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
                 bi.formOBS.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sFPRtoString()).get("fpr1197").equals("")) {
+            if (!new JSONObject(form.sEtoString()).get("fpr1197").equals("")) {
                 bi.formFPR.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
                 bi.formFPR.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sCFPtoString()).get("cfp0397").equals("")) {
+            if (!new JSONObject(form.sFtoString()).get("cfp0397").equals("")) {
                 bi.formCFP.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
                 bi.formCFP.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sSTRtoString()).get("str09m").equals("")) {
+            if (!new JSONObject(form.sGtoString()).get("str09m").equals("")) {
                 bi.formSTR.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
                 bi.formSTR.setBackgroundResource(R.color.dullWhite);
@@ -142,13 +142,13 @@ public class RegisterActivity extends AppCompatActivity {
                     oF = new Intent(this, SectionSHFActivity.class);
                     break;
                 case R.id.formOBS:
-                    oF = new Intent(this, SectionOBSActivity.class);
+                    oF = new Intent(this, SectionBActivity.class);
                     break;
                 case R.id.formFPR:
                     oF = new Intent(this, SectionFPRActivity.class);
                     break;
                 case R.id.formCFP:
-                    oF = new Intent(this, SectionCFPActivity.class);
+                    oF = new Intent(this, SectionCActivity.class);
                     break;
                 case R.id.formSTR:
                     oF = new Intent(this, SectionSTRActivity.class);

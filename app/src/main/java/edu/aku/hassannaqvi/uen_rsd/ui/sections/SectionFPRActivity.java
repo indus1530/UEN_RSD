@@ -74,7 +74,7 @@ public class SectionFPRActivity extends AppCompatActivity {
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SFPR, form.sFPRtoString());
+        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SE, form.sEtoString());
         if (updcount == 1) {
             return true;
         } else {

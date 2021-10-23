@@ -126,7 +126,7 @@ public class SectionSTRActivity extends AppCompatActivity {
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SSTR, form.sSTRtoString());
+        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SG, form.sGtoString());
         if (updcount == 1) {
             return true;
         } else {

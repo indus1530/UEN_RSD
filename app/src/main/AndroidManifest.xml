@@ -81,7 +81,7 @@
 
 
         <activity
-            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionOBSActivity"
+            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionBActivity"
             android:label="@string/secfour"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"
@@ -97,7 +97,7 @@
 
 
         <activity
-            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCFPActivity"
+            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCActivity"
             android:label="@string/secsix"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"

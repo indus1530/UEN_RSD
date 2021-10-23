@@ -11,11 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import edu.aku.hassannaqvi.uen_rsd.core.AndroidManager;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionAActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCFPActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionBActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEPIActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFPRActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionIdentificationActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionOBSActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSHFActivity;
 
 
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.sec4:
                 if (form == null)
-                    oF = new Intent(this, SectionOBSActivity.class);
+                    oF = new Intent(this, SectionBActivity.class);
                 break;
             case R.id.sec5:
                 if (form == null)
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.onhold:
                 if (form == null)
-                    oF = new Intent(this, SectionCFPActivity.class);
+                    oF = new Intent(this, SectionCActivity.class);
                 break;
             case R.id.openDBManager:
                 if (form == null)

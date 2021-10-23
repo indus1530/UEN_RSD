@@ -32,21 +32,16 @@ public class SectionEPIActivity extends AppCompatActivity {
 
 
     private void setupSkips() {
-
     }
 
 
     private void saveDraft() {
-
-        form.setEpi01(bi.epi01.getText().toString().isEmpty() ? "-1" : bi.epi01.getText().toString());
-        form.setEpi0197(bi.epi0197.isChecked() ? "97" : "-1");
-
     }
 
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
-        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SEPI, form.sEPItoString());
+        int updcount = db.updatesFormColumn(Form.FormsTable.COLUMN_SB, form.sBtoString());
         if (updcount == 1) {
             return true;
         } else {

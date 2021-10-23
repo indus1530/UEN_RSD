@@ -50,13 +50,14 @@ public class Form extends BaseObservable implements Observable {
 
 
     // SECTION VARIABLES
-    private String sMHR = StringUtils.EMPTY; //Maternal Health Register
-    private String sEPI = StringUtils.EMPTY; //EPI Health Register
-    private String sSHF = StringUtils.EMPTY; //Secondary healthcare facilities- Ob/Gyn OPD register
-    private String sOBS = StringUtils.EMPTY; //Obstetric Register
-    private String sFPR = StringUtils.EMPTY; //FP Register
-    private String sCFP = StringUtils.EMPTY; //Collect through Stickers new variables in DHIS
-    private String sSTR = StringUtils.EMPTY; //Stock Out Registers
+    private String sA = StringUtils.EMPTY; //Maternal Health Register
+    private String sB = StringUtils.EMPTY; //EPI Health Register
+    private String sC = StringUtils.EMPTY; //Secondary healthcare facilities- Ob/Gyn OPD register
+    private String sD = StringUtils.EMPTY; //Obstetric Register
+    private String sE = StringUtils.EMPTY; //FP Register
+    private String sF = StringUtils.EMPTY; //Collect through Stickers new variables in DHIS
+    private String sG = StringUtils.EMPTY; //Stock Out Registers
+    private String sH = StringUtils.EMPTY; //Stock Out Registers
 
     // FIELD VARIABLES
     private String h101 = StringUtils.EMPTY;
@@ -494,73 +495,83 @@ public class Form extends BaseObservable implements Observable {
     }
 
     @Bindable
-    public String getsMHR() {
-        return sMHR;
+    public String getsA() {
+        return sA;
     }
 
-    public Form setsMHR(String sMHR) {
-        this.sMHR = sMHR;
+    public Form setsA(String sA) {
+        this.sA = sA;
         return this;
     }
 
     @Bindable
-    public String getsEPI() {
-        return sEPI;
+    public String getsB() {
+        return sB;
     }
 
-    public void setsEPI(String sEPI) {
-        this.sEPI = sEPI;
-        notifyChange(BR.sEPI);
-    }
-
-    @Bindable
-    public String getsSHF() {
-        return sSHF;
-    }
-
-    public void setsSHF(String sSHF) {
-        this.sSHF = sSHF;
-        notifyChange(BR.sSHF);
+    public void setsB(String sB) {
+        this.sB = sB;
+        notifyChange(BR.sB);
     }
 
     @Bindable
-    public String getsOBS() {
-        return sOBS;
+    public String getsC() {
+        return sC;
     }
 
-    public void setsOBS(String sOBS) {
-        this.sOBS = sOBS;
-        notifyChange(BR.sOBS);
-    }
-
-    @Bindable
-    public String getsFPR() {
-        return sFPR;
-    }
-
-    public void setsFPR(String sFPR) {
-        this.sFPR = sFPR;
-        notifyChange(BR.sFPR);
+    public void setsC(String sC) {
+        this.sC = sC;
+        notifyChange(BR.sC);
     }
 
     @Bindable
-    public String getsCFP() {
-        return sCFP;
+    public String getsD() {
+        return sD;
     }
 
-    public void setsCFP(String sCFP) {
-        this.sCFP = sCFP;
-        notifyChange(BR.sCFP);
+    public void setsD(String sD) {
+        this.sD = sD;
+        notifyChange(BR.sD);
     }
 
     @Bindable
-    public String getsSTR() {
-        return sSTR;
+    public String getsE() {
+        return sE;
     }
 
-    public void setsSTR(String sSTR) {
-        this.sSTR = sSTR;
-        notifyChange(BR.sSTR);
+    public void setsE(String sE) {
+        this.sE = sE;
+        notifyChange(BR.sE);
+    }
+
+    @Bindable
+    public String getsF() {
+        return sF;
+    }
+
+    public void setsF(String sF) {
+        this.sF = sF;
+        notifyChange(BR.sF);
+    }
+
+    @Bindable
+    public String getsG() {
+        return sG;
+    }
+
+    public void setsG(String sG) {
+        this.sG = sG;
+        notifyChange(BR.sG);
+    }
+
+    @Bindable
+    public String getsH() {
+        return sH;
+    }
+
+    public void setsH(String sH) {
+        this.sH = sH;
+        notifyChange(BR.sH);
     }
 
 
@@ -611,6 +622,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF101(String f101) {
         this.f101 = f101;
+        setF101ax(f101.equals("1") ? this.f101ax : "");
         notifyPropertyChanged(BR.f101);
     }
 
@@ -631,6 +643,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF102(String f102) {
         this.f102 = f102;
+        setF102ax(f102.equals("1") ? this.f102ax : "");
         notifyPropertyChanged(BR.f102);
     }
 
@@ -651,6 +664,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF103(String f103) {
         this.f103 = f103;
+        setF103ax(f103.equals("1") ? this.f103ax : "");
         notifyPropertyChanged(BR.f103);
     }
 
@@ -671,6 +685,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF104(String f104) {
         this.f104 = f104;
+        setF104ax(f104.equals("1") ? this.f104ax : "");
         notifyPropertyChanged(BR.f104);
     }
 
@@ -691,6 +706,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF105(String f105) {
         this.f105 = f105;
+        setF105ax(f105.equals("1") ? this.f105ax : "");
         notifyPropertyChanged(BR.f105);
     }
 
@@ -711,6 +727,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF106(String f106) {
         this.f106 = f106;
+        setF106ax(f106.equals("1") ? this.f106ax : "");
         notifyPropertyChanged(BR.f106);
     }
 
@@ -741,6 +758,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF201(String f201) {
         this.f201 = f201;
+        setF201ax(f201.equals("1") ? this.f201ax : "");
         notifyPropertyChanged(BR.f201);
     }
 
@@ -761,6 +779,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF202(String f202) {
         this.f202 = f202;
+        setF202ax(f202.equals("1") ? this.f202ax : "");
         notifyPropertyChanged(BR.f202);
     }
 
@@ -781,6 +800,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF203(String f203) {
         this.f203 = f203;
+        setF203ax(f203.equals("1") ? this.f203ax : "");
         notifyPropertyChanged(BR.f203);
     }
 
@@ -2925,7 +2945,7 @@ public class Form extends BaseObservable implements Observable {
         this.synced = jsonObject.getString(FormsTable.COLUMN_SYNCED);
         this.syncDate = jsonObject.getString(FormsTable.COLUMN_SYNCED_DATE);
 
-        this.sMHR = jsonObject.getString(FormsTable.COLUMN_SMHR);
+        this.sA = jsonObject.getString(FormsTable.COLUMN_SA);
 
         return this;
 
@@ -2955,13 +2975,14 @@ public class Form extends BaseObservable implements Observable {
         //For childCount
         //this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
 
-        sMHRHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SMHR)));
-        sEPIHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SEPI)));
-        sSHFHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SSHF)));
-        sOBSHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SOBS)));
-        sFPRHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SFPR)));
-        sCFPHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SCFP)));
-        sSTRHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SSTR)));
+        sAHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)));
+        sBHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB)));
+        sCHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SC)));
+        sDHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SD)));
+        sEHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SE)));
+        sFHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SF)));
+        sGHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SG)));
+        sHHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SH)));
 
         return this;
     }
@@ -2974,7 +2995,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
 
-    public String sMHRtoString() {
+    public String sAtoString() {
         JSONObject json = new JSONObject();
 
         try {
@@ -2998,15 +3019,16 @@ public class Form extends BaseObservable implements Observable {
         return json.toString();
     }
 
-    public String sEPItoString() {
+    public String sBtoString() {
         JSONObject json = new JSONObject();
-
         try {
-            json
-                    .put("epi01", epi01)
-                    .put("epi0197", epi0197);
-
-
+            json.put("f201", f201)
+                    .put("f201ax", f201ax)
+                    .put("f202", f202)
+                    .put("f202ax", f202ax)
+                    .put("f203", f203)
+                    .put("f203ax", f203ax)
+                    .put("f2image", f2image);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -3014,18 +3036,94 @@ public class Form extends BaseObservable implements Observable {
         return json.toString();
     }
 
-    public String sSHFtoString() {
+    public String sCtoString() {
         JSONObject json = new JSONObject();
-
         try {
-            json
-
-                    .put("shf01", shf01)
-                    .put("shf0197", shf0197)
-                    .put("shf02", shf02)
-                    .put("shf0297", shf0297);
-
-
+            json.put("f301", f301)
+                    .put("f301ax", f301ax)
+                    .put("f302", f302)
+                    .put("f302ax", f302ax)
+                    .put("f303", f303)
+                    .put("f303ax", f303ax)
+                    .put("f304", f304)
+                    .put("f304ax", f304ax)
+                    .put("f305", f305)
+                    .put("f305ax", f305ax)
+                    .put("f306", f306)
+                    .put("f306ax", f306ax)
+                    .put("f307", f307)
+                    .put("f307ax", f307ax)
+                    .put("f308", f308)
+                    .put("f308ax", f308ax)
+                    .put("f309", f309)
+                    .put("f309ax", f309ax)
+                    .put("f310", f310)
+                    .put("f310ax", f310ax)
+                    .put("f311", f311)
+                    .put("f311ax", f311ax)
+                    .put("f312", f312)
+                    .put("f312ax", f312ax)
+                    .put("f313", f313)
+                    .put("f313ax", f313ax)
+                    .put("f314", f314)
+                    .put("f314ax", f314ax)
+                    .put("f315", f315)
+                    .put("f315ax", f315ax)
+                    .put("f316", f316)
+                    .put("f316ax", f316ax)
+                    .put("f317", f317)
+                    .put("f317ax", f317ax)
+                    .put("f318", f318)
+                    .put("f318ax", f318ax)
+                    .put("f319", f319)
+                    .put("f319ax", f319ax)
+                    .put("f320", f320)
+                    .put("f320ax", f320ax)
+                    .put("f321", f321)
+                    .put("f321ax", f321ax)
+                    .put("f322", f322)
+                    .put("f322ax", f322ax)
+                    .put("f323", f323)
+                    .put("f323ax", f323ax)
+                    .put("f324", f324)
+                    .put("f324ax", f324ax)
+                    .put("f325", f325)
+                    .put("f325ax", f325ax)
+                    .put("f326", f326)
+                    .put("f326ax", f326ax)
+                    .put("f327", f327)
+                    .put("f327ax", f327ax)
+                    .put("f328", f328)
+                    .put("f328ax", f328ax)
+                    .put("f329", f329)
+                    .put("f329ax", f329ax)
+                    .put("f330", f330)
+                    .put("f330ax", f330ax)
+                    .put("f331", f331)
+                    .put("f331ax", f331ax)
+                    .put("f332", f332)
+                    .put("f332ax", f332ax)
+                    .put("f333", f333)
+                    .put("f333ax", f333ax)
+                    .put("f334", f334)
+                    .put("f334ax", f334ax)
+                    .put("f335", f335)
+                    .put("f335ax", f335ax)
+                    .put("f336", f336)
+                    .put("f336ax", f336ax)
+                    .put("f337", f337)
+                    .put("f337ax", f337ax)
+                    .put("f338", f338)
+                    .put("f338ax", f338ax)
+                    .put("f339", f339)
+                    .put("f339ax", f339ax)
+                    .put("f340", f340)
+                    .put("f340ax", f340ax)
+                    .put("f341", f341)
+                    .put("f341ax", f341ax)
+                    .put("f342", f342)
+                    .put("f342ax", f342ax)
+                    .put("f3image", f3image);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -3033,54 +3131,47 @@ public class Form extends BaseObservable implements Observable {
         return json.toString();
     }
 
-    public String sOBStoString() {
+    public String sDtoString() {
         JSONObject json = new JSONObject();
-
         try {
-            json
-
-                    .put("obs01", obs01)
-                    .put("obs0197", obs0197)
-                    .put("obs02", obs02)
-                    .put("obs0297", obs0297)
-                    .put("obs03", obs03)
-                    .put("obs0397", obs0397)
-                    .put("obs04", obs04)
-                    .put("obs0497", obs0497)
-                    .put("obs05", obs05)
-                    .put("obs0597", obs0597)
-                    .put("obs06", obs06)
-                    .put("obs0697", obs0697)
-                    .put("obs07", obs07)
-                    .put("obs0797", obs0797)
-                    .put("obs08", obs08)
-                    .put("obs0897", obs0897)
-                    .put("obs09", obs09)
-                    .put("obs0997", obs0997)
-                    .put("obs10", obs10)
-                    .put("obs1097", obs1097)
-                    .put("obs11", obs11)
-                    .put("obs1197", obs1197)
-                    .put("obs12", obs12)
-                    .put("obs1297", obs1297)
-                    .put("obs13", obs13)
-                    .put("obs1397", obs1397)
-                    .put("obs14", obs14)
-                    .put("obs1497", obs1497)
-                    .put("obs15", obs15)
-                    .put("obs1597", obs1597)
-                    .put("obs16", obs16)
-                    .put("obs1697", obs1697)
-                    .put("obs17", obs17)
-                    .put("obs1797", obs1797)
-                    .put("obs18", obs18)
-                    .put("obs1897", obs1897)
-                    .put("obs19", obs19)
-                    .put("obs1997", obs1997)
-                    .put("obs20", obs20)
-                    .put("obs2097", obs2097);
-
-
+            json.put("f401", f401)
+                    .put("f401ax", f401ax)
+                    .put("f402", f402)
+                    .put("f402ax", f402ax)
+                    .put("f403", f403)
+                    .put("f403ax", f403ax)
+                    .put("f404", f404)
+                    .put("f404ax", f404ax)
+                    .put("f405", f405)
+                    .put("f405ax", f405ax)
+                    .put("f406", f406)
+                    .put("f406ax", f406ax)
+                    .put("f407", f407)
+                    .put("f407ax", f407ax)
+                    .put("f408", f408)
+                    .put("f408ax", f408ax)
+                    .put("f409", f409)
+                    .put("f409ax", f409ax)
+                    .put("f410", f410)
+                    .put("f410ax", f410ax)
+                    .put("f411", f411)
+                    .put("f411ax", f411ax)
+                    .put("f412", f412)
+                    .put("f412ax", f412ax)
+                    .put("f413", f413)
+                    .put("f413ax", f413ax)
+                    .put("f414", f414)
+                    .put("f414ax", f414ax)
+                    .put("f415", f415)
+                    .put("f415ax", f415ax)
+                    .put("f416", f416)
+                    .put("f416ax", f416ax)
+                    .put("f417", f417)
+                    .put("f417ax", f417ax)
+                    .put("f418", f418)
+                    .put("f418ax", f418ax)
+                    .put("f419", f419)
+                    .put("f419ax", f419ax);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -3088,35 +3179,42 @@ public class Form extends BaseObservable implements Observable {
         return json.toString();
     }
 
-    public String sFPRtoString() {
+    public String sEtoString() {
         JSONObject json = new JSONObject();
-
         try {
-            json
-
-                    .put("fpr01", fpr01)
-                    .put("fpr0197", fpr0197)
-                    .put("fpr02", fpr02)
-                    .put("fpr0297", fpr0297)
-                    .put("fpr03", fpr03)
-                    .put("fpr0397", fpr0397)
-                    .put("fpr04", fpr04)
-                    .put("fpr0497", fpr0497)
-                    .put("fpr05", fpr05)
-                    .put("fpr0597", fpr0597)
-                    .put("fpr06", fpr06)
-                    .put("fpr0697", fpr0697)
-                    .put("fpr07", fpr07)
-                    .put("fpr0797", fpr0797)
-                    .put("fpr08", fpr08)
-                    .put("fpr0897", fpr0897)
-                    .put("fpr09", fpr09)
-                    .put("fpr0997", fpr0997)
-                    .put("fpr10", fpr10)
-                    .put("fpr1097", fpr1097)
-                    .put("fpr11", fpr11)
-                    .put("fpr1197", fpr1197);
-
+            json.put("f501", f501)
+                    .put("f501ax", f501ax)
+                    .put("f502", f502)
+                    .put("f502ax", f502ax)
+                    .put("f503", f503)
+                    .put("f503ax", f503ax)
+                    .put("f504", f504)
+                    .put("f504ax", f504ax)
+                    .put("f505", f505)
+                    .put("f505ax", f505ax)
+                    .put("f506", f506)
+                    .put("f506ax", f506ax)
+                    .put("f507", f507)
+                    .put("f507ax", f507ax)
+                    .put("f508", f508)
+                    .put("f508ax", f508ax)
+                    .put("f509", f509)
+                    .put("f509ax", f509ax)
+                    .put("f510", f510)
+                    .put("f510ax", f510ax)
+                    .put("f511", f511)
+                    .put("f511ax", f511ax)
+                    .put("f512", f512)
+                    .put("f512ax", f512ax)
+                    .put("f513", f513)
+                    .put("f513ax", f513ax)
+                    .put("f514", f514)
+                    .put("f514ax", f514ax)
+                    .put("f515", f515)
+                    .put("f515ax", f515ax)
+                    .put("f516", f516)
+                    .put("f516ax", f516ax)
+                    .put("f5image", f5image);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -3124,19 +3222,16 @@ public class Form extends BaseObservable implements Observable {
         return json.toString();
     }
 
-    public String sCFPtoString() {
+    public String sFtoString() {
         JSONObject json = new JSONObject();
-
         try {
-            json
-                    .put("cfp01", cfp01)
-                    .put("cfp0197", cfp0197)
-                    .put("cfp02", cfp02)
-                    .put("cfp0297", cfp0297)
-                    .put("cfp03", cfp03)
-                    .put("cfp0397", cfp0397);
-
-
+            json.put("f601", f601)
+                    .put("f601ax", f601ax)
+                    .put("f602", f602)
+                    .put("f602ax", f602ax)
+                    .put("f603", f603)
+                    .put("f603ax", f603ax)
+                    .put("f6image", f6image);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -3144,39 +3239,65 @@ public class Form extends BaseObservable implements Observable {
         return json.toString();
     }
 
-    public String sSTRtoString() {
+    public String sGtoString() {
         JSONObject json = new JSONObject();
-
         try {
-            json
-                    .put("str01s", str01s)
-                    .put("str01d", str01d)
-                    .put("str01m", str01m)
-                    .put("str02s", str02s)
-                    .put("str02d", str02d)
-                    .put("str02m", str02m)
-                    .put("str03s", str03s)
-                    .put("str03d", str03d)
-                    .put("str03m", str03m)
-                    .put("str04s", str04s)
-                    .put("str04d", str04d)
-                    .put("str04m", str04m)
-                    .put("str05s", str05s)
-                    .put("str05d", str05d)
-                    .put("str05m", str05m)
-                    .put("str06s", str06s)
-                    .put("str06d", str06d)
-                    .put("str06m", str06m)
-                    .put("str07s", str07s)
-                    .put("str07d", str07d)
-                    .put("str07m", str07m)
-                    .put("str08s", str08s)
-                    .put("str08d", str08d)
-                    .put("str08m", str08m)
-                    .put("str09s", str09s)
-                    .put("str09d", str09d)
-                    .put("str09m", str09m);
+            json.put("f701", f701)
+                    .put("f701ax", f701ax)
+                    .put("f702a", f702a)
+                    .put("f702aax", f702aax)
+                    .put("f702b", f702b)
+                    .put("f702bax", f702bax)
+                    .put("f703a", f703a)
+                    .put("f703aax", f703aax)
+                    .put("f703b", f703b)
+                    .put("f703bax", f703bax)
+                    .put("f703c", f703c)
+                    .put("f703cax", f703cax)
+                    .put("f704", f704)
+                    .put("f704ax", f704ax)
+                    .put("f705", f705)
+                    .put("f705ax", f705ax)
+                    .put("f7image", f7image);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return "\"error\":, \"" + e.getMessage() + "\"";
+        }
+        return json.toString();
+    }
 
+    public String sHtoString() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("f8011", f8011)
+                    .put("f8012m", f8012m)
+                    .put("f8012d", f8012d)
+                    .put("f8021", f8021)
+                    .put("f8022m", f8022m)
+                    .put("f8022d", f8022d)
+                    .put("f8031", f8031)
+                    .put("f8032m", f8032m)
+                    .put("f8032d", f8032d)
+                    .put("f8041", f8041)
+                    .put("f8042m", f8042m)
+                    .put("f8042d", f8042d)
+                    .put("f8051", f8051)
+                    .put("f8052m", f8052m)
+                    .put("f8052d", f8052d)
+                    .put("f8061", f8061)
+                    .put("f8062m", f8062m)
+                    .put("f8062d", f8062d)
+                    .put("f8071", f8071)
+                    .put("f8072m", f8072m)
+                    .put("f8072d", f8072d)
+                    .put("f8081", f8081)
+                    .put("f8082m", f8082m)
+                    .put("f8082d", f8082d)
+                    .put("f8091", f8091)
+                    .put("f8092m", f8092m)
+                    .put("f8092d", f8092d)
+                    .put("f8image", f8image)
+                    .put("rsdremarks", rsdremarks);
         } catch (JSONException e) {
             e.printStackTrace();
             return "\"error\":, \"" + e.getMessage() + "\"";
@@ -3186,9 +3307,7 @@ public class Form extends BaseObservable implements Observable {
 
 
     public JSONObject toJSONObject() {
-
         JSONObject json = new JSONObject();
-
         try {
             json.put(FormsTable.COLUMN_ID, this.id);
             json.put(FormsTable.COLUMN_UID, this.uid);
@@ -3209,15 +3328,14 @@ public class Form extends BaseObservable implements Observable {
             json.put(FormsTable.COLUMN_SYNCED, this.synced);
             json.put(FormsTable.COLUMN_SYNCED_DATE, this.syncDate);
             json.put(FormsTable.COLUMN_SYNCED_DATE, this.syncDate);
-            json.put(FormsTable.COLUMN_SMHR, new JSONObject(sMHRtoString()));
-            json.put(FormsTable.COLUMN_SEPI, new JSONObject(sEPItoString()));
-            json.put(FormsTable.COLUMN_SSHF, new JSONObject(sSHFtoString()));
-            json.put(FormsTable.COLUMN_SOBS, new JSONObject(sOBStoString()));
-            json.put(FormsTable.COLUMN_SFPR, new JSONObject(sFPRtoString()));
-            json.put(FormsTable.COLUMN_SCFP, new JSONObject(sCFPtoString()));
-            json.put(FormsTable.COLUMN_SSTR, new JSONObject(sSTRtoString()));
-
-
+            json.put(FormsTable.COLUMN_SA, new JSONObject(sAtoString()));
+            json.put(FormsTable.COLUMN_SB, new JSONObject(sBtoString()));
+            json.put(FormsTable.COLUMN_SC, new JSONObject(sCtoString()));
+            json.put(FormsTable.COLUMN_SD, new JSONObject(sDtoString()));
+            json.put(FormsTable.COLUMN_SE, new JSONObject(sEtoString()));
+            json.put(FormsTable.COLUMN_SF, new JSONObject(sFtoString()));
+            json.put(FormsTable.COLUMN_SG, new JSONObject(sGtoString()));
+            json.put(FormsTable.COLUMN_SH, new JSONObject(sHtoString()));
             return json;
         } catch (JSONException e) {
             e.printStackTrace();
@@ -3226,215 +3344,317 @@ public class Form extends BaseObservable implements Observable {
     }
 
 
-    public void sMHRHydrate(String string) {
-
+    public void sAHydrate(String string) {
         if (string != null) {
-
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-                this.mhr01 = json.getString("mhr01");
-                this.mhr0197 = json.getString("mhr0197");
-                this.mhr02 = json.getString("mhr02");
-                this.mhr0297 = json.getString("mhr0297");
-                this.mhr03 = json.getString("mhr03");
-                this.mhr0397 = json.getString("mhr0397");
-                this.mhr04 = json.getString("mhr04");
-                this.mhr0497 = json.getString("mhr0497");
-                this.mhr05 = json.getString("mhr05");
-                this.mhr0597 = json.getString("mhr0597");
-
+                this.f101 = json.getString("f101");
+                this.f101ax = json.getString("f101ax");
+                this.f102 = json.getString("f102");
+                this.f102ax = json.getString("f102ax");
+                this.f103 = json.getString("f103");
+                this.f103ax = json.getString("f103ax");
+                this.f104 = json.getString("f104");
+                this.f104ax = json.getString("f104ax");
+                this.f105 = json.getString("f105");
+                this.f105ax = json.getString("f105ax");
+                this.f106 = json.getString("f106");
+                this.f106ax = json.getString("f106ax");
+                this.f1image = json.getString("f1image");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void sEPIHydrate(String string) {
-
+    public void sBHydrate(String string) {
         if (string != null) {
-
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-                this.epi01 = json.getString("epi01");
-                this.epi0197 = json.getString("epi0197");
-
+                this.f201 = json.getString("f201");
+                this.f201ax = json.getString("f201ax");
+                this.f202 = json.getString("f202");
+                this.f202ax = json.getString("f202ax");
+                this.f203 = json.getString("f203");
+                this.f203ax = json.getString("f203ax");
+                this.f2image = json.getString("f2image");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void sSHFHydrate(String string) {
-
+    public void sCHydrate(String string) {
         if (string != null) {
-
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-                this.shf01 = json.getString("shf01");
-                this.shf0197 = json.getString("shf0197");
-                this.shf02 = json.getString("shf02");
-                this.shf0297 = json.getString("shf0297");
-
+                this.f301 = json.getString("f301");
+                this.f301ax = json.getString("f301ax");
+                this.f302 = json.getString("f302");
+                this.f302ax = json.getString("f302ax");
+                this.f303 = json.getString("f303");
+                this.f303ax = json.getString("f303ax");
+                this.f304 = json.getString("f304");
+                this.f304ax = json.getString("f304ax");
+                this.f305 = json.getString("f305");
+                this.f305ax = json.getString("f305ax");
+                this.f306 = json.getString("f306");
+                this.f306ax = json.getString("f306ax");
+                this.f307 = json.getString("f307");
+                this.f307ax = json.getString("f307ax");
+                this.f308 = json.getString("f308");
+                this.f308ax = json.getString("f308ax");
+                this.f309 = json.getString("f309");
+                this.f309ax = json.getString("f309ax");
+                this.f310 = json.getString("f310");
+                this.f310ax = json.getString("f310ax");
+                this.f311 = json.getString("f311");
+                this.f311ax = json.getString("f311ax");
+                this.f312 = json.getString("f312");
+                this.f312ax = json.getString("f312ax");
+                this.f313 = json.getString("f313");
+                this.f313ax = json.getString("f313ax");
+                this.f314 = json.getString("f314");
+                this.f314ax = json.getString("f314ax");
+                this.f315 = json.getString("f315");
+                this.f315ax = json.getString("f315ax");
+                this.f316 = json.getString("f316");
+                this.f316ax = json.getString("f316ax");
+                this.f317 = json.getString("f317");
+                this.f317ax = json.getString("f317ax");
+                this.f318 = json.getString("f318");
+                this.f318ax = json.getString("f318ax");
+                this.f319 = json.getString("f319");
+                this.f319ax = json.getString("f319ax");
+                this.f320 = json.getString("f320");
+                this.f320ax = json.getString("f320ax");
+                this.f321 = json.getString("f321");
+                this.f321ax = json.getString("f321ax");
+                this.f322 = json.getString("f322");
+                this.f322ax = json.getString("f322ax");
+                this.f323 = json.getString("f323");
+                this.f323ax = json.getString("f323ax");
+                this.f324 = json.getString("f324");
+                this.f324ax = json.getString("f324ax");
+                this.f325 = json.getString("f325");
+                this.f325ax = json.getString("f325ax");
+                this.f326 = json.getString("f326");
+                this.f326ax = json.getString("f326ax");
+                this.f327 = json.getString("f327");
+                this.f327ax = json.getString("f327ax");
+                this.f328 = json.getString("f328");
+                this.f328ax = json.getString("f328ax");
+                this.f329 = json.getString("f329");
+                this.f329ax = json.getString("f329ax");
+                this.f330 = json.getString("f330");
+                this.f330ax = json.getString("f330ax");
+                this.f331 = json.getString("f331");
+                this.f331ax = json.getString("f331ax");
+                this.f332 = json.getString("f332");
+                this.f332ax = json.getString("f332ax");
+                this.f333 = json.getString("f333");
+                this.f333ax = json.getString("f333ax");
+                this.f334 = json.getString("f334");
+                this.f334ax = json.getString("f334ax");
+                this.f335 = json.getString("f335");
+                this.f335ax = json.getString("f335ax");
+                this.f336 = json.getString("f336");
+                this.f336ax = json.getString("f336ax");
+                this.f337 = json.getString("f337");
+                this.f337ax = json.getString("f337ax");
+                this.f338 = json.getString("f338");
+                this.f338ax = json.getString("f338ax");
+                this.f339 = json.getString("f339");
+                this.f339ax = json.getString("f339ax");
+                this.f340 = json.getString("f340");
+                this.f340ax = json.getString("f340ax");
+                this.f341 = json.getString("f341");
+                this.f341ax = json.getString("f341ax");
+                this.f342 = json.getString("f342");
+                this.f342ax = json.getString("f342ax");
+                this.f3image = json.getString("f3image");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void sOBSHydrate(String string) {
-
+    public void sDHydrate(String string) {
         if (string != null) {
-
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-
-                this.obs01 = json.getString("obs01");
-                this.obs0197 = json.getString("obs0197");
-                this.obs02 = json.getString("obs02");
-                this.obs0297 = json.getString("obs0297");
-                this.obs03 = json.getString("obs03");
-                this.obs0397 = json.getString("obs0397");
-                this.obs04 = json.getString("obs04");
-                this.obs0497 = json.getString("obs0497");
-                this.obs05 = json.getString("obs05");
-                this.obs0597 = json.getString("obs0597");
-                this.obs06 = json.getString("obs06");
-                this.obs0697 = json.getString("obs0697");
-                this.obs07 = json.getString("obs07");
-                this.obs0797 = json.getString("obs0797");
-                this.obs08 = json.getString("obs08");
-                this.obs0897 = json.getString("obs0897");
-                this.obs09 = json.getString("obs09");
-                this.obs0997 = json.getString("obs0997");
-                this.obs10 = json.getString("obs10");
-                this.obs1097 = json.getString("obs1097");
-                this.obs11 = json.getString("obs11");
-                this.obs1197 = json.getString("obs1197");
-                this.obs12 = json.getString("obs12");
-                this.obs1297 = json.getString("obs1297");
-                this.obs13 = json.getString("obs13");
-                this.obs1397 = json.getString("obs1397");
-                this.obs14 = json.getString("obs14");
-                this.obs1497 = json.getString("obs1497");
-                this.obs15 = json.getString("obs15");
-                this.obs1597 = json.getString("obs1597");
-                this.obs16 = json.getString("obs16");
-                this.obs1697 = json.getString("obs1697");
-                this.obs17 = json.getString("obs17");
-                this.obs1797 = json.getString("obs1797");
-                this.obs18 = json.getString("obs18");
-                this.obs1897 = json.getString("obs1897");
-                this.obs19 = json.getString("obs19");
-                this.obs1997 = json.getString("obs1997");
-                this.obs20 = json.getString("obs20");
-                this.obs2097 = json.getString("obs2097");
-
+                this.f401 = json.getString("f401");
+                this.f401ax = json.getString("f401ax");
+                this.f402 = json.getString("f402");
+                this.f402ax = json.getString("f402ax");
+                this.f403 = json.getString("f403");
+                this.f403ax = json.getString("f403ax");
+                this.f404 = json.getString("f404");
+                this.f404ax = json.getString("f404ax");
+                this.f405 = json.getString("f405");
+                this.f405ax = json.getString("f405ax");
+                this.f406 = json.getString("f406");
+                this.f406ax = json.getString("f406ax");
+                this.f407 = json.getString("f407");
+                this.f407ax = json.getString("f407ax");
+                this.f408 = json.getString("f408");
+                this.f408ax = json.getString("f408ax");
+                this.f409 = json.getString("f409");
+                this.f409ax = json.getString("f409ax");
+                this.f410 = json.getString("f410");
+                this.f410ax = json.getString("f410ax");
+                this.f411 = json.getString("f411");
+                this.f411ax = json.getString("f411ax");
+                this.f412 = json.getString("f412");
+                this.f412ax = json.getString("f412ax");
+                this.f413 = json.getString("f413");
+                this.f413ax = json.getString("f413ax");
+                this.f414 = json.getString("f414");
+                this.f414ax = json.getString("f414ax");
+                this.f415 = json.getString("f415");
+                this.f415ax = json.getString("f415ax");
+                this.f416 = json.getString("f416");
+                this.f416ax = json.getString("f416ax");
+                this.f417 = json.getString("f417");
+                this.f417ax = json.getString("f417ax");
+                this.f418 = json.getString("f418");
+                this.f418ax = json.getString("f418ax");
+                this.f419 = json.getString("f419");
+                this.f419ax = json.getString("f419ax");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void sFPRHydrate(String string) {
-
+    public void sEHydrate(String string) {
         if (string != null) {
-
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-
-
-                this.fpr01 = json.getString("fpr01");
-                this.fpr0197 = json.getString("fpr0197");
-                this.fpr02 = json.getString("fpr02");
-                this.fpr0297 = json.getString("fpr0297");
-                this.fpr03 = json.getString("fpr03");
-                this.fpr0397 = json.getString("fpr0397");
-                this.fpr04 = json.getString("fpr04");
-                this.fpr0497 = json.getString("fpr0497");
-                this.fpr05 = json.getString("fpr05");
-                this.fpr0597 = json.getString("fpr0597");
-                this.fpr06 = json.getString("fpr06");
-                this.fpr0697 = json.getString("fpr0697");
-                this.fpr07 = json.getString("fpr07");
-                this.fpr0797 = json.getString("fpr0797");
-                this.fpr08 = json.getString("fpr08");
-                this.fpr0897 = json.getString("fpr0897");
-                this.fpr09 = json.getString("fpr09");
-                this.fpr0997 = json.getString("fpr0997");
-                this.fpr10 = json.getString("fpr10");
-                this.fpr1097 = json.getString("fpr1097");
-                this.fpr11 = json.getString("fpr11");
-                this.fpr1197 = json.getString("fpr1197");
-
+                this.f501 = json.getString("f501");
+                this.f501ax = json.getString("f501ax");
+                this.f502 = json.getString("f502");
+                this.f502ax = json.getString("f502ax");
+                this.f503 = json.getString("f503");
+                this.f503ax = json.getString("f503ax");
+                this.f504 = json.getString("f504");
+                this.f504ax = json.getString("f504ax");
+                this.f505 = json.getString("f505");
+                this.f505ax = json.getString("f505ax");
+                this.f506 = json.getString("f506");
+                this.f506ax = json.getString("f506ax");
+                this.f507 = json.getString("f507");
+                this.f507ax = json.getString("f507ax");
+                this.f508 = json.getString("f508");
+                this.f508ax = json.getString("f508ax");
+                this.f509 = json.getString("f509");
+                this.f509ax = json.getString("f509ax");
+                this.f510 = json.getString("f510");
+                this.f510ax = json.getString("f510ax");
+                this.f511 = json.getString("f511");
+                this.f511ax = json.getString("f511ax");
+                this.f512 = json.getString("f512");
+                this.f512ax = json.getString("f512ax");
+                this.f513 = json.getString("f513");
+                this.f513ax = json.getString("f513ax");
+                this.f514 = json.getString("f514");
+                this.f514ax = json.getString("f514ax");
+                this.f515 = json.getString("f515");
+                this.f515ax = json.getString("f515ax");
+                this.f516 = json.getString("f516");
+                this.f516ax = json.getString("f516ax");
+                this.f5image = json.getString("f5image");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void sCFPHydrate(String string) {
-
+    public void sFHydrate(String string) {
         if (string != null) {
-
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
-
-
-                this.cfp01 = json.getString("cfp01");
-                this.cfp0197 = json.getString("cfp0197");
-                this.cfp02 = json.getString("cfp02");
-                this.cfp0297 = json.getString("cfp0297");
-                this.cfp03 = json.getString("cfp03");
-                this.cfp0397 = json.getString("cfp0397");
-
+                this.f601 = json.getString("f601");
+                this.f601ax = json.getString("f601ax");
+                this.f602 = json.getString("f602");
+                this.f602ax = json.getString("f602ax");
+                this.f603 = json.getString("f603");
+                this.f603ax = json.getString("f603ax");
+                this.f6image = json.getString("f6image");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public void sSTRHydrate(String string) {
-
+    public void sGHydrate(String string) {
         if (string != null) {
-
             try {
                 JSONObject json = null;
                 json = new JSONObject(string);
+                this.f701 = json.getString("f701");
+                this.f701ax = json.getString("f701ax");
+                this.f702a = json.getString("f702a");
+                this.f702aax = json.getString("f702aax");
+                this.f702b = json.getString("f702b");
+                this.f702bax = json.getString("f702bax");
+                this.f703a = json.getString("f703a");
+                this.f703aax = json.getString("f703aax");
+                this.f703b = json.getString("f703b");
+                this.f703bax = json.getString("f703bax");
+                this.f703c = json.getString("f703c");
+                this.f703cax = json.getString("f703cax");
+                this.f704 = json.getString("f704");
+                this.f704ax = json.getString("f704ax");
+                this.f705 = json.getString("f705");
+                this.f705ax = json.getString("f705ax");
+                this.f7image = json.getString("f7image");
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
-
-                this.str01s = json.getString("str01s");
-                this.str01d = json.getString("str01d");
-                this.str01m = json.getString("str01m");
-                this.str02s = json.getString("str02s");
-                this.str02d = json.getString("str02d");
-                this.str02m = json.getString("str02m");
-                this.str03s = json.getString("str03s");
-                this.str03d = json.getString("str03d");
-                this.str03m = json.getString("str03m");
-                this.str04s = json.getString("str04s");
-                this.str04d = json.getString("str04d");
-                this.str04m = json.getString("str04m");
-                this.str05s = json.getString("str05s");
-                this.str05d = json.getString("str05d");
-                this.str05m = json.getString("str05m");
-                this.str06s = json.getString("str06s");
-                this.str06d = json.getString("str06d");
-                this.str06m = json.getString("str06m");
-                this.str07s = json.getString("str07s");
-                this.str07d = json.getString("str07d");
-                this.str07m = json.getString("str07m");
-                this.str08s = json.getString("str08s");
-                this.str08d = json.getString("str08d");
-                this.str08m = json.getString("str08m");
-                this.str09s = json.getString("str09s");
-                this.str09d = json.getString("str09d");
-                this.str09m = json.getString("str09m");
+    public void sHHydrate(String string) {
+        if (string != null) {
+            try {
+                JSONObject json = null;
+                json = new JSONObject(string);
+                this.f8011 = json.getString("f8011");
+                this.f8012m = json.getString("f8012m");
+                this.f8012d = json.getString("f8012d");
+                this.f8021 = json.getString("f8021");
+                this.f8022m = json.getString("f8022m");
+                this.f8022d = json.getString("f8022d");
+                this.f8031 = json.getString("f8031");
+                this.f8032m = json.getString("f8032m");
+                this.f8032d = json.getString("f8032d");
+                this.f8041 = json.getString("f8041");
+                this.f8042m = json.getString("f8042m");
+                this.f8042d = json.getString("f8042d");
+                this.f8051 = json.getString("f8051");
+                this.f8052m = json.getString("f8052m");
+                this.f8052d = json.getString("f8052d");
+                this.f8061 = json.getString("f8061");
+                this.f8062m = json.getString("f8062m");
+                this.f8062d = json.getString("f8062d");
+                this.f8071 = json.getString("f8071");
+                this.f8072m = json.getString("f8072m");
+                this.f8072d = json.getString("f8072d");
+                this.f8081 = json.getString("f8081");
+                this.f8082m = json.getString("f8082m");
+                this.f8082d = json.getString("f8082d");
+                this.f8091 = json.getString("f8091");
+                this.f8092m = json.getString("f8092m");
+                this.f8092d = json.getString("f8092d");
+                this.f8image = json.getString("f8image");
+                this.rsdremarks = json.getString("rsdremarks");
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -3480,13 +3700,14 @@ public class Form extends BaseObservable implements Observable {
         public static final String COLUMN_HF_NAME = "hfName";
         public static final String COLUMN_REPORTING_MONTH = "reportingMonth";
         public static final String COLUMN_REPORTING_YEAR = "reportingYear";
-        public static final String COLUMN_SMHR = "sMHR";
-        public static final String COLUMN_SEPI = "sEPI";
-        public static final String COLUMN_SSHF = "sSHF";
-        public static final String COLUMN_SOBS = "sOBS";
-        public static final String COLUMN_SFPR = "sFPR";
-        public static final String COLUMN_SCFP = "sCFP";
-        public static final String COLUMN_SSTR = "sSTR";
+        public static final String COLUMN_SA = "sA";
+        public static final String COLUMN_SB = "sB";
+        public static final String COLUMN_SC = "sC";
+        public static final String COLUMN_SD = "sD";
+        public static final String COLUMN_SE = "sE";
+        public static final String COLUMN_SF = "sF";
+        public static final String COLUMN_SG = "sG";
+        public static final String COLUMN_SH = "sH";
         public static final String COLUMN_ISTATUS = "istatus";
         public static final String COLUMN_ISTATUS96x = "istatus96x";
         public static final String COLUMN_ENDINGDATETIME = "endingdatetime";

@@ -33,13 +33,13 @@ object CreateSQL {
             + Form.FormsTable.COLUMN_HF_NAME + " TEXT,"
             + Form.FormsTable.COLUMN_REPORTING_MONTH + " TEXT,"
             + Form.FormsTable.COLUMN_REPORTING_YEAR + " TEXT,"
-            + Form.FormsTable.COLUMN_SMHR + " TEXT,"
-            + Form.FormsTable.COLUMN_SEPI + " TEXT,"
-            + Form.FormsTable.COLUMN_SSHF + " TEXT,"
-            + Form.FormsTable.COLUMN_SOBS + " TEXT,"
-            + Form.FormsTable.COLUMN_SFPR + " TEXT,"
-            + Form.FormsTable.COLUMN_SCFP + " TEXT,"
-            + Form.FormsTable.COLUMN_SSTR + " TEXT"
+            + Form.FormsTable.COLUMN_SA + " TEXT,"
+            + Form.FormsTable.COLUMN_SB + " TEXT,"
+            + Form.FormsTable.COLUMN_SC + " TEXT,"
+            + Form.FormsTable.COLUMN_SD + " TEXT,"
+            + Form.FormsTable.COLUMN_SE + " TEXT,"
+            + Form.FormsTable.COLUMN_SF + " TEXT,"
+            + Form.FormsTable.COLUMN_SG + " TEXT"
             + " );")
 
 
