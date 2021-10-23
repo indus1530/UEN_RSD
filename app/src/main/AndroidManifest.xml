@@ -105,7 +105,7 @@
 
 
         <activity
-            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSTRActivity"
+            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionGActivity"
             android:label="@string/secseven"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"

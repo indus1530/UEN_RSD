@@ -24,7 +24,7 @@ import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionDActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSTRActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionGActivity;
 
 public class RegisterActivity extends AppCompatActivity {
     private static final String TAG = "RegisterActivity";
@@ -151,7 +151,7 @@ public class RegisterActivity extends AppCompatActivity {
                     oF = new Intent(this, SectionCActivity.class);
                     break;
                 case R.id.formSTR:
-                    oF = new Intent(this, SectionSTRActivity.class);
+                    oF = new Intent(this, SectionGActivity.class);
                     break;
             }
             startActivityForResult(oF, 2);
