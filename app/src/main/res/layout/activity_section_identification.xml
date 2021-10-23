@@ -234,7 +234,7 @@
 
 
                     <!-- rsdtitle  Title   -->
-                    <androidx.cardview.widget.CardView
+                    <!--<androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVrsdtitle"
                         style="@style/cardView">
 
@@ -250,7 +250,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- h101  Input   -->
+                    &lt;!&ndash; h101  Input   &ndash;&gt;
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVh101"
                         style="@style/cardView">
@@ -291,7 +291,7 @@
 
                     </androidx.cardview.widget.CardView>
 
-                    <!-- h102  Input   -->
+                    &lt;!&ndash; h102  Input   &ndash;&gt;
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVh102"
                         style="@style/cardView">
@@ -329,7 +329,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- h103  Input   -->
+                    &lt;!&ndash; h103  Input   &ndash;&gt;
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVh103"
                         style="@style/cardView">
@@ -367,7 +367,7 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- h104  Input   -->
+                    &lt;!&ndash; h104  Input   &ndash;&gt;
                     <androidx.cardview.widget.CardView
                         android:id="@+id/fldGrpCVh104"
                         style="@style/cardView">
@@ -403,7 +403,7 @@
                                 android:hint="@string/h104"
                                 android:text="@={form.h104}" />
                         </LinearLayout>
-                    </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>-->
 
 
                     <!--EndButton LinearLayout-->

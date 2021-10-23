@@ -2641,6 +2641,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8011(String f8011) {
         this.f8011 = f8011;
+        setF8012d(f8011.equals("2") ? "" : this.f8012d);
+        setF8012m(f8011.equals("2") ? "" : this.f8012m);
         notifyPropertyChanged(BR.f8011);
     }
 
