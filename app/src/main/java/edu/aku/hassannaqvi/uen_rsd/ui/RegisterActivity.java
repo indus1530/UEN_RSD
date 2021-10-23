@@ -18,10 +18,10 @@ import org.json.JSONObject;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivityRegisterBinding;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionAActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCFPActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEPIActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFPRActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionMHRActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionOBSActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSHFActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSTRActivity;
@@ -133,7 +133,7 @@ public class RegisterActivity extends AppCompatActivity {
         if (!MainApp.user.getUserName().equals("0000")) {
             switch (view.getId()) {
                 case R.id.formMHR:
-                    oF = new Intent(this, SectionMHRActivity.class);
+                    oF = new Intent(this, SectionAActivity.class);
                     break;
                 case R.id.formEPI:
                     oF = new Intent(this, SectionEPIActivity.class);

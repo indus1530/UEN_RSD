@@ -15,20 +15,22 @@ import com.validatorcrawler.aliazaz.Validator;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
-import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionMhrBinding;
+import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionABinding;
 
 
-public class SectionMHRActivity extends AppCompatActivity {
-    ActivitySectionMhrBinding bi;
+public class SectionAActivity extends AppCompatActivity {
+    ActivitySectionABinding bi;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_mhr);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_a);
         setupSkips();
         setSupportActionBar(bi.toolbar);
         setTitle(R.string.mhr_mainheading);
+        bi.setCallback(this);
+        bi.setForm(form);
     }
 
 
@@ -39,7 +41,7 @@ public class SectionMHRActivity extends AppCompatActivity {
 
     private void saveDraft() {
 
-        form.setMhr01(bi.mhr01.getText().toString().isEmpty() ? "-1" : bi.mhr01.getText().toString());
+        /*form.setMhr01(bi.mhr01.getText().toString().isEmpty() ? "-1" : bi.mhr01.getText().toString());
         form.setMhr0197(bi.mhr0197.isChecked() ? "97" : "-1");
 
         form.setMhr02(bi.mhr02.getText().toString().isEmpty() ? "-1" : bi.mhr02.getText().toString());
@@ -52,7 +54,7 @@ public class SectionMHRActivity extends AppCompatActivity {
         form.setMhr0497(bi.mhr0497.isChecked() ? "97" : "-1");
 
         form.setMhr05(bi.mhr05.getText().toString().isEmpty() ? "-1" : bi.mhr05.getText().toString());
-        form.setMhr0597(bi.mhr0597.isChecked() ? "97" : "-1");
+        form.setMhr0597(bi.mhr0597.isChecked() ? "97" : "-1");*/
 
     }
 

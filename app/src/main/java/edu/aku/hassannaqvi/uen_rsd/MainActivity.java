@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import edu.aku.hassannaqvi.uen_rsd.core.AndroidManager;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionAActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCFPActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEPIActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFPRActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionIdentificationActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionMHRActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionOBSActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionSHFActivity;
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 oF = new Intent(this, SectionIdentificationActivity.class);
                 break;
             case R.id.sec1:
-                oF = new Intent(this, SectionMHRActivity.class);
+                oF = new Intent(this, SectionAActivity.class);
                 break;
             case R.id.sec2:
                 if (form == null)

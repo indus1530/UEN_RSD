@@ -57,7 +57,7 @@
 
 
         <activity
-            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionMHRActivity"
+            android:name="edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionAActivity"
             android:label="@string/secone"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"
