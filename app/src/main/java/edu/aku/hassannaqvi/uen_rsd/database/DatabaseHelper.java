@@ -89,6 +89,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SE, form.getsE());
         values.put(FormsTable.COLUMN_SF, form.getsF());
         values.put(FormsTable.COLUMN_SG, form.getsG());
+        values.put(FormsTable.COLUMN_SH, form.getsH());
 
         values.put(FormsTable.COLUMN_ISTATUS, form.getiStatus());
         values.put(FormsTable.COLUMN_ISTATUS96x, form.getiStatus96x());

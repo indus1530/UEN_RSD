@@ -3,6 +3,7 @@ package edu.aku.hassannaqvi.uen_rsd.ui.sections;
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.form;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
 
+import edu.aku.hassannaqvi.uen_rsd.MainActivity;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
@@ -71,21 +73,23 @@ public class SectionAActivity extends AppCompatActivity {
     }
 
 
-    public void BtnContinue(View view) {
+    public void btnContinue(View view) {
         if (!formValidation()) return;
         if (!addForm()) return;
         saveDraft();
         if (updateDB()) {
             setResult(2);
             finish();
+            startActivity(new Intent(this, MainActivity.class));
             //startActivity(new Intent(this, RegisterActivity.class));
         }
     }
 
 
-    public void BtnEnd(View view) {
+    public void btnEnd(View view) {
         finish();
-        //  startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
+        //startActivity(new Intent(this, RegisterActivity.class));
     }
 
 

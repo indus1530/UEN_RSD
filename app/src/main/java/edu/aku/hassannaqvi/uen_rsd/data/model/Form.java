@@ -15,7 +15,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import edu.aku.hassannaqvi.uen_rsd.BR;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
@@ -24,8 +26,7 @@ import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
 public class Form extends BaseObservable implements Observable {
 
     private final String TAG = "Form";
-    //Not saving in DB
-    private final LocalDate localDate = null;
+    private final transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
     // APP VARIABLES
     private String projectName = MainApp.PROJECT_NAME;
     // APP VARIABLES
@@ -65,6 +66,24 @@ public class Form extends BaseObservable implements Observable {
     private String h103 = StringUtils.EMPTY;
     private String h104 = StringUtils.EMPTY;
     private String f101 = StringUtils.EMPTY;
+    private String f10198 = StringUtils.EMPTY;
+    private String f10199 = StringUtils.EMPTY;
+    private String f102 = StringUtils.EMPTY;
+    private String f10298 = StringUtils.EMPTY;
+    private String f10299 = StringUtils.EMPTY;
+    private String f103 = StringUtils.EMPTY;
+    private String f10398 = StringUtils.EMPTY;
+    private String f10399 = StringUtils.EMPTY;
+    private String f104 = StringUtils.EMPTY;
+    private String f10498 = StringUtils.EMPTY;
+    private String f10499 = StringUtils.EMPTY;
+    private String f105 = StringUtils.EMPTY;
+    private String f10598 = StringUtils.EMPTY;
+    private String f10599 = StringUtils.EMPTY;
+    private String f106 = StringUtils.EMPTY;
+    private String f10698 = StringUtils.EMPTY;
+    private String f10699 = StringUtils.EMPTY;
+    /*private String f101 = StringUtils.EMPTY;
     private String f101ax = StringUtils.EMPTY;
     private String f102 = StringUtils.EMPTY;
     private String f102ax = StringUtils.EMPTY;
@@ -75,7 +94,7 @@ public class Form extends BaseObservable implements Observable {
     private String f105 = StringUtils.EMPTY;
     private String f105ax = StringUtils.EMPTY;
     private String f106 = StringUtils.EMPTY;
-    private String f106ax = StringUtils.EMPTY;
+    private String f106ax = StringUtils.EMPTY;*/
     private String f1image = StringUtils.EMPTY;
     private String f201 = StringUtils.EMPTY;
     private String f201ax = StringUtils.EMPTY;
@@ -294,11 +313,14 @@ public class Form extends BaseObservable implements Observable {
     private String f8092d = StringUtils.EMPTY;
     private String f8image = StringUtils.EMPTY;
     private String rsdremarks = StringUtils.EMPTY;
-    private transient PropertyChangeRegistry propertyChangeRegistry = new PropertyChangeRegistry();
 
 
     public Form() {
-
+        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
+        setUserName(MainApp.user.getUserName());
+        //setDeviceId(MainApp.deviceid);
+        setAppver(MainApp.appInfo.getAppVersion());
+        setAppver(MainApp.appInfo.getAppVersion());
     }
 
     @Bindable
@@ -502,6 +524,7 @@ public class Form extends BaseObservable implements Observable {
     public Form setsA(String sA) {
         this.sA = sA;
         return this;
+        //notifyPropertyChanged(BR.sA);
     }
 
     @Bindable
@@ -511,7 +534,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setsB(String sB) {
         this.sB = sB;
-        notifyChange(BR.sB);
+        notifyPropertyChanged(BR.sB);
     }
 
     @Bindable
@@ -521,7 +544,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setsC(String sC) {
         this.sC = sC;
-        notifyChange(BR.sC);
+        notifyPropertyChanged(BR.sC);
     }
 
     @Bindable
@@ -531,7 +554,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setsD(String sD) {
         this.sD = sD;
-        notifyChange(BR.sD);
+        notifyPropertyChanged(BR.sD);
     }
 
     @Bindable
@@ -541,7 +564,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setsE(String sE) {
         this.sE = sE;
-        notifyChange(BR.sE);
+        notifyPropertyChanged(BR.sE);
     }
 
     @Bindable
@@ -551,7 +574,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setsF(String sF) {
         this.sF = sF;
-        notifyChange(BR.sF);
+        notifyPropertyChanged(BR.sF);
     }
 
     @Bindable
@@ -561,7 +584,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setsG(String sG) {
         this.sG = sG;
-        notifyChange(BR.sG);
+        notifyPropertyChanged(BR.sG);
     }
 
     @Bindable
@@ -571,7 +594,7 @@ public class Form extends BaseObservable implements Observable {
 
     public void setsH(String sH) {
         this.sH = sH;
-        notifyChange(BR.sH);
+        notifyPropertyChanged(BR.sH);
     }
 
 
@@ -622,18 +645,33 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF101(String f101) {
         this.f101 = f101;
-        setF101ax(f101.equals("1") ? this.f101ax : "");
         notifyPropertyChanged(BR.f101);
     }
 
     @Bindable
-    public String getF101ax() {
-        return f101ax;
+    public String getF10198() {
+        return f10198;
     }
 
-    public void setF101ax(String f101ax) {
-        this.f101ax = f101ax;
-        notifyPropertyChanged(BR.f101ax);
+    public void setF10198(String f10198) {
+        if (this.f10198.equals(f10198)) return;
+        this.f10198 = f10198;
+        setF101(f10198.equals("98") ? "" : f101);
+        setF10199(f10198.equals("98") ? "" : f10199);
+        notifyPropertyChanged(BR.f10198);
+    }
+
+    @Bindable
+    public String getF10199() {
+        return f10199;
+    }
+
+    public void setF10199(String f10199) {
+        if (this.f10199.equals(f10199)) return;
+        this.f10199 = f10199;
+        setF101(f10199.equals("99") ? "" : f101);
+        setF10198(f10199.equals("99") ? "" : f10198);
+        notifyPropertyChanged(BR.f10199);
     }
 
     @Bindable
@@ -643,18 +681,33 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF102(String f102) {
         this.f102 = f102;
-        setF102ax(f102.equals("1") ? this.f102ax : "");
         notifyPropertyChanged(BR.f102);
     }
 
     @Bindable
-    public String getF102ax() {
-        return f102ax;
+    public String getF10298() {
+        return f10298;
     }
 
-    public void setF102ax(String f102ax) {
-        this.f102ax = f102ax;
-        notifyPropertyChanged(BR.f102ax);
+    public void setF10298(String f10298) {
+        if (this.f10298.equals(f10298)) return;
+        this.f10298 = f10298;
+        setF102(f10298.equals("98") ? "" : f102);
+        setF10299(f10298.equals("98") ? "" : f10299);
+        notifyPropertyChanged(BR.f10298);
+    }
+
+    @Bindable
+    public String getF10299() {
+        return f10299;
+    }
+
+    public void setF10299(String f10299) {
+        if (this.f10299.equals(f10299)) return;
+        this.f10299 = f10299;
+        setF102(f10299.equals("99") ? "" : f102);
+        setF10298(f10299.equals("99") ? "" : f10298);
+        notifyPropertyChanged(BR.f10299);
     }
 
     @Bindable
@@ -664,18 +717,33 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF103(String f103) {
         this.f103 = f103;
-        setF103ax(f103.equals("1") ? this.f103ax : "");
         notifyPropertyChanged(BR.f103);
     }
 
     @Bindable
-    public String getF103ax() {
-        return f103ax;
+    public String getF10398() {
+        return f10398;
     }
 
-    public void setF103ax(String f103ax) {
-        this.f103ax = f103ax;
-        notifyPropertyChanged(BR.f103ax);
+    public void setF10398(String f10398) {
+        if (this.f10398.equals(f10398)) return;
+        this.f10398 = f10398;
+        setF103(f10398.equals("98") ? "" : f103);
+        setF10399(f10398.equals("98") ? "" : f10399);
+        notifyPropertyChanged(BR.f10398);
+    }
+
+    @Bindable
+    public String getF10399() {
+        return f10399;
+    }
+
+    public void setF10399(String f10399) {
+        if (this.f10399.equals(f10399)) return;
+        this.f10399 = f10399;
+        setF103(f10399.equals("99") ? "" : f103);
+        setF10398(f10399.equals("99") ? "" : f10398);
+        notifyPropertyChanged(BR.f10399);
     }
 
     @Bindable
@@ -685,18 +753,34 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF104(String f104) {
         this.f104 = f104;
-        setF104ax(f104.equals("1") ? this.f104ax : "");
         notifyPropertyChanged(BR.f104);
     }
 
+
     @Bindable
-    public String getF104ax() {
-        return f104ax;
+    public String getF10498() {
+        return f10498;
     }
 
-    public void setF104ax(String f104ax) {
-        this.f104ax = f104ax;
-        notifyPropertyChanged(BR.f104ax);
+    public void setF10498(String f10498) {
+        if (this.f10498.equals(f10498)) return;
+        this.f10498 = f10498;
+        setF104(f10498.equals("98") ? "" : f104);
+        setF10499(f10498.equals("98") ? "" : f10499);
+        notifyPropertyChanged(BR.f10498);
+    }
+
+    @Bindable
+    public String getF10499() {
+        return f10499;
+    }
+
+    public void setF10499(String f10499) {
+        if (this.f10499.equals(f10499)) return;
+        this.f10499 = f10499;
+        setF104(f10499.equals("99") ? "" : f104);
+        setF10498(f10499.equals("99") ? "" : f10498);
+        notifyPropertyChanged(BR.f10499);
     }
 
     @Bindable
@@ -706,18 +790,34 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF105(String f105) {
         this.f105 = f105;
-        setF105ax(f105.equals("1") ? this.f105ax : "");
         notifyPropertyChanged(BR.f105);
     }
 
+
     @Bindable
-    public String getF105ax() {
-        return f105ax;
+    public String getF10598() {
+        return f10598;
     }
 
-    public void setF105ax(String f105ax) {
-        this.f105ax = f105ax;
-        notifyPropertyChanged(BR.f105ax);
+    public void setF10598(String f10598) {
+        if (this.f10598.equals(f10598)) return;
+        this.f10598 = f10598;
+        setF105(f10598.equals("98") ? "" : f105);
+        setF10599(f10598.equals("98") ? "" : f10599);
+        notifyPropertyChanged(BR.f10598);
+    }
+
+    @Bindable
+    public String getF10599() {
+        return f10599;
+    }
+
+    public void setF10599(String f10599) {
+        if (this.f10599.equals(f10599)) return;
+        this.f10599 = f10599;
+        setF105(f10599.equals("99") ? "" : f105);
+        setF10598(f10599.equals("99") ? "" : f10598);
+        notifyPropertyChanged(BR.f10599);
     }
 
     @Bindable
@@ -727,18 +827,33 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF106(String f106) {
         this.f106 = f106;
-        setF106ax(f106.equals("1") ? this.f106ax : "");
         notifyPropertyChanged(BR.f106);
     }
 
     @Bindable
-    public String getF106ax() {
-        return f106ax;
+    public String getF10698() {
+        return f10698;
     }
 
-    public void setF106ax(String f106ax) {
-        this.f106ax = f106ax;
-        notifyPropertyChanged(BR.f106ax);
+    public void setF10698(String f10698) {
+        if (this.f10698.equals(f10698)) return;
+        this.f10698 = f10698;
+        setF106(f10698.equals("98") ? "" : f106);
+        setF10699(f10698.equals("98") ? "" : f10699);
+        notifyPropertyChanged(BR.f10698);
+    }
+
+    @Bindable
+    public String getF10699() {
+        return f10699;
+    }
+
+    public void setF10699(String f10699) {
+        if (this.f10699.equals(f10699)) return;
+        this.f10699 = f10699;
+        setF106(f10699.equals("99") ? "" : f106);
+        setF10698(f10699.equals("99") ? "" : f10698);
+        notifyPropertyChanged(BR.f10699);
     }
 
     @Bindable
@@ -2673,6 +2788,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8021(String f8021) {
         this.f8021 = f8021;
+        setF8022d(f8021.equals("2") ? "" : this.f8022d);
+        setF8022m(f8021.equals("2") ? "" : this.f8022m);
         notifyPropertyChanged(BR.f8021);
     }
 
@@ -2703,6 +2820,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8031(String f8031) {
         this.f8031 = f8031;
+        setF8032d(f8031.equals("2") ? "" : this.f8032d);
+        setF8032m(f8031.equals("2") ? "" : this.f8032m);
         notifyPropertyChanged(BR.f8031);
     }
 
@@ -2733,6 +2852,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8041(String f8041) {
         this.f8041 = f8041;
+        setF8042d(f8041.equals("2") ? "" : this.f8042d);
+        setF8042m(f8041.equals("2") ? "" : this.f8042m);
         notifyPropertyChanged(BR.f8041);
     }
 
@@ -2763,6 +2884,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8051(String f8051) {
         this.f8051 = f8051;
+        setF8052d(f8051.equals("2") ? "" : this.f8052d);
+        setF8052m(f8051.equals("2") ? "" : this.f8052m);
         notifyPropertyChanged(BR.f8051);
     }
 
@@ -2793,6 +2916,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8061(String f8061) {
         this.f8061 = f8061;
+        setF8062d(f8061.equals("2") ? "" : this.f8062d);
+        setF8062m(f8061.equals("2") ? "" : this.f8062m);
         notifyPropertyChanged(BR.f8061);
     }
 
@@ -2823,6 +2948,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8071(String f8071) {
         this.f8071 = f8071;
+        setF8072d(f8071.equals("2") ? "" : this.f8072d);
+        setF8072m(f8071.equals("2") ? "" : this.f8072m);
         notifyPropertyChanged(BR.f8071);
     }
 
@@ -2853,6 +2980,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8081(String f8081) {
         this.f8081 = f8081;
+        setF8082d(f8081.equals("2") ? "" : this.f8082d);
+        setF8082m(f8081.equals("2") ? "" : this.f8082m);
         notifyPropertyChanged(BR.f8081);
     }
 
@@ -2883,6 +3012,8 @@ public class Form extends BaseObservable implements Observable {
 
     public void setF8091(String f8091) {
         this.f8091 = f8091;
+        setF8092d(f8091.equals("2") ? "" : this.f8092d);
+        setF8092m(f8091.equals("2") ? "" : this.f8092m);
         notifyPropertyChanged(BR.f8091);
     }
 
@@ -3002,17 +3133,23 @@ public class Form extends BaseObservable implements Observable {
 
         try {
             json.put("f101", f101)
-                    .put("f101ax", f101ax)
+                    .put("f10198", f10198)
+                    .put("f10199", f10199)
                     .put("f102", f102)
-                    .put("f102ax", f102ax)
+                    .put("f10298", f10298)
+                    .put("f10299", f10299)
                     .put("f103", f103)
-                    .put("f103ax", f103ax)
+                    .put("f10398", f10398)
+                    .put("f10399", f10399)
                     .put("f104", f104)
-                    .put("f104ax", f104ax)
+                    .put("f10498", f10498)
+                    .put("f10499", f10499)
                     .put("f105", f105)
-                    .put("f105ax", f105ax)
+                    .put("f10598", f10598)
+                    .put("f10599", f10599)
                     .put("f106", f106)
-                    .put("f106ax", f106ax)
+                    .put("f10698", f10698)
+                    .put("f10699", f10699)
                     .put("f1image", f1image);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -3352,17 +3489,23 @@ public class Form extends BaseObservable implements Observable {
                 JSONObject json = null;
                 json = new JSONObject(string);
                 this.f101 = json.getString("f101");
-                this.f101ax = json.getString("f101ax");
+                this.f10198 = json.getString("f10198");
+                this.f10199 = json.getString("f10199");
                 this.f102 = json.getString("f102");
-                this.f102ax = json.getString("f102ax");
+                this.f10298 = json.getString("f10298");
+                this.f10299 = json.getString("f10299");
                 this.f103 = json.getString("f103");
-                this.f103ax = json.getString("f103ax");
+                this.f10398 = json.getString("f10398");
+                this.f10399 = json.getString("f10399");
                 this.f104 = json.getString("f104");
-                this.f104ax = json.getString("f104ax");
+                this.f10498 = json.getString("f10498");
+                this.f10499 = json.getString("f10499");
                 this.f105 = json.getString("f105");
-                this.f105ax = json.getString("f105ax");
+                this.f10598 = json.getString("f10598");
+                this.f10599 = json.getString("f10599");
                 this.f106 = json.getString("f106");
-                this.f106ax = json.getString("f106ax");
+                this.f10698 = json.getString("f10698");
+                this.f10699 = json.getString("f10699");
                 this.f1image = json.getString("f1image");
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -3664,7 +3807,7 @@ public class Form extends BaseObservable implements Observable {
     }
 
 
-    private synchronized void notifyChange(int propertyId) {
+   /* private synchronized void notifyChange(int propertyId) {
         if (propertyChangeRegistry == null) {
             propertyChangeRegistry = new PropertyChangeRegistry();
         }
@@ -3685,7 +3828,7 @@ public class Form extends BaseObservable implements Observable {
         if (propertyChangeRegistry != null) {
             propertyChangeRegistry.remove(callback);
         }
-    }
+    }*/
 
 
     public static abstract class FormsTable implements BaseColumns {

@@ -39,7 +39,8 @@ object CreateSQL {
             + Form.FormsTable.COLUMN_SD + " TEXT,"
             + Form.FormsTable.COLUMN_SE + " TEXT,"
             + Form.FormsTable.COLUMN_SF + " TEXT,"
-            + Form.FormsTable.COLUMN_SG + " TEXT"
+            + Form.FormsTable.COLUMN_SG + " TEXT,"
+            + Form.FormsTable.COLUMN_SH + " TEXT"
             + " );")
 
 

@@ -51,7 +51,7 @@
                 android:orientation="vertical">
 
 
-                <!-- f101  Radio   -->
+                <!-- f101 CheckBox-TextPicker -->
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf101"
                     style="@style/cardView">
@@ -80,62 +80,606 @@
 
                         </LinearLayout>
 
-                        <RadioGroup
-                            android:id="@+id/f101"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <RadioButton
-                                android:id="@+id/f101a"
+                            <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="2"
-                                android:checked="@{form.f101.equals(`1`)}"
-                                android:onClick="@{()->form.setF101(`1`)}"
                                 android:text="@string/f101a" />
 
-                            <RadioButton
-                                android:id="@+id/f101b"
+                            <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="1.5"
-                                android:checked="@{form.f101.equals(`2`)}"
-                                android:onClick="@{()->form.setF101(`2`)}"
+                                android:layout_weight="1.1"
                                 android:text="@string/f101b" />
 
-                            <RadioButton
-                                android:id="@+id/f101c"
+                            <TextView
+                                style="@style/sub_labels"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1.5"
-                                android:checked="@{form.f101.equals(`3`)}"
-                                android:onClick="@{()->form.setF101(`3`)}"
                                 android:text="@string/f101c" />
 
-                        </RadioGroup>
+                        </LinearLayout>
 
-                        <com.edittextpicker.aliazaz.EditTextPicker
-                            android:id="@+id/f101ax"
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:gravity="center"
-                            android:hint="#####"
-                            android:inputType="number"
-                            android:maxLength="5"
-                            android:tag="f101a"
-                            android:text="@={form.f101ax}"
-                            android:visibility="@{form.f101.equals(`1`) ? View.VISIBLE : View.GONE}"
-                            app:maxValue="99999"
-                            app:minValue="1"
-                            app:type="range" />
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/f101"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:enabled="@{!form.f10199.equals(`98`) &amp;&amp; !form.f10198.equals(`99`)}"
+                                android:gravity="center"
+                                android:hint="#####"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                android:text="@={form.f101}"
+                                app:maxValue="99999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/f10198"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.1"
+                                android:checked="@{form.f10198.equals(`98`)}"
+                                android:enabled="@{!form.f10199.equals(`99`)}"
+                                android:gravity="center"
+                                android:onClick="@{()->form.setF10198(form.f10198.equals(`98`)?``:`98`)}"
+                                android:tag="-1" />
+
+                            <CheckBox
+                                android:id="@+id/f10199"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:checked="@{form.f10199.equals(`99`)}"
+                                android:enabled="@{!form.f10198.equals(`98`)}"
+                                android:gravity="center"
+                                android:onClick="@{()->form.setF10199(form.f10199.equals(`99`)?``:`99`)}"
+                                android:tag="-1" />
+
+                        </LinearLayout>
 
                     </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- f102  Radio   -->
+                <!-- f102 CheckBox-TextPicker -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf102"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_f102" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/f102" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="@string/f102a" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.1"
+                                android:text="@string/f102b" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="@string/f102c" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/f102"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:enabled="@{!form.f10299.equals(`98`) &amp;&amp; !form.f10298.equals(`99`)}"
+                                android:gravity="center"
+                                android:hint="#####"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                android:text="@={form.f102}"
+                                app:maxValue="99999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/f10298"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.1"
+                                android:checked="@{form.f10298.equals(`98`)}"
+                                android:enabled="@{!form.f10299.equals(`99`)}"
+                                android:onClick="@{()->form.setF10298(form.f10298.equals(`98`)?``:`98`)}"
+                                android:tag="-1" />
+
+                            <CheckBox
+                                android:id="@+id/f10299"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:checked="@{form.f10299.equals(`99`)}"
+                                android:enabled="@{!form.f10298.equals(`98`)}"
+                                android:onClick="@{()->form.setF10299(form.f10299.equals(`99`)?``:`99`)}"
+                                android:tag="-1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- f103 CheckBox-TextPicker -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf103"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_f103" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/f103" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="@string/f103a" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.1"
+                                android:text="@string/f103b" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="@string/f103c" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/f103"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:enabled="@{!form.f10399.equals(`98`) &amp;&amp; !form.f10398.equals(`99`)}"
+                                android:gravity="center"
+                                android:hint="#####"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                android:text="@={form.f103}"
+                                app:maxValue="99999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/f10398"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.1"
+                                android:checked="@{form.f10398.equals(`98`)}"
+                                android:enabled="@{!form.f10399.equals(`99`)}"
+                                android:onClick="@{()->form.setF10398(form.f10398.equals(`98`)?``:`98`)}"
+                                android:tag="-1" />
+
+                            <CheckBox
+                                android:id="@+id/f10399"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:checked="@{form.f10399.equals(`99`)}"
+                                android:enabled="@{!form.f10398.equals(`98`)}"
+                                android:onClick="@{()->form.setF10399(form.f10399.equals(`99`)?``:`99`)}"
+                                android:tag="-1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- f104 CheckBox-TextPicker -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf104"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_f104" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/f104" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="@string/f104a" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.1"
+                                android:text="@string/f104b" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="@string/f104c" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/f104"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:enabled="@{!form.f10499.equals(`98`) &amp;&amp; !form.f10498.equals(`99`)}"
+                                android:gravity="center"
+                                android:hint="#####"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                android:text="@={form.f104}"
+                                app:maxValue="99999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/f10498"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.1"
+                                android:checked="@{form.f10498.equals(`98`)}"
+                                android:enabled="@{!form.f10499.equals(`99`)}"
+                                android:onClick="@{()->form.setF10498(form.f10498.equals(`98`)?``:`98`)}"
+                                android:tag="-1" />
+
+                            <CheckBox
+                                android:id="@+id/f10499"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:checked="@{form.f10499.equals(`99`)}"
+                                android:enabled="@{!form.f10498.equals(`98`)}"
+                                android:onClick="@{()->form.setF10499(form.f10499.equals(`99`)?``:`99`)}"
+                                android:tag="-1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- f105 CheckBox-TextPicker -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf105"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_f105" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/f105" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="@string/f105a" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.1"
+                                android:text="@string/f105b" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="@string/f105c" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/f105"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:enabled="@{!form.f10599.equals(`98`) &amp;&amp; !form.f10598.equals(`99`)}"
+                                android:gravity="center"
+                                android:hint="#####"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                android:text="@={form.f105}"
+                                app:maxValue="99999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/f10598"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.1"
+                                android:checked="@{form.f10598.equals(`98`)}"
+                                android:enabled="@{!form.f10599.equals(`99`)}"
+                                android:onClick="@{()->form.setF10598(form.f10598.equals(`98`)?``:`98`)}"
+                                android:tag="-1" />
+
+                            <CheckBox
+                                android:id="@+id/f10599"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:checked="@{form.f10599.equals(`99`)}"
+                                android:enabled="@{!form.f10598.equals(`98`)}"
+                                android:onClick="@{()->form.setF10599(form.f10599.equals(`99`)?``:`99`)}"
+                                android:tag="-1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- f106 CheckBox-TextPicker -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf106"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/bottom"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/quesNum"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:text="@string/Q_f106" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:text="@string/f106" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2"
+                                android:text="@string/f106a" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.1"
+                                android:text="@string/f106b" />
+
+                            <TextView
+                                style="@style/sub_labels"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:text="@string/f106c" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.edittextpicker.aliazaz.EditTextPicker
+                                android:id="@+id/f106"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="2"
+                                android:enabled="@{!form.f10699.equals(`98`) &amp;&amp; !form.f10698.equals(`99`)}"
+                                android:gravity="center"
+                                android:hint="#####"
+                                android:inputType="number"
+                                android:maxLength="5"
+                                android:text="@={form.f106}"
+                                app:maxValue="99999"
+                                app:minValue="1"
+                                app:type="range" />
+
+                            <CheckBox
+                                android:id="@+id/f10698"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.1"
+                                android:checked="@{form.f10698.equals(`98`)}"
+                                android:enabled="@{!form.f10699.equals(`99`)}"
+                                android:onClick="@{()->form.setF10698(form.f10698.equals(`98`)?``:`98`)}"
+                                android:tag="-1" />
+
+                            <CheckBox
+                                android:id="@+id/f10699"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight="1.5"
+                                android:checked="@{form.f10699.equals(`99`)}"
+                                android:enabled="@{!form.f10698.equals(`98`)}"
+                                android:onClick="@{()->form.setF10699(form.f10699.equals(`99`)?``:`99`)}"
+                                android:tag="-1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!--&lt;!&ndash; f102  Radio   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf102"
                     style="@style/cardView">
@@ -208,7 +752,7 @@
                             android:inputType="number"
                             android:maxLength="5"
                             android:tag="f102a"
-                            android:text="@={form.f102ax}"
+                            android:text="@={form.f10298}"
                             android:visibility="@{form.f102.equals(`1`) ? View.VISIBLE : View.GONE}"
                             app:maxValue="99999"
                             app:minValue="1"
@@ -219,7 +763,7 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- f103  Radio   -->
+                &lt;!&ndash; f103  Radio   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf103"
                     style="@style/cardView">
@@ -303,7 +847,7 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- f104  Radio   -->
+                &lt;!&ndash; f104  Radio   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf104"
                     style="@style/cardView">
@@ -376,7 +920,7 @@
                             android:inputType="number"
                             android:maxLength="5"
                             android:tag="f104a"
-                            android:text="@={form.f104ax}"
+                            android:text="@={form.f10498}"
                             android:visibility="@{form.f104.equals(`1`) ? View.VISIBLE : View.GONE}"
                             app:maxValue="99999"
                             app:minValue="1"
@@ -387,7 +931,7 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- f105  Radio   -->
+                &lt;!&ndash; f105  Radio   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf105"
                     style="@style/cardView">
@@ -460,7 +1004,7 @@
                             android:inputType="number"
                             android:maxLength="5"
                             android:tag="f105a"
-                            android:text="@={form.f105ax}"
+                            android:text="@={form.f10598}"
                             android:visibility="@{form.f105.equals(`1`) ? View.VISIBLE : View.GONE}"
                             app:maxValue="99999"
                             app:minValue="1"
@@ -471,7 +1015,7 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- f106  Radio   -->
+                &lt;!&ndash; f106  Radio   &ndash;&gt;
                 <androidx.cardview.widget.CardView
                     android:id="@+id/fldGrpCVf106"
                     style="@style/cardView">
@@ -544,7 +1088,7 @@
                             android:inputType="number"
                             android:maxLength="5"
                             android:tag="f106a"
-                            android:text="@={form.f106ax}"
+                            android:text="@={form.f10698}"
                             android:visibility="@{form.f106.equals(`1`) ? View.VISIBLE : View.GONE}"
                             app:maxValue="99999"
                             app:minValue="1"
@@ -552,7 +1096,7 @@
 
                     </LinearLayout>
 
-                </androidx.cardview.widget.CardView>
+                </androidx.cardview.widget.CardView>-->
 
 
                 <!-- f1image  Input   -->
