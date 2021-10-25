@@ -6,16 +6,11 @@ import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.form;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 
-import com.edittextpicker.aliazaz.EditTextPicker;
-import com.validatorcrawler.aliazaz.Clear;
 import com.validatorcrawler.aliazaz.Validator;
 
 import edu.aku.hassannaqvi.uen_rsd.MainActivity;
@@ -40,27 +35,6 @@ public class SectionGActivity extends AppCompatActivity {
 
 
     private void setupSkips() {
-        /*rglsnr(bi.str01s, bi.str01n, bi.fldGrpCVstr01t);
-        rglsnr(bi.str02s, bi.str02n, bi.fldGrpCVstr02t);
-        rglsnr(bi.str03s, bi.str03n, bi.fldGrpCVstr03t);
-        rglsnr(bi.str04s, bi.str04n, bi.fldGrpCVstr04t);
-        rglsnr(bi.str05s, bi.str05n, bi.fldGrpCVstr05t);
-        rglsnr(bi.str06s, bi.str06n, bi.fldGrpCVstr06t);
-        rglsnr(bi.str07s, bi.str07n, bi.fldGrpCVstr07t);
-        rglsnr(bi.str08s, bi.str08n, bi.fldGrpCVstr08t);
-        rglsnr(bi.str09s, bi.str09n, bi.fldGrpCVstr09t);*/
-    }
-
-
-    private void rglsnr(RadioGroup rg, RadioButton rb, CardView cv) {
-        rg.setOnCheckedChangeListener((radioGroup, i) -> {
-            Clear.clearAllFields(cv);
-            cv.setVisibility(View.GONE);
-            if (rb.getId() == i) {
-                cv.setVisibility(View.VISIBLE);
-            }
-        });
-
     }
 
 
@@ -100,28 +74,8 @@ public class SectionGActivity extends AppCompatActivity {
     }
 
 
-    private boolean bothValueCheck(EditTextPicker edx1, EditTextPicker edx2) {
-        if (!edx1.getText().toString().isEmpty() || !edx2.getText().toString().isEmpty()) {
-            if (Integer.parseInt(edx1.getText().toString()) + Integer.parseInt(edx2.getText().toString()) == 0)
-                return Validator.emptyCustomTextBox(this, edx1, "Both Values Can't be Zero");
-            else return true;
-        }
-        return true;
-    }
-
-
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
-       /* if (!Validator.emptyCheckingContainer(this, bi.GrpName)) return false;
-        if (!bothValueCheck(bi.str01d, bi.str01m)) return false;
-        if (!bothValueCheck(bi.str02d, bi.str02m)) return false;
-        if (!bothValueCheck(bi.str03d, bi.str03m)) return false;
-        if (!bothValueCheck(bi.str04d, bi.str04m)) return false;
-        if (!bothValueCheck(bi.str05d, bi.str05m)) return false;
-        if (!bothValueCheck(bi.str06d, bi.str06m)) return false;
-        if (!bothValueCheck(bi.str07d, bi.str07m)) return false;
-        if (!bothValueCheck(bi.str08d, bi.str08m)) return false;
-        return bothValueCheck(bi.str09d, bi.str09m);*/
     }
 
 
