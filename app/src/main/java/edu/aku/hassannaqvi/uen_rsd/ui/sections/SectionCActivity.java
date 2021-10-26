@@ -13,11 +13,11 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
 
-import edu.aku.hassannaqvi.uen_rsd.MainActivity;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionCBinding;
+import edu.aku.hassannaqvi.uen_rsd.ui.RegisterActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.TakePhoto;
 
 
@@ -72,16 +72,14 @@ public class SectionCActivity extends AppCompatActivity {
         if (updateDB()) {
             setResult(2);
             finish();
-            startActivity(new Intent(this, MainActivity.class));
-            //startActivity(new Intent(this, RegisterActivity.class));
+            startActivity(new Intent(this, RegisterActivity.class));
         }
     }
 
 
     public void BtnEnd(View view) {
         finish();
-        startActivity(new Intent(this, MainActivity.class));
-        //startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 
 
