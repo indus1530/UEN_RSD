@@ -2323,6 +2323,27 @@ public class Form extends BaseObservable implements Observable {
     }
 
     @Bindable
+    public String getF510() {
+        return f510;
+    }
+
+    public void setF510(String f510) {
+        this.f510 = f510;
+        setF510ax(f510.equals("1") ? this.f510ax : "");
+        notifyPropertyChanged(BR.f510);
+    }
+
+    @Bindable
+    public String getF510ax() {
+        return f510ax;
+    }
+
+    public void setF510ax(String f510ax) {
+        this.f510ax = f510ax;
+        notifyPropertyChanged(BR.f510ax);
+    }
+
+    @Bindable
     public String getF511() {
         return f511;
     }

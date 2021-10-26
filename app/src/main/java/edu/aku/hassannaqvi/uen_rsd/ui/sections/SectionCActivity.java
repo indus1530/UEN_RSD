@@ -22,6 +22,7 @@ import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionCBinding;
 
 public class SectionCActivity extends AppCompatActivity {
     ActivitySectionCBinding bi;
+    int photoCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

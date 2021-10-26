@@ -1636,33 +1636,36 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:background="@drawable/bottom"
+                        android:orientation="horizontal">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_f4image" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="@string/f4image" />
-
-                        </LinearLayout>
-
-                        <EditText
+                        <ImageButton
                             android:id="@+id/f4image"
-                            android:layout_width="match_parent"
+                            android:layout_width="100dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/action_button"
+                            android:fontFamily="@font/roboto"
+                            android:onClick="takePhoto"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:src="@drawable/camera"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/txtf4image"
+                            style="@style/sub_labels"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:hint="@string/f4image"
-                            android:text="@={form.f4image}" />
+                            android:layout_weight="1"
+                            android:minHeight="80dp" />
+
+                        <CheckBox
+                            android:id="@+id/imgcheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:tag="-1" />
 
                     </LinearLayout>
 

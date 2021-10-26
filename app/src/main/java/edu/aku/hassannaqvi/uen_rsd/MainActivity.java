@@ -1,7 +1,5 @@
 package edu.aku.hassannaqvi.uen_rsd;
 
-import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.form;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -44,63 +42,46 @@ public class MainActivity extends AppCompatActivity {
         Intent oF = null;
         switch (v.getId()) {
             case R.id.openForm:
-                oF = new Intent(this, SectionIdentificationActivity.class);
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionIdentificationActivity.class));
                 break;
             case R.id.seca:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionAActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionAActivity.class));
                 break;
             case R.id.secb:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionBActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionBActivity.class));
                 break;
             case R.id.secc:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionCActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionCActivity.class));
                 break;
             case R.id.secd:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionDActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionDActivity.class));
                 break;
             case R.id.sece:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionEActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionEActivity.class));
                 break;
             case R.id.secf:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionFActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionFActivity.class));
                 break;
             case R.id.secg:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionGActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionGActivity.class));
                 break;
             case R.id.sech:
-                if (form == null) {
-                    form = new Form();
-                    oF = new Intent(this, SectionHActivity.class);
-                }
+                MainApp.form = new Form();
+                startActivity(new Intent(this, SectionHActivity.class));
                 break;
             case R.id.openDBManager:
-                if (form == null)
-                    oF = new Intent(this, AndroidManager.class);
+                MainApp.form = new Form();
+                startActivity(new Intent(this, AndroidManager.class));
                 break;
         }
-        //finish();
-        startActivity(oF);
     }
 
 
