@@ -38,15 +38,7 @@ public class SectionDActivity extends AppCompatActivity {
 
 
     private void setupSkips() {
-        bi.imgcheck.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {
-                bi.txtf4image.setText("PICTURE WASN'T TAKEN");
-                bi.f4image.setEnabled(false);
-            } else {
-                bi.txtf4image.setText("PLEASE TAKE PICTURE");
-                bi.f4image.setEnabled(true);
-            }
-        });
+        bi.imgcheck.setOnCheckedChangeListener((compoundButton, b) -> bi.f4image.setEnabled(!b));
     }
 
 
