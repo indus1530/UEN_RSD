@@ -18,6 +18,7 @@ import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionEBinding;
+import edu.aku.hassannaqvi.uen_rsd.ui.TakePhoto;
 
 
 public class SectionEActivity extends AppCompatActivity {
@@ -30,12 +31,21 @@ public class SectionEActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_section_e);
         bi.setCallback(this);
         bi.setForm(form);
-        setupSkips();
         setSupportActionBar(bi.toolbar);
+        setupSkips();
     }
 
 
     private void setupSkips() {
+        bi.imgcheck.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                bi.txtf5image.setText("Picture wasn't taken");
+                bi.f5image.setEnabled(false);
+            } else {
+                bi.txtf5image.setText("Please take Picture");
+                bi.f5image.setEnabled(true);
+            }
+        });
     }
 
 
@@ -97,5 +107,43 @@ public class SectionEActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
+    }
+
+
+    public void takePhoto(View view) {
+        Intent intent = new Intent(this, TakePhoto.class);
+        /*intent.putExtra("picID", info.getCluster() + "_" + info.getHhno() + "_" + info.getCb01() + "_");
+        intent.putExtra("childName", info.getCb02());*/
+        intent.putExtra("picID", bi.f5image.getId() + "_" + bi.txtf5image.getId() + "_" + R.string.f1title + "_");
+        intent.putExtra("imgName", R.string.f5image);
+        intent.putExtra("picView", view.getId());
+        startActivityForResult(intent, 1); // Activity is started with requestCode 1 = Front
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != RESULT_CANCELED) {
+            Toast.makeText(this, requestCode + "_" + resultCode, Toast.LENGTH_SHORT).show();
+            String fileName = data.getStringExtra("FileName");
+            if (requestCode == 1 && resultCode == 1) {
+                photoCount++;
+                bi.txtf5image.setText(photoCount + " - " + fileName);
+                bi.txtf5image.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
+                if (photoCount == 5) bi.f5image.setEnabled(false);
+                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
+            } else if (requestCode == 1 && resultCode != 1) {
+                photoCount = 0;
+                bi.txtf5image.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_unchecked, 0, 0, 0);
+                bi.f5image.setEnabled(true);
+                bi.txtf5image.setText(bi.txtf5image.getText().toString());
+                Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            bi.txtf5image.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.camera_unchecked, 0, 0);
+            bi.f5image.setEnabled(true);
+            bi.txtf5image.setText(bi.txtf5image.getText().toString());
+            Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
+        }
     }
 }
