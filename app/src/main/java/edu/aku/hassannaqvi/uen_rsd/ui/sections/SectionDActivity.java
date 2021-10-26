@@ -40,10 +40,10 @@ public class SectionDActivity extends AppCompatActivity {
     private void setupSkips() {
         bi.imgcheck.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
-                bi.txtf4image.setText("Picture wasn't taken");
+                bi.txtf4image.setText("PICTURE WASN'T TAKEN");
                 bi.f4image.setEnabled(false);
             } else {
-                bi.txtf4image.setText("Please take Picture");
+                bi.txtf4image.setText("PLEASE TAKE PICTURE");
                 bi.f4image.setEnabled(true);
             }
         });
@@ -130,18 +130,19 @@ public class SectionDActivity extends AppCompatActivity {
             String fileName = data.getStringExtra("FileName");
             if (requestCode == 1 && resultCode == 1) {
                 photoCount++;
+                if (photoCount > 0) bi.imgcheck.setVisibility(View.GONE);
                 bi.txtf4image.setText(photoCount + " - " + fileName);
                 bi.txtf4image.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
                 if (photoCount == 5) bi.f4image.setEnabled(false);
                 Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
             } else if (requestCode == 1 && resultCode != 1) {
                 photoCount = 0;
-                bi.txtf4image.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_unchecked, 0, 0, 0);
                 bi.f4image.setEnabled(true);
                 bi.txtf4image.setText(bi.txtf4image.getText().toString());
                 Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
             }
         } else {
+            if (photoCount == 0) bi.imgcheck.setVisibility(View.VISIBLE);
             bi.txtf4image.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.camera_unchecked, 0, 0);
             bi.f4image.setEnabled(true);
             bi.txtf4image.setText(bi.txtf4image.getText().toString());

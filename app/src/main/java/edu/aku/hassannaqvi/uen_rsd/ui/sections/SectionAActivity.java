@@ -13,11 +13,11 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
 
-import edu.aku.hassannaqvi.uen_rsd.MainActivity;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionABinding;
+import edu.aku.hassannaqvi.uen_rsd.ui.RegisterActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.TakePhoto;
 
 
@@ -40,10 +40,10 @@ public class SectionAActivity extends AppCompatActivity {
     private void setupSkips() {
         bi.imgcheck.setOnCheckedChangeListener((compoundButton, b) -> {
             if (b) {
-                bi.txtf1image.setText("Picture wasn't taken");
+                bi.txtf1image.setText("PICTURE WASN'T TAKEN");
                 bi.f1image.setEnabled(false);
             } else {
-                bi.txtf1image.setText("Please take Picture");
+                bi.txtf1image.setText("PLEASE TAKE PICTURE");
                 bi.f1image.setEnabled(true);
             }
         });
@@ -89,16 +89,14 @@ public class SectionAActivity extends AppCompatActivity {
         if (updateDB()) {
             setResult(2);
             finish();
-            startActivity(new Intent(this, MainActivity.class));
-            //startActivity(new Intent(this, RegisterActivity.class));
+            startActivity(new Intent(this, RegisterActivity.class));
         }
     }
 
 
     public void btnEnd(View view) {
         finish();
-        startActivity(new Intent(this, MainActivity.class));
-        //startActivity(new Intent(this, RegisterActivity.class));
+        startActivity(new Intent(this, RegisterActivity.class));
     }
 
 
@@ -145,18 +143,19 @@ public class SectionAActivity extends AppCompatActivity {
             String fileName = data.getStringExtra("FileName");
             if (requestCode == 1 && resultCode == 1) {
                 photoCount++;
+                if (photoCount > 0) bi.imgcheck.setVisibility(View.GONE);
                 bi.txtf1image.setText(photoCount + " - " + fileName);
                 bi.txtf1image.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
                 if (photoCount == 5) bi.f1image.setEnabled(false);
                 Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
             } else if (requestCode == 1 && resultCode != 1) {
                 photoCount = 0;
-                bi.txtf1image.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_unchecked, 0, 0, 0);
                 bi.f1image.setEnabled(true);
                 bi.txtf1image.setText(bi.txtf1image.getText().toString());
                 Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
             }
         } else {
+            if (photoCount == 0) bi.imgcheck.setVisibility(View.VISIBLE);
             bi.txtf1image.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.camera_unchecked, 0, 0);
             bi.f1image.setEnabled(true);
             bi.txtf1image.setText(bi.txtf1image.getText().toString());
