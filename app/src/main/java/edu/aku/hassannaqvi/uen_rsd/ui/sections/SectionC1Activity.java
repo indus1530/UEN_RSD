@@ -21,14 +21,14 @@ import edu.aku.hassannaqvi.uen_rsd.ui.RegisterActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.TakePhoto;
 
 
-public class SectionCActivity extends AppCompatActivity {
+public class SectionC1Activity extends AppCompatActivity {
     ActivitySectionCBinding bi;
     int photoCount = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         bi.setCallback(this);
         bi.setForm(form);
         setSupportActionBar(bi.toolbar);

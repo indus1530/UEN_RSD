@@ -20,7 +20,7 @@ import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivityRegisterBinding;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionAActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionBActivity;
-import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionCActivity;
+import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionC1Activity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionDActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionEActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionFActivity;
@@ -145,7 +145,7 @@ public class RegisterActivity extends AppCompatActivity {
                     oF = new Intent(this, SectionBActivity.class);
                     break;
                 case R.id.formC:
-                    oF = new Intent(this, SectionCActivity.class);
+                    oF = new Intent(this, SectionC1Activity.class);
                     break;
                 case R.id.formD:
                     oF = new Intent(this, SectionDActivity.class);
