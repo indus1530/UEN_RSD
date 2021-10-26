@@ -341,7 +341,7 @@
                             android:id="@+id/imgcheck"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:enabled="@{form.f1image.equals(``)}" />
+                            android:enabled="@{form.f2image.equals(``)}" />
 
                     </LinearLayout>
 
