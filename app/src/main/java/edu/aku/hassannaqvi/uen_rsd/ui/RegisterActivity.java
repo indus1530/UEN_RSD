@@ -55,54 +55,61 @@ public class RegisterActivity extends AppCompatActivity {
     private void updateSections() {
 
         try {
-            if (!new JSONObject(form.sAtoString()).get("mhr0597").equals("")) {
-                bi.formMHR.setEnabled(false);
+            if (!new JSONObject(form.sAtoString()).get("f106ax").equals("")) {
+                bi.formA.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formMHR.setBackgroundResource(R.color.dullWhite);
+                bi.formA.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sBtoString()).get("epi0197").equals("")) {
-                bi.formEPI.setEnabled(false);
+            if (!new JSONObject(form.sBtoString()).get("f203ax").equals("")) {
+                bi.formB.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formEPI.setBackgroundResource(R.color.dullWhite);
+                bi.formB.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sCtoString()).get("shf0297").equals("")) {
-                bi.formSHF.setEnabled(false);
+            if (!new JSONObject(form.sCtoString()).get("f342ax").equals("")) {
+                bi.formC.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formSHF.setBackgroundResource(R.color.dullWhite);
+                bi.formC.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sDtoString()).get("obs2097").equals("")) {
-                bi.formOBS.setEnabled(false);
+            if (!new JSONObject(form.sDtoString()).get("f419ax").equals("")) {
+                bi.formD.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formOBS.setBackgroundResource(R.color.dullWhite);
+                bi.formD.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sEtoString()).get("fpr1197").equals("")) {
-                bi.formFPR.setEnabled(false);
+            if (!new JSONObject(form.sEtoString()).get("f516ax").equals("")) {
+                bi.formE.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formFPR.setBackgroundResource(R.color.dullWhite);
+                bi.formE.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sFtoString()).get("cfp0397").equals("")) {
-                bi.formCFP.setEnabled(false);
+            if (!new JSONObject(form.sFtoString()).get("f603ax").equals("")) {
+                bi.formF.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formCFP.setBackgroundResource(R.color.dullWhite);
+                bi.formF.setBackgroundResource(R.color.dullWhite);
             }
 
-            if (!new JSONObject(form.sGtoString()).get("str09m").equals("")) {
-                bi.formSTR.setEnabled(false);
+            if (!new JSONObject(form.sGtoString()).get("f705ax").equals("")) {
+                bi.formG.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formSTR.setBackgroundResource(R.color.dullWhite);
+                bi.formG.setBackgroundResource(R.color.dullWhite);
             }
-            if (!bi.formMHR.isEnabled()
-                    && !bi.formEPI.isEnabled()
-                    && !bi.formSHF.isEnabled()
-                    && !bi.formOBS.isEnabled()
-                    && !bi.formFPR.isEnabled()
-                    && !bi.formCFP.isEnabled()
-                    && !bi.formSTR.isEnabled()
+
+            if (!new JSONObject(form.sHtoString()).get("f8092d").equals("")) {
+                bi.formH.setEnabled(false);
+                bi.btnEnd.setVisibility(View.VISIBLE);
+                bi.formH.setBackgroundResource(R.color.dullWhite);
+            }
+            if (!bi.formA.isEnabled()
+                    && !bi.formB.isEnabled()
+                    && !bi.formC.isEnabled()
+                    && !bi.formD.isEnabled()
+                    && !bi.formE.isEnabled()
+                    && !bi.formF.isEnabled()
+                    && !bi.formG.isEnabled()
+                    && !bi.formH.isEnabled()
             ) bi.btnEnd.setVisibility(View.GONE);
 
         } catch (JSONException e) {
@@ -113,10 +120,8 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     public void BtnContinue() {
-
         finish();
         startActivity(new Intent(this, EndingActivity.class).putExtra("complete", true));
-
     }
 
 
@@ -133,25 +138,25 @@ public class RegisterActivity extends AppCompatActivity {
         Intent oF = new Intent();
         if (!MainApp.user.getUserName().equals("0000")) {
             switch (view.getId()) {
-                case R.id.formMHR:
+                case R.id.formA:
                     oF = new Intent(this, SectionAActivity.class);
                     break;
-                case R.id.formEPI:
-                    oF = new Intent(this, SectionDActivity.class);
-                    break;
-                case R.id.formSHF:
-                    oF = new Intent(this, SectionFActivity.class);
-                    break;
-                case R.id.formOBS:
+                case R.id.formB:
                     oF = new Intent(this, SectionBActivity.class);
                     break;
-                case R.id.formFPR:
-                    oF = new Intent(this, SectionEActivity.class);
-                    break;
-                case R.id.formCFP:
+                case R.id.formC:
                     oF = new Intent(this, SectionCActivity.class);
                     break;
-                case R.id.formSTR:
+                case R.id.formD:
+                    oF = new Intent(this, SectionDActivity.class);
+                    break;
+                case R.id.formE:
+                    oF = new Intent(this, SectionEActivity.class);
+                    break;
+                case R.id.formF:
+                    oF = new Intent(this, SectionFActivity.class);
+                    break;
+                case R.id.formG:
                     oF = new Intent(this, SectionGActivity.class);
                     break;
                 case R.id.formH:
@@ -170,13 +175,14 @@ public class RegisterActivity extends AppCompatActivity {
         Log.d(TAG, "onActivityResult: test1");
         updateSections();
         if (requestCode == 2
-                && !bi.formMHR.isEnabled()
-                && !bi.formEPI.isEnabled()
-                && !bi.formSHF.isEnabled()
-                && !bi.formOBS.isEnabled()
-                && !bi.formFPR.isEnabled()
-                && !bi.formCFP.isEnabled()
-                && !bi.formSTR.isEnabled()
+                && !bi.formA.isEnabled()
+                && !bi.formB.isEnabled()
+                && !bi.formC.isEnabled()
+                && !bi.formD.isEnabled()
+                && !bi.formE.isEnabled()
+                && !bi.formF.isEnabled()
+                && !bi.formG.isEnabled()
+                && !bi.formH.isEnabled()
                 && !form.getiStatus().equals("1")
         ) {
             bi.btnContinue.setVisibility(View.VISIBLE);

@@ -60,12 +60,12 @@
                             android:layout_height="56dp"
                             android:gravity="center_vertical|center_horizontal"
                             android:padding="0dp"
-                            android:text="MHR"
+                            android:text="A"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30dp" />
 
                         <Button
-                            android:id="@+id/formMHR"
+                            android:id="@+id/formA"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
@@ -74,7 +74,7 @@
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/secone"
+                            android:text="@string/f1title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -103,20 +103,20 @@
                             android:layout_height="56dp"
                             android:gravity="center_vertical|center_horizontal"
                             android:padding="0dp"
-                            android:text="EPI"
+                            android:text="B"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30dp" />
 
                         <Button
-                            android:id="@+id/formEPI"
+                            android:id="@+id/formB"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/sectwo"
+                            android:text="@string/f2title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -145,20 +145,20 @@
                             android:layout_height="56dp"
                             android:gravity="center_vertical|center_horizontal"
                             android:padding="0dp"
-                            android:text="SHF"
+                            android:text="C"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30dp" />
 
                         <Button
-                            android:id="@+id/formSHF"
+                            android:id="@+id/formC"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/secthree"
+                            android:text="@string/f3title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -187,20 +187,20 @@
                             android:layout_height="56dp"
                             android:gravity="center_vertical|center_horizontal"
                             android:padding="0dp"
-                            android:text="OBS"
+                            android:text="D"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30dp" />
 
                         <Button
-                            android:id="@+id/formOBS"
+                            android:id="@+id/formD"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/secfour"
+                            android:text="@string/f4title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -229,20 +229,20 @@
                             android:layout_height="56dp"
                             android:gravity="center_vertical|center_horizontal"
                             android:padding="0dp"
-                            android:text="FPR"
+                            android:text="E"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30dp" />
 
                         <Button
-                            android:id="@+id/formFPR"
+                            android:id="@+id/formE"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/secfive"
+                            android:text="@string/f5title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -271,20 +271,20 @@
                             android:layout_height="56dp"
                             android:gravity="center_vertical|center_horizontal"
                             android:padding="0dp"
-                            android:text="CFP"
+                            android:text="F"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30dp" />
 
                         <Button
-                            android:id="@+id/formCFP"
+                            android:id="@+id/formF"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/secsix"
+                            android:text="@string/f6title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -313,20 +313,20 @@
                             android:layout_height="56dp"
                             android:gravity="center_vertical|center_horizontal"
                             android:padding="0dp"
-                            android:text="STR"
+                            android:text="G"
                             android:textColor="@color/colorPrimary"
                             android:textSize="30dp" />
 
                         <Button
-                            android:id="@+id/formSTR"
+                            android:id="@+id/formG"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/secseven"
+                            android:text="@string/f7title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -362,13 +362,13 @@
                         <Button
                             android:id="@+id/formH"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:layout_gravity="center_vertical"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
                             android:gravity="start"
                             android:onClick="openRegister"
-                            android:text="@string/secseven"
+                            android:text="@string/f8title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
