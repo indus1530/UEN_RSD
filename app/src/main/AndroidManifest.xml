@@ -27,9 +27,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UENRSD"
         android:usesCleartextTraffic="true">
-        <activity
-            android:name=".ui.sections.SectionC2Activity"
-            android:exported="true" />
+
         <activity
             android:name=".ui.LoginActivity"
             android:exported="true"
@@ -76,24 +74,35 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".ui.sections.SectionBActivity"
             android:label="@string/secfour"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"
             android:windowSoftInputMode="adjustResize|stateHidden" />
-        <activity
-            android:name=".ui.sections.SectionEActivity"
-            android:label="@string/secfive"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.English"
-            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".ui.sections.SectionC1Activity"
             android:label="@string/secsix"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.English"
             android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".ui.sections.SectionC2Activity"
+            android:label="@string/secsix"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.English"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <activity
+            android:name=".ui.sections.SectionEActivity"
+            android:label="@string/secfive"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.English"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
         <activity
             android:name=".ui.sections.SectionGActivity"
             android:label="@string/secseven"
