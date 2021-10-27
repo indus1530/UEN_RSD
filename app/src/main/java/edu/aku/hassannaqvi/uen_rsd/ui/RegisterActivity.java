@@ -55,52 +55,52 @@ public class RegisterActivity extends AppCompatActivity {
     private void updateSections() {
 
         try {
-            if (!new JSONObject(form.sAtoString()).get("f106ax").equals("")) {
+            if (!new JSONObject(form.sAtoString()).get("f106").equals("")) {
                 bi.formA.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formA.setBackgroundResource(R.color.dullWhite);
+                bi.formAv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
 
-            if (!new JSONObject(form.sBtoString()).get("f203ax").equals("")) {
+            if (!new JSONObject(form.sBtoString()).get("f203").equals("")) {
                 bi.formB.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formB.setBackgroundResource(R.color.dullWhite);
+                bi.formBv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
 
-            if (!new JSONObject(form.sCtoString()).get("f342ax").equals("")) {
+            if (!new JSONObject(form.sCtoString()).get("f342").equals("")) {
                 bi.formC.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formC.setBackgroundResource(R.color.dullWhite);
+                bi.formCv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
 
-            if (!new JSONObject(form.sDtoString()).get("f419ax").equals("")) {
+            if (!new JSONObject(form.sDtoString()).get("f419").equals("")) {
                 bi.formD.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formD.setBackgroundResource(R.color.dullWhite);
+                bi.formDv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
 
-            if (!new JSONObject(form.sEtoString()).get("f516ax").equals("")) {
+            if (!new JSONObject(form.sEtoString()).get("f516").equals("")) {
                 bi.formE.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formE.setBackgroundResource(R.color.dullWhite);
+                bi.formEv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
 
-            if (!new JSONObject(form.sFtoString()).get("f603ax").equals("")) {
+            if (!new JSONObject(form.sFtoString()).get("f603").equals("")) {
                 bi.formF.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formF.setBackgroundResource(R.color.dullWhite);
+                bi.formFv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
 
-            if (!new JSONObject(form.sGtoString()).get("f705ax").equals("")) {
+            if (!new JSONObject(form.sGtoString()).get("f705").equals("")) {
                 bi.formG.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formG.setBackgroundResource(R.color.dullWhite);
+                bi.formGv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
 
-            if (!new JSONObject(form.sHtoString()).get("f8092d").equals("")) {
+            if (!new JSONObject(form.sHtoString()).get("f8091").equals("")) {
                 bi.formH.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-                bi.formH.setBackgroundResource(R.color.dullWhite);
+                bi.formHv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
             }
             if (!bi.formA.isEnabled()
                     && !bi.formB.isEnabled()
@@ -192,7 +192,8 @@ public class RegisterActivity extends AppCompatActivity {
 
         }
     }
-/* @Override
+
+ /*@Override
     public void onBackPressed() {
         Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
     }*/

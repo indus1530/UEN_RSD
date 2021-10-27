@@ -111,11 +111,6 @@ public class SectionAActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }
-
 
     public void takePhoto(View view) {
         Intent intent = new Intent(this, TakePhoto.class);
@@ -153,6 +148,12 @@ public class SectionAActivity extends AppCompatActivity {
             bi.txtf1image.setText(bi.txtf1image.getText().toString());
             Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_CANCELED);
     }
 
 

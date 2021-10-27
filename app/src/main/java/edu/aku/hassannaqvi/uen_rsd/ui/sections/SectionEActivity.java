@@ -79,6 +79,7 @@ public class SectionEActivity extends AppCompatActivity {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
 
+
     private boolean addForm() {
         if (!form.getId().equals("")) return true;
         DatabaseHelper db = appInfo.dbHelper;
@@ -92,11 +93,6 @@ public class SectionEActivity extends AppCompatActivity {
             Toast.makeText(this, "Failed to update DB", Toast.LENGTH_SHORT).show();
             return false;
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
     }
 
 
@@ -137,4 +133,11 @@ public class SectionEActivity extends AppCompatActivity {
             Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_CANCELED);
+    }
+
 }

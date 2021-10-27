@@ -81,11 +81,6 @@ public class SectionDActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }
-
     private boolean addForm() {
         if (!form.getId().equals("")) return true;
         DatabaseHelper db = appInfo.dbHelper;
@@ -138,5 +133,11 @@ public class SectionDActivity extends AppCompatActivity {
             bi.txtf4image.setText(bi.txtf4image.getText().toString());
             Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_CANCELED);
     }
 }

@@ -72,11 +72,6 @@ public class SectionC1Activity extends AppCompatActivity {
     }
 
 
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }
-
     private boolean addForm() {
         if (!form.getId().equals("")) return true;
         DatabaseHelper db = appInfo.dbHelper;
@@ -91,4 +86,12 @@ public class SectionC1Activity extends AppCompatActivity {
             return false;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_CANCELED);
+    }
+
+
 }

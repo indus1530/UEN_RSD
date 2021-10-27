@@ -100,8 +100,6 @@ public class SectionIdentificationActivity extends AppCompatActivity {
 
     public void BtnContinue(View view) {
         if (!formValidation()) return;
-
-
         if (!hfFormExists()) {
             saveDraft();
         }
@@ -123,8 +121,6 @@ public class SectionIdentificationActivity extends AppCompatActivity {
 
 
     public void populateSpinner(final Context context) {
-
-
         reportingMonth = new ArrayList<>();
         reportingMonth.add("....");
         //reportingMonth.add(mon.toUpperCase());
