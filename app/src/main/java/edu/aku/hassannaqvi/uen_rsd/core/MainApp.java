@@ -16,7 +16,7 @@ import edu.aku.hassannaqvi.uen_rsd.models.Users;
 
 public class MainApp extends Application {
 
-    public static final String PROJECT_NAME = "UEN: Routine Service Deliver";
+    public static final String PROJECT_NAME = "UEN: Routine Service Delivery";
     public static final String DIST_ID = null;
     public static final String SYNC_LOGIN = "sync_login";
     public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
