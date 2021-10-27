@@ -368,7 +368,7 @@
     <string name="h102">Name of Tehsil</string>
     <string name="h103">Name of Health Facility:</string>
     <string name="h104">Reporting for the Month of: </string>
-    <string name="f1title">Maternal Health Register (Secondary and Primary Health Facliities)</string>
+    <string name="f1title"> Maternal Health Register </string>
     <string name="f101">Number of Antenatal Care Visits (ANC-1)</string>
     <string name="f101a">Achievements (In Numbers)</string>
     <string name="f101b">Not Reported</string>
@@ -394,7 +394,7 @@
     <string name="f106b">Not Reported</string>
     <string name="f106c">Service not Provided</string>
     <string name="f1image">F1-MHR</string>
-    <string name="f2title">Obs/Gyne OPD Register (Secondary Health Facliities Only)</string>
+    <string name="f2title"> Obs/Gyne OPD Register (Secondary Health Facliities Only) </string>
     <string name="f201">Total Obs/Gyne Cases</string>
     <string name="f201a">Achievements (In Numbers)</string>
     <string name="f201b">Not Reported</string>
@@ -408,7 +408,7 @@
     <string name="f203b">Not Reported</string>
     <string name="f203c">Service not Provided</string>
     <string name="f2image">F2-OBG</string>
-    <string name="f3title">Obstetric Register (Secondary and Primary Health Facliities)</string>
+    <string name="f3title"> Obstetric Register </string>
     <string name="f301">Normal Vaginal Delivery (NVD)</string>
     <string name="f301a">Achievements (In Numbers)</string>
     <string name="f301b">Not Reported</string>
@@ -513,7 +513,7 @@
     <string name="f326a">Achievements (In Numbers)</string>
     <string name="f326b">Not Reported</string>
     <string name="f326c">Service not Provided</string>
-    <string name="f327">Number of Neonatal Deaths (0-28 days) in the facility</string>
+    <string name="f327">Number of Neonatal Deaths (0–28 days) in the facility</string>
     <string name="f327a">Achievements (In Numbers)</string>
     <string name="f327b">Not Reported</string>
     <string name="f327c">Service not Provided</string>
@@ -578,7 +578,7 @@
     <string name="f342b">Not Reported</string>
     <string name="f342c">Service not Provided</string>
     <string name="f3image">F3-OBS</string>
-    <string name="f4title"> Family Planning (Secondary and Primary Health Facilities) </string>
+    <string name="f4title"> Family Planning </string>
     <string name="f401">Total Family Planning Visits</string>
     <string name="f401a">Achievements (In Numbers)</string>
     <string name="f401b">Not Reported</string>
@@ -662,7 +662,7 @@
     <string name="f419b">Not Reported</string>
     <string name="f419c">Service not Provided</string>
     <string name="f4image">F4-FP</string>
-    <string name="f5title">Pediatric OPd and Indoor Register (Secondary and Primary Health Facliities)</string>
+    <string name="f5title"> Pediatric OPD and Indoor Register </string>
     <string name="f501">Pediatric OPD (1-11 months, Male + Female)</string>
     <string name="f501a">Achievements (In Numbers)</string>
     <string name="f501b">Not Reported</string>
@@ -723,12 +723,12 @@
     <string name="f515a">Achievements (In Numbers)</string>
     <string name="f515b">Not Reported</string>
     <string name="f515c">Service not Provided</string>
-    <string name="f516">Number of Child Death (5-14 years)</string>
+    <string name="f516">Number of Child Death (5–14 years)</string>
     <string name="f516a">Achievements (In Numbers)</string>
     <string name="f516b">Not Reported</string>
     <string name="f516c">Service not Provided</string>
     <string name="f5image">F5-PEADS-OPD</string>
-    <string name="f6title">Immunization Register (Secondary and Primary Health Facliities)</string>
+    <string name="f6title"> Immunization Register </string>
     <string name="f601">Pregnant Women given TT-2 Vaccine</string>
     <string name="f601a">Achievements (In Numbers)</string>
     <string name="f601b">Not Reported</string>
@@ -742,7 +742,7 @@
     <string name="f603b">Not Reported</string>
     <string name="f603c">Service not Provided</string>
     <string name="f6image">F6-IR</string>
-    <string name="f7title">Gender based violance (New variables)</string>
+    <string name="f7title"> Gender Based Violence </string>
     <string name="f701">Number of Health Care Providers trained on clinical management and psychological support on Gender Based Violence (GBV)</string>
     <string name="f701a">Achievements (In Numbers)</string>
     <string name="f701b">Not Reported</string>
@@ -778,7 +778,7 @@
     <string name="f705b">Not Reported</string>
     <string name="f705c">Service not Provided</string>
     <string name="f7image">F7-GBV</string>
-    <string name="f8title">Family Planning Commodities stock register (Secondary and Primary Health Facliities)</string>
+    <string name="f8title"> Family Planning Commodities Stock Register </string>
     <string name="f801">Condoms</string>
     <string name="f8011">Stock-Out </string>
     <string name="f8011a">Yes</string>
