@@ -326,7 +326,7 @@
                                     style="@style/sub_labels"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:text="Came as Him/Herself" />
+                                    android:text="@string/f703a" />
 
                                 <RadioButton
                                     android:id="@+id/f703aa"
@@ -379,7 +379,7 @@
                                     style="@style/sub_labels"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:text="Referred by LHWs" />
+                                    android:text="@string/f703b" />
 
                                 <RadioButton
                                     android:id="@+id/f703ba"
@@ -432,7 +432,7 @@
                                     style="@style/sub_labels"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:text="Referred by Police" />
+                                    android:text="@string/f703c" />
 
                                 <RadioButton
                                     android:id="@+id/f703ca"
