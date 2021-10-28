@@ -32,10 +32,8 @@ public class SectionC1Activity extends AppCompatActivity {
         setSupportActionBar(bi.toolbar);
     }
 
-
     private void saveDraft() {
     }
-
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
@@ -48,29 +46,26 @@ public class SectionC1Activity extends AppCompatActivity {
         }
     }
 
-
     public void btnContinue(View view) {
         if (!formValidation()) return;
         if (!addForm()) return;
         saveDraft();
         if (updateDB()) {
-            setResult(2);
+            setResult(RESULT_OK);
             finish();
-            startActivity(new Intent(this, SectionC2Activity.class));
+          startActivity(new Intent(this, SectionC2Activity.class));
         }
     }
 
-
     public void BtnEnd(View view) {
+        setResult(RESULT_CANCELED);
         finish();
-        startActivity(new Intent(this, RegisterActivity.class));
+       // startActivity(new Intent(this, RegisterActivity.class));
     }
-
 
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
-
 
     private boolean addForm() {
         if (!form.getId().equals("")) return true;
@@ -91,6 +86,7 @@ public class SectionC1Activity extends AppCompatActivity {
     public void onBackPressed() {
         // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
         setResult(RESULT_CANCELED);
+        finish();
     }
 
 

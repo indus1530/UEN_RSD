@@ -136,34 +136,43 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void openRegister(View view) {
         Intent oF = new Intent();
+        int REQUEST_CODE = 0;
         if (!MainApp.user.getUserName().equals("0000")) {
             switch (view.getId()) {
                 case R.id.formA:
                     oF = new Intent(this, SectionAActivity.class);
+                    REQUEST_CODE = 1;
                     break;
                 case R.id.formB:
                     oF = new Intent(this, SectionBActivity.class);
+                    REQUEST_CODE = 2;
                     break;
                 case R.id.formC:
                     oF = new Intent(this, SectionC1Activity.class);
+                    REQUEST_CODE = 3;
                     break;
                 case R.id.formD:
                     oF = new Intent(this, SectionDActivity.class);
+                    REQUEST_CODE = 4;
                     break;
                 case R.id.formE:
                     oF = new Intent(this, SectionEActivity.class);
+                    REQUEST_CODE = 5;
                     break;
                 case R.id.formF:
                     oF = new Intent(this, SectionFActivity.class);
+                    REQUEST_CODE = 6;
                     break;
                 case R.id.formG:
                     oF = new Intent(this, SectionGActivity.class);
+                    REQUEST_CODE = 7;
                     break;
                 case R.id.formH:
                     oF = new Intent(this, SectionHActivity.class);
+                    REQUEST_CODE = 8;
                     break;
             }
-            startActivityForResult(oF, 2);
+            startActivityForResult(oF, REQUEST_CODE);
         } else {
             Toast.makeText(this, "Please login Again!", Toast.LENGTH_LONG).show();
         }
@@ -172,9 +181,9 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.d(TAG, "onActivityResult: test1");
+      //  Log.d(TAG, "onActivityResult: test1");
         updateSections();
-        if (requestCode == 2
+        if (resultCode == RESULT_OK
                 && !bi.formA.isEnabled()
                 && !bi.formB.isEnabled()
                 && !bi.formC.isEnabled()
@@ -189,13 +198,31 @@ public class RegisterActivity extends AppCompatActivity {
         } else {
             bi.btnContinue.setVisibility(View.GONE);
             //Toast.makeText(this, "Enabled!", Toast.LENGTH_SHORT).show();
-
         }
+
     }
 
- /*@Override
+    @Override
     public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
-    }*/
+        new AlertDialog.Builder(this)
+                .setTitle("Not Allowed!")
+                .setMessage("Going back is not allowed here.")
+                .setPositiveButton(android.R.string.ok, null).create().show();
+    }
 
+    // BACKPRESSED WITH DIALOG
+/*    @Override
+    public void onBackPressed() {
+        new AlertDialog.Builder(this)
+                .setTitle("Really Exit?")
+                .setMessage("Are you sure you want to exit?")
+                .setNegativeButton(android.R.string.no, null)
+                .setPositiveButton(android.R.string.yes, new OnClickListener() {
+
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        this.super.onBackPressed();
+                    }
+                }).create().show();
+
+    }*/
 }

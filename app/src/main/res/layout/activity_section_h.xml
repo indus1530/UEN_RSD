@@ -1370,9 +1370,9 @@
                 </androidx.cardview.widget.CardView>
 
 
-                <!-- f8image  Input   -->
+                <!-- f7image  Input   -->
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVf8image"
+                    android:id="@+id/fldGrpCVf7image"
                     style="@style/cardView">
 
                     <LinearLayout
@@ -1382,9 +1382,8 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/f8image"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="58dp"
+                            android:layout_height="58dp"
                             android:layout_gravity="center"
                             android:layout_marginEnd="8dp"
                             android:background="@drawable/action_button"
@@ -1395,20 +1394,20 @@
                             android:src="@drawable/camera"
                             android:textColor="@color/white" />
 
-                        <TextView
-                            android:id="@+id/txtf8image"
-                            style="@style/sub_labels"
+                        <EditText
+                            android:enabled="false"
+                            android:id="@+id/f7image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:minHeight="80dp"
-                            android:text="@={form.f8image}" />
+                            android:text="@={form.f7image}" />
 
                         <CheckBox
                             android:id="@+id/imgcheck"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:enabled="@{form.f8image.equals(``)}" />
+                            android:visibility="@{form.f7image.equals(``)?View.VISIBLE:View.GONE}" />
 
                     </LinearLayout>
 

@@ -1640,9 +1640,8 @@
                         android:orientation="horizontal">
 
                         <ImageButton
-                            android:id="@+id/f4image"
-                            android:layout_width="100dp"
-                            android:layout_height="match_parent"
+                            android:layout_width="58dp"
+                            android:layout_height="58dp"
                             android:layout_gravity="center"
                             android:layout_marginEnd="8dp"
                             android:background="@drawable/action_button"
@@ -1653,9 +1652,9 @@
                             android:src="@drawable/camera"
                             android:textColor="@color/white" />
 
-                        <TextView
-                            android:id="@+id/txtf4image"
-                            style="@style/sub_labels"
+                        <EditText
+                            android:enabled="false"
+                            android:id="@+id/f4image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -1666,7 +1665,7 @@
                             android:id="@+id/imgcheck"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:enabled="@{form.f4image.equals(``)}" />
+                            android:visibility="@{form.f4image.equals(``)?View.VISIBLE:View.GONE}" />
 
                     </LinearLayout>
 

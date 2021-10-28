@@ -3,11 +3,16 @@ package edu.aku.hassannaqvi.uen_rsd.ui.sections;
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.appInfo;
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.form;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -23,7 +28,40 @@ import edu.aku.hassannaqvi.uen_rsd.ui.TakePhoto;
 
 public class SectionBActivity extends AppCompatActivity {
     ActivitySectionBBinding bi;
-    int photoCount = 0;
+    private int PhotoSerial = 0;
+    private String photolist;
+    ActivityResultLauncher<Intent> takePhotoLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        //Intent data = result.getData();
+                        Intent data = result.getData();
+
+                        Toast.makeText(SectionBActivity.this, "Photo Taken", Toast.LENGTH_SHORT).show();
+
+                        String fileName = data.getStringExtra("FileName");
+                        //   photolist = photolist + fileName + ";";
+                        PhotoSerial++;
+
+                        bi.f2image.setText(/*bi.f2image.getText().toString() + PhotoSerial + " - " +*/ fileName + ";\r\n");
+                    } else {
+                        Toast.makeText(SectionBActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
+
+                        //TODO: Implement functionality below when photo was not taken
+                        // ...
+                        bi.f2image.setText("Photo not taken.");
+                    }
+
+                    if (result.getResultCode() == Activity.RESULT_CANCELED) {
+                        Toast.makeText(SectionBActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+            });
+
 
 
     @Override
@@ -63,16 +101,17 @@ public class SectionBActivity extends AppCompatActivity {
         if (!addForm()) return;
         saveDraft();
         if (updateDB()) {
-            setResult(2);
+            setResult(RESULT_OK);
             finish();
-            startActivity(new Intent(this, RegisterActivity.class));
+          //  startActivity(new Intent(this, RegisterActivity.class));
         }
     }
 
 
     public void btnEnd(View view) {
+        setResult(RESULT_CANCELED);
         finish();
-        startActivity(new Intent(this, RegisterActivity.class));
+      //  startActivity(new Intent(this, RegisterActivity.class));
     }
 
 
@@ -106,7 +145,7 @@ public class SectionBActivity extends AppCompatActivity {
         startActivityForResult(intent, 1); // Activity is started with requestCode 1 = Front
     }
 
-    @Override
+  /*  @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != RESULT_CANCELED) {
@@ -132,13 +171,26 @@ public class SectionBActivity extends AppCompatActivity {
             bi.txtf2image.setText(bi.txtf2image.getText().toString());
             Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 
     @Override
     public void onBackPressed() {
         // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
         setResult(RESULT_CANCELED);
+        finish();
     }
 
+    public void takePhoto(View view) {
+  /*      if(!Validator.emptyCheckingContainer(this, bi.GrpName)) return
+                val intent = Intent(this, TakePhoto::class.java)*/
+        Intent intent = new Intent(this, TakePhoto.class);
+        intent.putExtra("picID", form.getHfCode() + "_" + form.getReportingMonth());
+        intent.putExtra("id", form.getHfCode() + "_" + form.getReportingMonth());
 
+        //TODO: Change string (R.string.fXtitle)
+        intent.putExtra("picView", this.getResources().getString(R.string.f2title));
+
+        takePhotoLauncher.launch(intent);
+
+    }
 }

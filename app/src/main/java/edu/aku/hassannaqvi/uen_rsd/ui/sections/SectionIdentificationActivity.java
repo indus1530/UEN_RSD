@@ -174,7 +174,15 @@ public class SectionIdentificationActivity extends AppCompatActivity {
         hfCodes = new ArrayList<>();
 
         hfNames.add("....");
+        hfNames.add("Test HF 1");
+        hfNames.add("Test HF 2");
+        hfNames.add("Test HF 3");
+
         hfCodes.add("....");
+        hfCodes.add("999991");
+        hfCodes.add("999992");
+        hfCodes.add("999993");
+
 
         ArrayList<HealthFacilities> pc = db.getHfByDist(MainApp.user.getDist_id());
         for (HealthFacilities p : pc) {
