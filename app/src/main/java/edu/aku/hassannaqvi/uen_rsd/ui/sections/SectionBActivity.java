@@ -22,7 +22,6 @@ import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionBBinding;
-import edu.aku.hassannaqvi.uen_rsd.ui.RegisterActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.TakePhoto;
 
 
@@ -45,16 +44,13 @@ public class SectionBActivity extends AppCompatActivity {
                         String fileName = data.getStringExtra("FileName");
                         //   photolist = photolist + fileName + ";";
                         PhotoSerial++;
-
                         bi.f2image.setText(/*bi.f2image.getText().toString() + PhotoSerial + " - " +*/ fileName + ";\r\n");
                     } else {
                         Toast.makeText(SectionBActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
-
                         //TODO: Implement functionality below when photo was not taken
                         // ...
                         bi.f2image.setText("Photo not taken.");
                     }
-
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {
                         Toast.makeText(SectionBActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();
                     }
@@ -103,7 +99,6 @@ public class SectionBActivity extends AppCompatActivity {
         if (updateDB()) {
             setResult(RESULT_OK);
             finish();
-          //  startActivity(new Intent(this, RegisterActivity.class));
         }
     }
 
@@ -111,13 +106,13 @@ public class SectionBActivity extends AppCompatActivity {
     public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
         finish();
-      //  startActivity(new Intent(this, RegisterActivity.class));
     }
 
 
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
     }
+
 
     private boolean addForm() {
         if (!form.getId().equals("")) return true;
@@ -134,63 +129,19 @@ public class SectionBActivity extends AppCompatActivity {
         }
     }
 
-
-    public void takePhoto(View view) {
-        Intent intent = new Intent(this, TakePhoto.class);
-        /*intent.putExtra("picID", info.getCluster() + "_" + info.getHhno() + "_" + info.getCb01() + "_");
-        intent.putExtra("childName", info.getCb02());*/
-        intent.putExtra("picID", bi.f2image.getId() + "_" + bi.txtf2image.getId() + "_" + R.string.f1title + "_");
-        intent.putExtra("imgName", R.string.f2image);
-        intent.putExtra("picView", view.getId());
-        startActivityForResult(intent, 1); // Activity is started with requestCode 1 = Front
-    }
-
-  /*  @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode != RESULT_CANCELED) {
-            Toast.makeText(this, requestCode + "_" + resultCode, Toast.LENGTH_SHORT).show();
-            String fileName = data.getStringExtra("FileName");
-            if (requestCode == 1 && resultCode == 1) {
-                photoCount++;
-                if (photoCount > 0) bi.imgcheck.setVisibility(View.GONE);
-                bi.txtf2image.setText(photoCount + " - " + fileName);
-                bi.txtf2image.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                if (photoCount == 5) bi.f2image.setEnabled(false);
-                Toast.makeText(this, "Photo Taken", Toast.LENGTH_SHORT).show();
-            } else if (requestCode == 1 && resultCode != 1) {
-                photoCount = 0;
-                bi.f2image.setEnabled(true);
-                bi.txtf2image.setText(bi.txtf2image.getText().toString());
-                Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            if (photoCount == 0) bi.imgcheck.setVisibility(View.VISIBLE);
-            bi.txtf2image.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.camera_unchecked, 0, 0);
-            bi.f2image.setEnabled(true);
-            bi.txtf2image.setText(bi.txtf2image.getText().toString());
-            Toast.makeText(this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
-        }
-    }*/
-
     @Override
     public void onBackPressed() {
-        // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
         setResult(RESULT_CANCELED);
         finish();
     }
 
     public void takePhoto(View view) {
-  /*      if(!Validator.emptyCheckingContainer(this, bi.GrpName)) return
-                val intent = Intent(this, TakePhoto::class.java)*/
         Intent intent = new Intent(this, TakePhoto.class);
         intent.putExtra("picID", form.getHfCode() + "_" + form.getReportingMonth());
         intent.putExtra("id", form.getHfCode() + "_" + form.getReportingMonth());
-
-        //TODO: Change string (R.string.fXtitle)
         intent.putExtra("picView", this.getResources().getString(R.string.f2title));
-
         takePhotoLauncher.launch(intent);
-
     }
+
+
 }

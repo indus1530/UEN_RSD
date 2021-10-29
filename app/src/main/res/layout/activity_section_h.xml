@@ -1395,19 +1395,19 @@
                             android:textColor="@color/white" />
 
                         <EditText
+                            android:id="@+id/f8image"
                             android:enabled="false"
-                            android:id="@+id/f7image"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:minHeight="80dp"
-                            android:text="@={form.f7image}" />
+                            android:text="@={form.f8image}" />
 
                         <CheckBox
                             android:id="@+id/imgcheck"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
-                            android:visibility="@{form.f7image.equals(``)?View.VISIBLE:View.GONE}" />
+                            android:visibility="@{form.f8image.equals(``)?View.VISIBLE:View.GONE}" />
 
                     </LinearLayout>
 

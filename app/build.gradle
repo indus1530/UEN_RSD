@@ -137,4 +137,7 @@ dependencies {
 // CameraX View class
     implementation "androidx.camera:camera-view:1.0.0-alpha30"
 
+    // Android Debug Database Amitshekhar
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.6'
+
 }

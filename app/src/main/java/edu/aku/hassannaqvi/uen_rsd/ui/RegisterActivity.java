@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
@@ -210,19 +211,4 @@ public class RegisterActivity extends AppCompatActivity {
                 .setPositiveButton(android.R.string.ok, null).create().show();
     }
 
-    // BACKPRESSED WITH DIALOG
-/*    @Override
-    public void onBackPressed() {
-        new AlertDialog.Builder(this)
-                .setTitle("Really Exit?")
-                .setMessage("Are you sure you want to exit?")
-                .setNegativeButton(android.R.string.no, null)
-                .setPositiveButton(android.R.string.yes, new OnClickListener() {
-
-                    public void onClick(DialogInterface arg0, int arg1) {
-                        this.super.onBackPressed();
-                    }
-                }).create().show();
-
-    }*/
 }
