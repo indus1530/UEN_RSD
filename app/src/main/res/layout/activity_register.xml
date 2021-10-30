@@ -54,23 +54,22 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:background="@color/colorAccent"
-                                android:textColor="@color/colorPrimaryDark"
                                 android:gravity="center_vertical|center_horizontal"
                                 android:padding="8dp"
                                 android:text="A"
+                                android:textColor="@color/colorPrimaryDark"
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedAv"
+                                android:id="@+id/checkedAv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
                         <Button
@@ -121,15 +120,15 @@
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedBv"
+                                android:id="@+id/checkedBv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
                         <Button
@@ -180,15 +179,15 @@
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedCv"
+                                android:id="@+id/checkedCv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
                         <Button
@@ -239,15 +238,15 @@
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedDv"
+                                android:id="@+id/checkedDv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
 
@@ -299,15 +298,15 @@
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedEv"
+                                android:id="@+id/checkedEv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
 
@@ -359,15 +358,15 @@
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedFv"
+                                android:id="@+id/checkedFv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
 
@@ -419,15 +418,15 @@
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedGv"
+                                android:id="@+id/checkedGv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
 
@@ -479,15 +478,15 @@
                                 android:textSize="30dp" />
 
                             <ImageView
-                                id="@+id/checkedHv"
+                                android:id="@+id/checkedHv"
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_alignParentEnd="true"
                                 android:layout_centerInParent="true"
                                 android:layout_marginEnd="12dp"
                                 android:src="@drawable/camera_checked"
-                                tools:visibility="visible"
-                                android:visibility="gone" />
+                                android:visibility="gone"
+                                tools:visibility="visible" />
                         </RelativeLayout>
 
 

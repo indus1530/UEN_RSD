@@ -60,14 +60,15 @@ public class RegisterActivity extends AppCompatActivity {
                 bi.formA.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
              //   bi.formAv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedAv.setvisibility(View.VISIBLE);
+                //bi.checkedAv.setvisibility(View.VISIBLE);
+                bi.checkedAv.setVisibility(View.VISIBLE);
             }
 
             if (!new JSONObject(form.sBtoString()).get("f203").equals("")) {
                 bi.formB.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
-             //   bi.formBv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedBv.setvisibility(View.VISIBLE);
+             // bi.formBv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
+                bi.checkedBv.setVisibility(View.VISIBLE);
 
             }
 
@@ -75,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
                 bi.formC.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
             //    bi.formCv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedCv.setvisibility(View.VISIBLE);
+                bi.checkedCv.setVisibility(View.VISIBLE);
 
             }
 
@@ -83,7 +84,7 @@ public class RegisterActivity extends AppCompatActivity {
                 bi.formD.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
               //  bi.formDv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedDv.setvisibility(View.VISIBLE);
+                bi.checkedDv.setVisibility(View.VISIBLE);
 
             }
 
@@ -91,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                 bi.formE.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
              //   bi.formEv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedEv.setvisibility(View.VISIBLE);
+                bi.checkedEv.setVisibility(View.VISIBLE);
 
             }
 
@@ -99,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
                 bi.formF.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
             //    bi.formFv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedFv.setvisibility(View.VISIBLE);
+                bi.checkedFv.setVisibility(View.VISIBLE);
 
             }
 
@@ -107,7 +108,7 @@ public class RegisterActivity extends AppCompatActivity {
                 bi.formG.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
             //   bi.formGv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedGv.setvisibility(View.VISIBLE);
+                bi.checkedGv.setVisibility(View.VISIBLE);
 
             }
 
@@ -115,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
                 bi.formH.setEnabled(false);
                 bi.btnEnd.setVisibility(View.VISIBLE);
               //  bi.formHv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.camera_checked, 0, 0, 0);
-                bi.checkedHv.setvisibility(View.VISIBLE);
+                bi.checkedHv.setVisibility(View.VISIBLE);
 
             }
             if (!bi.formA.isEnabled()
