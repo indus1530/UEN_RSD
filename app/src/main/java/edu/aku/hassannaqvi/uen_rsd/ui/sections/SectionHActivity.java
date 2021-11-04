@@ -47,7 +47,7 @@ public class SectionHActivity extends AppCompatActivity {
                         //   photolist = photolist + fileName + ";";
                         PhotoSerial++;
 
-                        bi.f8image.setText(bi.f1image.getText().toString() + PhotoSerial + " - " + fileName + ";\r\n");
+                        bi.f8image.setText(bi.f8image.getText().toString() + PhotoSerial + " - " + fileName + ";\r\n");
                     } else {
                         Toast.makeText(SectionHActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
 
