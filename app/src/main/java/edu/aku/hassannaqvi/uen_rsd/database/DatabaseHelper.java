@@ -922,7 +922,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return all;
     }
 
-    public ArrayList<Districts> getDistrictsByUser(String distid) {
+    public Districts getDistrictsByUser(String distid) {
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor c = null;
@@ -934,7 +934,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy = Districts.TableDistricts._ID + " ASC";
-        ArrayList<Districts> all = new ArrayList<>();
+        Districts dist = new Districts();
         try {
             c = db.query(
                     Districts.TableDistricts.TABLE_NAME,  // The table to query
@@ -946,7 +946,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                all.add(new Districts().hydrate(c));
+                dist = new Districts().hydrate(c);
             }
         } finally {
             if (c != null) {
@@ -956,7 +956,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return all;
+        return dist;
     }
 
     public ArrayList<HealthFacilities> getHfByDist(String distid) {

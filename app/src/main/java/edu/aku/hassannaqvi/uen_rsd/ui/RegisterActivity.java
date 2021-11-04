@@ -219,12 +219,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    @Override
+   /* @Override
     public void onBackPressed() {
         new AlertDialog.Builder(this)
                 .setTitle("Not Allowed!")
                 .setMessage("Going back is not allowed here.")
                 .setPositiveButton(android.R.string.ok, null).create().show();
     }
-
+*/
 }

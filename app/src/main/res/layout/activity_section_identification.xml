@@ -64,7 +64,7 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <LinearLayout
+<!--                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="1dp"
@@ -84,7 +84,7 @@
                                     android:prompt="@string/distname"
                                     android:spinnerMode="dropdown" />
 
-                            </LinearLayout>
+                            </LinearLayout>-->
 
 
                             <LinearLayout
