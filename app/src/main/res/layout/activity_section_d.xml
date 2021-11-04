@@ -1652,7 +1652,7 @@
                             android:src="@drawable/camera"
                             android:textColor="@color/white" />
 
-                        <EditText
+                        <TextView
                             android:enabled="false"
                             android:id="@+id/f4image"
                             android:layout_width="0dp"

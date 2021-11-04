@@ -39,7 +39,7 @@ public class SectionAActivity extends AppCompatActivity {
                         Toast.makeText(SectionAActivity.this, "Photo Taken", Toast.LENGTH_SHORT).show();
                         String fileName = data.getStringExtra("FileName");
                         PhotoSerial++;
-                        bi.f1image.setText(fileName + ";\r\n");
+                        bi.f1image.setText(bi.f1image.getText().toString() + PhotoSerial + " - " + fileName + ";\r\n");
                     } else {
                         Toast.makeText(SectionAActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
                         //TODO: Implement functionality below when photo was not taken

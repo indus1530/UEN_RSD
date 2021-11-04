@@ -46,7 +46,7 @@ public class SectionEActivity extends AppCompatActivity {
                         //   photolist = photolist + fileName + ";";
                         PhotoSerial++;
 
-                        bi.f5image.setText(/*bi.f1image.getText().toString() + PhotoSerial + " - " +*/ fileName + ";\r\n");
+                        bi.f5image.setText(bi.f5image.getText().toString() + PhotoSerial + " - " + fileName + ";\r\n");
                     } else {
                         Toast.makeText(SectionEActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
 
