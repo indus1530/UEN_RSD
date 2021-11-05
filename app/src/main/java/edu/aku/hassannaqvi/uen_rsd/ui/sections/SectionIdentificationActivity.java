@@ -65,7 +65,7 @@ public class SectionIdentificationActivity extends AppCompatActivity {
 
         form = new Form();
         form.setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-        form.setUserName(MainApp.userName);
+        form.setUsername(MainApp.userName);
         form.setDeviceId(MainApp.appInfo.getDeviceID());
         form.setDeviceTag(MainApp.appInfo.getTagName());
         form.setAppver(MainApp.appInfo.getAppVersion());

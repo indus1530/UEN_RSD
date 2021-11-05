@@ -74,7 +74,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_PROJECT_NAME, form.getProjectName());
         values.put(FormsTable.COLUMN_UID, form.getUid());
-        values.put(FormsTable.COLUMN_USERNAME, form.getUserName());
+        values.put(FormsTable.COLUMN_USERNAME, form.getUsername());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysDate());
         values.put(FormsTable.COLUMN_DISTRICT_CODE, form.getDistrictCode());
         values.put(FormsTable.COLUMN_DISTRICT_NAME, form.getDistrictName());
@@ -189,7 +189,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
                 form.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setUserName(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
+                form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 allForms.add(form);
             }
         } finally {
