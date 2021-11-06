@@ -3797,7 +3797,7 @@ public class Form extends BaseObservable implements Observable {
 
 
     public static abstract class FormsTable implements BaseColumns {
-        public static final String TABLE_NAME = "FormsRSD";
+        public static final String TABLE_NAME = "FormRSD";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";
