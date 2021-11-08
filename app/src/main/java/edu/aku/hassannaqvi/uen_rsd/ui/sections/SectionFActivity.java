@@ -52,7 +52,7 @@ public class SectionFActivity extends AppCompatActivity {
 
                         //TODO: Implement functionality below when photo was not taken
                         // ...
-                        bi.f6image.setText("Photo not taken.");
+                        //  bi.f6image.setText("Photo not taken.");
                     }
 
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {

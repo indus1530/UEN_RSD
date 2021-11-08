@@ -257,7 +257,7 @@ public class TakePhoto extends Activity implements SurfaceHolder.Callback, Camer
         String date = dateFormat.format(new Date());
 
         //TODO: PhotoID will be sent from calling Activity as StringExtra(). Replace "Cipture"
-        String photoFile = picID + "_" + date + "_" + picView.replace("/","_") + ".jpg";
+        String photoFile = "RSD_" + picID + "_" + date + "_" + picView.replace("/", "_") + ".jpg";
 
         String filename = pictureFileDir.getPath() + File.separator + photoFile;
 

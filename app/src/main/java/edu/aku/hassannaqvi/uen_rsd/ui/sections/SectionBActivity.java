@@ -49,7 +49,7 @@ public class SectionBActivity extends AppCompatActivity {
                         Toast.makeText(SectionBActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
                         //TODO: Implement functionality below when photo was not taken
                         // ...
-                        bi.f2image.setText("Photo not taken.");
+                        //  bi.f2image.setText("Photo not taken.");
                     }
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {
                         Toast.makeText(SectionBActivity.this, "No family member added.", Toast.LENGTH_SHORT).show();

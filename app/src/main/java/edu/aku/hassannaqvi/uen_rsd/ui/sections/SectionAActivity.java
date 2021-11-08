@@ -44,7 +44,7 @@ public class SectionAActivity extends AppCompatActivity {
                         Toast.makeText(SectionAActivity.this, "Photo Cancelled", Toast.LENGTH_SHORT).show();
                         //TODO: Implement functionality below when photo was not taken
                         // ...
-                        bi.f1image.setText("Photo not taken.");
+                        //  bi.f1image.setText("Photo not taken.");
                     }
 
                     if (result.getResultCode() == Activity.RESULT_CANCELED) {
