@@ -57,7 +57,7 @@ public class SectionC1Activity extends AppCompatActivity {
         }
     }
 
-    public void BtnEnd(View view) {
+    public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
         finish();
        // startActivity(new Intent(this, RegisterActivity.class));

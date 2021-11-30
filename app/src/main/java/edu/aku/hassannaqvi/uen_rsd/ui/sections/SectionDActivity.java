@@ -107,7 +107,7 @@ public class SectionDActivity extends AppCompatActivity {
 
 
     public void btnEnd(View view) {
-        setResult(RESULT_OK);
+        setResult(RESULT_CANCELED);
         finish();
        // startActivity(new Intent(this, RegisterActivity.class));
     }
