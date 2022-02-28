@@ -2,7 +2,15 @@ package edu.aku.hassannaqvi.uen_rsd.core;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+
+import com.scottyab.rootbeer.RootBeer;
+
+import net.sqlcipher.database.SQLiteDatabase;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -38,6 +46,8 @@ public class MainApp extends Application {
 
     public static File sdDir;
     public static String[] downloadData;
+    public static String IBAHC = "";
+    private static final String TAG = "MainApp";
 
     public static Form form;
     public static AppInfo appInfo;
@@ -165,8 +175,33 @@ public class MainApp extends Application {
     public void onCreate() {
         super.onCreate();
 
+        /*
+        RootBeer rootBeer = new RootBeer(this);
+        if (rootBeer.isRooted()) {
+            android.os.Process.killProcess(android.os.Process.myPid());
+            System.exit(1);
+        }*/
+
         appInfo = new AppInfo(this);
 
+        initSecure();
+    }
+
+    private void initSecure() {
+        // Initialize SQLCipher library
+        SQLiteDatabase.loadLibs(this);
+
+        // Prepare encryption KEY
+        ApplicationInfo ai = null;
+        try {
+            ai = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            Bundle bundle = ai.metaData;
+            int TRATS = bundle.getInt("YEK_TRATS");
+            IBAHC = bundle.getString("YEK_REVRES").substring(TRATS, TRATS + 16);
+            Log.d(TAG, "onCreate: YEK_REVRES = " + IBAHC);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 
