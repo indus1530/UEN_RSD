@@ -847,7 +847,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<Cursor> getData(String Query) {
         //get writable database
-        SQLiteDatabase sqlDB = this.getWritableDatabase();
+        SQLiteDatabase sqlDB = this.getWritableDatabase(DATABASE_PASSWORD);
         String[] columns = new String[]{"message"};
         //an array list of cursor to save two cursors one has results from the query
         //other cursor stores error message if any errors are triggered
