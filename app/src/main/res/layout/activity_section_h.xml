@@ -153,7 +153,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8012m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -181,7 +181,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8012d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -295,7 +295,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8022m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -323,7 +323,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8022d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -437,7 +437,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8032m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -465,7 +465,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8032d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -579,7 +579,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8042m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -607,7 +607,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8042d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -721,7 +721,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8052m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -749,7 +749,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8052d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -863,7 +863,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8062m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -891,7 +891,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8062d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -1005,7 +1005,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8072m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -1033,7 +1033,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8072d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -1147,7 +1147,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8082m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -1175,7 +1175,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8082d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -1289,7 +1289,7 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8092m}"
                                     app:maxValue="24"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
@@ -1317,53 +1317,12 @@
                                     android:maxLength="2"
                                     android:text="@={form.f8092d}"
                                     app:maxValue="30"
-                                    app:minValue="1"
+                                    app:minValue="0"
                                     app:type="range" />
 
                             </LinearLayout>
 
                         </LinearLayout>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-
-                <!-- f8image  Input   -->
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/fldGrpCVf8image"
-                    style="@style/cardView">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bottom"
-                            android:orientation="horizontal">
-
-                            <TextView
-                                style="@style/quesNum"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:text="@string/Q_f8image" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:text="@string/f8image" />
-
-                        </LinearLayout>
-
-                        <EditText
-                            android:id="@+id/f8image"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/f8image"
-                            android:text="@={form.f8image}" />
 
                     </LinearLayout>
 
@@ -1405,6 +1364,50 @@
                             android:layout_height="wrap_content"
                             android:hint="@string/rsdremarks"
                             android:text="@={form.rsdremarks}" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <!-- f7image  Input   -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/fldGrpCVf7image"
+                    style="@style/cardView">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bottom"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:layout_width="58dp"
+                            android:layout_height="58dp"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/action_button"
+                            android:fontFamily="@font/roboto"
+                            android:onClick="takePhoto"
+                            android:paddingStart="16dp"
+                            android:paddingEnd="16dp"
+                            android:src="@drawable/camera"
+                            android:textColor="@color/white" />
+
+                        <TextView
+                            android:id="@+id/f8image"
+                            android:enabled="false"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:minHeight="80dp"
+                            android:text="@={form.f8image}" />
+
+                        <CheckBox
+                            android:id="@+id/imgcheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:visibility="@{form.f8image.equals(``)?View.VISIBLE:View.GONE}" />
 
                     </LinearLayout>
 

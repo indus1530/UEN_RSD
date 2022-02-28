@@ -78,7 +78,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(FormsTable.COLUMN_PROJECT_NAME, form.getProjectName());
         values.put(FormsTable.COLUMN_UID, form.getUid());
-        values.put(FormsTable.COLUMN_USERNAME, form.getUserName());
+        values.put(FormsTable.COLUMN_USERNAME, form.getUsername());
         values.put(FormsTable.COLUMN_SYSDATE, form.getSysDate());
         values.put(FormsTable.COLUMN_DISTRICT_CODE, form.getDistrictCode());
         values.put(FormsTable.COLUMN_DISTRICT_NAME, form.getDistrictName());
@@ -193,7 +193,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 form.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
                 form.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
                 form.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setUserName(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
+                form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
                 allForms.add(form);
             }
         } finally {
@@ -847,7 +847,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public ArrayList<Cursor> getData(String Query) {
         //get writable database
-        SQLiteDatabase sqlDB = this.getWritableDatabase(DATABASE_PASSWORD);
+        SQLiteDatabase sqlDB = this.getWritableDatabase();
         String[] columns = new String[]{"message"};
         //an array list of cursor to save two cursors one has results from the query
         //other cursor stores error message if any errors are triggered
@@ -926,7 +926,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return all;
     }
 
-    public ArrayList<Districts> getDistrictsByUser(String distid) {
+    public Districts getDistrictsByUser(String distid) {
 
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
@@ -938,7 +938,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String having = null;
 
         String orderBy = Districts.TableDistricts._ID + " ASC";
-        ArrayList<Districts> all = new ArrayList<>();
+        Districts dist = new Districts();
         try {
             c = db.query(
                     Districts.TableDistricts.TABLE_NAME,  // The table to query
@@ -950,7 +950,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     orderBy                    // The sort order
             );
             while (c.moveToNext()) {
-                all.add(new Districts().hydrate(c));
+                dist = new Districts().hydrate(c);
             }
         } finally {
             if (c != null) {
@@ -960,7 +960,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 db.close();
             }
         }
-        return all;
+        return dist;
     }
 
     public ArrayList<HealthFacilities> getHfByDist(String distid) {

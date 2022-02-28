@@ -15,10 +15,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import edu.aku.hassannaqvi.uen_rsd.BR;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
 
@@ -32,7 +28,7 @@ public class Form extends BaseObservable implements Observable {
     // APP VARIABLES
     private String id = StringUtils.EMPTY;
     private String uid = StringUtils.EMPTY;
-    private String userName = StringUtils.EMPTY;
+    private String username = StringUtils.EMPTY;
     private String sysDate = StringUtils.EMPTY;
     private String districtCode = StringUtils.EMPTY;
     private String districtName = StringUtils.EMPTY;
@@ -298,11 +294,11 @@ public class Form extends BaseObservable implements Observable {
 
 
     public Form() {
-        setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
+        /*setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
         setUserName(MainApp.user.getUserName());
         //setDeviceId(MainApp.deviceid);
         setAppver(MainApp.appInfo.getAppVersion());
-        setAppver(MainApp.appInfo.getAppVersion());
+        setAppver(MainApp.appInfo.getAppVersion());*/
     }
 
     @Bindable
@@ -339,12 +335,12 @@ public class Form extends BaseObservable implements Observable {
     }
 
     @Bindable
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public Form setUserName(String userName) {
-        this.userName = userName;
+    public Form setUsername(String username) {
+        this.username = username;
         return this;
     }
 
@@ -2323,6 +2319,27 @@ public class Form extends BaseObservable implements Observable {
     }
 
     @Bindable
+    public String getF510() {
+        return f510;
+    }
+
+    public void setF510(String f510) {
+        this.f510 = f510;
+        setF510ax(f510.equals("1") ? this.f510ax : "");
+        notifyPropertyChanged(BR.f510);
+    }
+
+    @Bindable
+    public String getF510ax() {
+        return f510ax;
+    }
+
+    public void setF510ax(String f510ax) {
+        this.f510ax = f510ax;
+        notifyPropertyChanged(BR.f510ax);
+    }
+
+    @Bindable
     public String getF511() {
         return f511;
     }
@@ -3021,7 +3038,7 @@ public class Form extends BaseObservable implements Observable {
     public Form Sync(JSONObject jsonObject) throws JSONException {
         this.id = jsonObject.getString(FormsTable.COLUMN_ID);
         this.uid = jsonObject.getString(FormsTable.COLUMN_UID);
-        this.userName = jsonObject.getString(FormsTable.COLUMN_USERNAME);
+        this.username = jsonObject.getString(FormsTable.COLUMN_USERNAME);
         this.sysDate = jsonObject.getString(FormsTable.COLUMN_SYSDATE);
         this.districtCode = jsonObject.getString(FormsTable.COLUMN_DISTRICT_CODE);
         this.districtName = jsonObject.getString(FormsTable.COLUMN_DISTRICT_NAME);
@@ -3048,7 +3065,7 @@ public class Form extends BaseObservable implements Observable {
     public Form Hydrate(Cursor cursor) {
         this.id = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
         this.uid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
-        this.userName = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
+        this.username = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
         this.sysDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYSDATE));
         this.districtCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE));
         this.districtName = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT_NAME));
@@ -3404,7 +3421,7 @@ public class Form extends BaseObservable implements Observable {
         try {
             json.put(FormsTable.COLUMN_ID, this.id);
             json.put(FormsTable.COLUMN_UID, this.uid);
-            json.put(FormsTable.COLUMN_USERNAME, this.userName);
+            json.put(FormsTable.COLUMN_USERNAME, this.username);
             json.put(FormsTable.COLUMN_SYSDATE, this.sysDate);
             json.put(FormsTable.COLUMN_DISTRICT_CODE, this.districtCode);
             json.put(FormsTable.COLUMN_DISTRICT_NAME, this.districtName);
@@ -3780,7 +3797,7 @@ public class Form extends BaseObservable implements Observable {
 
 
     public static abstract class FormsTable implements BaseColumns {
-        public static final String TABLE_NAME = "FormsRSD";
+        public static final String TABLE_NAME = "FormRSD";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECT_NAME = "projectName";
         public static final String COLUMN_ID = "_id";

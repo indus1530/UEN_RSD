@@ -35,9 +35,10 @@ public class SectionIdentificationActivity extends AppCompatActivity {
     private static final String TAG = "SectionIdentificationActivity";
     private final String mon = new SimpleDateFormat("MMM-yyyy").format(new Date().getTime());
     ActivitySectionIdentificationBinding bi;
-    private List<String> hfNames, districtNames, reportingMonth;
-    private List<String> hfCodes, districtCodes;
+    private List<String> hfNames, reportingMonth;
+    private List<String> hfCodes;
     private DatabaseHelper db;
+    private Districts dc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +65,13 @@ public class SectionIdentificationActivity extends AppCompatActivity {
 
         form = new Form();
         form.setSysDate(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
-        form.setUserName(MainApp.userName);
+        form.setUsername(MainApp.user.getUserName());
         form.setDeviceId(MainApp.appInfo.getDeviceID());
         form.setDeviceTag(MainApp.appInfo.getTagName());
         form.setAppver(MainApp.appInfo.getAppVersion());
 
-        form.setDistrictName(bi.distname.getSelectedItem().toString());
-        form.setDistrictCode(districtCodes.get(bi.distname.getSelectedItemPosition()));
+        form.setDistrictName(dc.getDistrictName());
+        form.setDistrictCode(dc.getDistrictCode());
 
         form.setHfName(bi.facilityname.getSelectedItem().toString());
         form.setHfCode(hfCodes.get(bi.facilityname.getSelectedItemPosition()));
@@ -100,8 +101,6 @@ public class SectionIdentificationActivity extends AppCompatActivity {
 
     public void BtnContinue(View view) {
         if (!formValidation()) return;
-
-
         if (!hfFormExists()) {
             saveDraft();
         }
@@ -123,8 +122,6 @@ public class SectionIdentificationActivity extends AppCompatActivity {
 
 
     public void populateSpinner(final Context context) {
-
-
         reportingMonth = new ArrayList<>();
         reportingMonth.add("....");
         //reportingMonth.add(mon.toUpperCase());
@@ -158,20 +155,22 @@ public class SectionIdentificationActivity extends AppCompatActivity {
         });*/
 
 
+/*
         districtNames = new ArrayList<>();
         districtCodes = new ArrayList<>();
+*/
 
 
         //Collection<HealthFacilities> dc = db.getAllTehsils(MainApp.DIST_ID);
-        ArrayList<Districts> dc = db.getDistrictsByUser(MainApp.user.getDist_id());
+        dc = db.getDistrictsByUser(MainApp.user.getDist_id());
 
-        for (Districts d : dc) {
+/*        {
             districtNames.add(d.getDistrictName());
             districtCodes.add(d.getDistrictCode());
-        }
+        }*/
 
-        bi.distname.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, districtNames));
-        bi.distname.setEnabled(false);
+/*        bi.distname.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, districtNames));
+        bi.distname.setEnabled(false);*/
 
 
         hfNames = new ArrayList<>();
@@ -179,6 +178,15 @@ public class SectionIdentificationActivity extends AppCompatActivity {
 
         hfNames.add("....");
         hfCodes.add("....");
+
+        hfNames.add("Test HF 1");
+        hfNames.add("Test HF 2");
+        hfNames.add("Test HF 3");
+
+        hfCodes.add("999991");
+        hfCodes.add("999992");
+        hfCodes.add("999993");
+
 
         ArrayList<HealthFacilities> pc = db.getHfByDist(MainApp.user.getDist_id());
         for (HealthFacilities p : pc) {
@@ -194,6 +202,15 @@ public class SectionIdentificationActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position == 0) return;
+                if (position < 4) {
+                    dc = new Districts();
+                    dc.setDistrictName("Test District");
+                    dc.setDistrictCode("9999");
+
+                    //    bi.distname.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, hfNames));
+
+                }
+
                 //Toast.makeText(Section01Activity.this, String.valueOf(hfCodes.get(bi.a13.getSelectedItemPosition())), Toast.LENGTH_SHORT).show();
             }
 

@@ -1,2 +1,14 @@
 include ':app'
 rootProject.name = "UEN-RSD"
+
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter()
+
+        maven { url 'https://jitpack.io' }
+
+    }
+}

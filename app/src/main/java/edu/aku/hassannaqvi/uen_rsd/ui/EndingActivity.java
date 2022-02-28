@@ -68,7 +68,7 @@ public class EndingActivity extends AppCompatActivity {
         saveDraft();
         if (UpdateDB()) {
             finish();
-            gotoActivity(this, MainActivity.class);
+     //       gotoActivity(this, MainActivity.class);
         } else {
             Toast.makeText(this, "Error in updating db!!", Toast.LENGTH_SHORT).show();
         }

@@ -13,34 +13,27 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
 
-import edu.aku.hassannaqvi.uen_rsd.MainActivity;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
-import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionCBinding;
+import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionC1Binding;
+import edu.aku.hassannaqvi.uen_rsd.ui.RegisterActivity;
 
 
-public class SectionCActivity extends AppCompatActivity {
-    ActivitySectionCBinding bi;
+public class SectionC1Activity extends AppCompatActivity {
+    ActivitySectionC1Binding bi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_section_c1);
         bi.setCallback(this);
         bi.setForm(form);
-        setupSkips();
         setSupportActionBar(bi.toolbar);
     }
 
-
-    private void setupSkips() {
-    }
-
-
     private void saveDraft() {
     }
-
 
     private boolean updateDB() {
         DatabaseHelper db = appInfo.getDbHelper();
@@ -53,35 +46,25 @@ public class SectionCActivity extends AppCompatActivity {
         }
     }
 
-
     public void btnContinue(View view) {
         if (!formValidation()) return;
         if (!addForm()) return;
         saveDraft();
         if (updateDB()) {
-            setResult(2);
+            setResult(RESULT_OK);
             finish();
-            startActivity(new Intent(this, MainActivity.class));
-            //startActivity(new Intent(this, RegisterActivity.class));
+          startActivity(new Intent(this, SectionC2Activity.class));
         }
     }
 
-
-    public void BtnEnd(View view) {
+    public void btnEnd(View view) {
+        setResult(RESULT_CANCELED);
         finish();
-        startActivity(new Intent(this, MainActivity.class));
-        //startActivity(new Intent(this, RegisterActivity.class));
+       // startActivity(new Intent(this, RegisterActivity.class));
     }
-
 
     private boolean formValidation() {
         return Validator.emptyCheckingContainer(this, bi.GrpName);
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
     }
 
     private boolean addForm() {
@@ -98,4 +81,13 @@ public class SectionCActivity extends AppCompatActivity {
             return false;
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        // Toast.makeText(this, "Back Press Not Allowed", Toast.LENGTH_SHORT).show();
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+
+
 }

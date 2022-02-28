@@ -1,5 +1,6 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -15,22 +16,11 @@
         android:layout_height="match_parent"
         android:background="@drawable/app_bg_gray"
         android:orientation="vertical">
-        <!-- CUSTOM TOOLBAR -->
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            style="@null"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="@style/ToolbarTheme"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:subtitleTextAppearance="@style/Toolbar.SubtitleText"
-            app:titleTextAppearance="@style/Toolbar.TitleText" />
+
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:layout_marginTop="150dp"
             android:fillViewport="true">
@@ -55,26 +45,101 @@
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="MHR"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
+                            android:layout_height="56dp">
+
+                            <TextView
+                                android:id="@+id/formAv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="8dp"
+                                android:text="A"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
+
+                            <ImageView
+                                android:id="@+id/checkedAv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
 
                         <Button
-                            android:id="@+id/formMHR"
+                            android:id="@+id/formA"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginBottom="0dp"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:onClick="openRegister"
-                            android:text="@string/secone"
+                            android:text="@string/f1title"
+                            android:textSize="14sp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="22dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="22dp"
+                    android:layout_marginBottom="2dp"
+                    android:elevation="1dp"
+                    app:cardCornerRadius="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <RelativeLayout
+                            android:layout_width="86dp"
+                            android:layout_height="56dp">
+
+                            <TextView
+                                android:id="@+id/formBv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="8dp"
+                                android:text="B"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
+
+                            <ImageView
+                                android:id="@+id/checkedBv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
+
+                        <Button
+                            android:id="@+id/formB"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@color/colorPrimaryLight"
+                            android:gravity="start|center_vertical"
+                            android:onClick="openRegister"
+                            android:text="@string/f2title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -98,25 +163,42 @@
                         android:layout_gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="EPI"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
+                            android:layout_height="56dp">
+
+                            <TextView
+                                android:id="@+id/formCv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="8dp"
+                                android:text="C"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
+
+                            <ImageView
+                                android:id="@+id/checkedCv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
 
                         <Button
-                            android:id="@+id/formEPI"
+                            android:id="@+id/formC"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:onClick="openRegister"
-                            android:text="@string/sectwo"
+                            android:text="@string/f3title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -140,25 +222,43 @@
                         android:layout_gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="SHF"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
+                            android:layout_height="56dp">
+
+                            <TextView
+                                android:id="@+id/formDv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="8dp"
+                                android:text="D"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
+
+                            <ImageView
+                                android:id="@+id/checkedDv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
+
 
                         <Button
-                            android:id="@+id/formSHF"
+                            android:id="@+id/formD"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:onClick="openRegister"
-                            android:text="@string/secthree"
+                            android:text="@string/f4title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -182,25 +282,43 @@
                         android:layout_gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="OBS"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
+                            android:layout_height="56dp">
+
+                            <TextView
+                                android:id="@+id/formEv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="8dp"
+                                android:text="E"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
+
+                            <ImageView
+                                android:id="@+id/checkedEv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
+
 
                         <Button
-                            android:id="@+id/formOBS"
+                            android:id="@+id/formE"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:onClick="openRegister"
-                            android:text="@string/secfour"
+                            android:text="@string/f5title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -224,25 +342,43 @@
                         android:layout_gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="FPR"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
+                            android:layout_height="56dp">
+
+                            <TextView
+                                android:id="@+id/formFv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="8dp"
+                                android:text="F"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
+
+                            <ImageView
+                                android:id="@+id/checkedFv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
+
 
                         <Button
-                            android:id="@+id/formFPR"
+                            android:id="@+id/formF"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:onClick="openRegister"
-                            android:text="@string/secfive"
+                            android:text="@string/f6title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -266,25 +402,43 @@
                         android:layout_gravity="center_vertical"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="CFP"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
+                            android:layout_height="56dp">
+
+                            <TextView
+                                android:id="@+id/formGv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="8dp"
+                                android:text="G"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
+
+                            <ImageView
+                                android:id="@+id/checkedGv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
+
 
                         <Button
-                            android:id="@+id/formCFP"
+                            android:id="@+id/formG"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:onClick="openRegister"
-                            android:text="@string/secsix"
+                            android:text="@string/f7title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -305,70 +459,46 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
+                        android:layout_gravity="center_vertical|center_horizontal"
                         android:orientation="horizontal">
 
-                        <TextView
+                        <RelativeLayout
                             android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="STR"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
+                            android:layout_height="56dp">
 
-                        <Button
-                            android:id="@+id/formSTR"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="1"
-                            android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
-                            android:onClick="openRegister"
-                            android:text="@string/secseven"
-                            android:textSize="14sp" />
+                            <TextView
+                                android:id="@+id/formHv"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorAccent"
+                                android:gravity="center_vertical|center_horizontal"
+                                android:padding="0dp"
+                                android:text="H"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="30dp" />
 
-                    </LinearLayout>
+                            <ImageView
+                                android:id="@+id/checkedHv"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginEnd="12dp"
+                                android:src="@drawable/camera_checked"
+                                android:visibility="gone"
+                                tools:visibility="visible" />
+                        </RelativeLayout>
 
-                </androidx.cardview.widget.CardView>
-
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="22dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_marginEnd="22dp"
-                    android:layout_marginBottom="2dp"
-                    android:elevation="1dp"
-                    app:cardCornerRadius="2dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="86dp"
-                            android:layout_height="56dp"
-                            android:gravity="center_vertical|center_horizontal"
-                            android:padding="0dp"
-                            android:text="H"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="30dp" />
 
                         <Button
                             android:id="@+id/formH"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
+                            android:layout_height="match_parent"
                             android:layout_weight="1"
                             android:background="@color/colorPrimaryLight"
-                            android:gravity="start"
+                            android:gravity="start|center_vertical"
                             android:onClick="openRegister"
-                            android:text="@string/secseven"
+                            android:text="@string/f8title"
                             android:textSize="14sp" />
 
                     </LinearLayout>
@@ -385,8 +515,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_gravity="end"
             android:layout_marginTop="24dp"
+            android:gravity="end"
             android:orientation="horizontal">
 
             <Button
@@ -398,6 +528,8 @@
                 android:drawableTint="#ea0000"
                 android:onClick="@{() -> callback.BtnEnd()}"
                 android:text="Save Partially"
+                tools:visibility="visible"
+
                 android:visibility="gone" />
 
             <Button
@@ -410,6 +542,8 @@
                 android:onClick="@{() -> callback.BtnContinue()}"
                 android:text="Save"
                 android:textColor="@color/white"
+                tools:visibility="visible"
+
                 android:visibility="gone" />
 
         </LinearLayout>

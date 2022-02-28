@@ -1,5 +1,6 @@
 package edu.aku.hassannaqvi.uen_rsd.workers;
 
+import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.PROJECT_NAME;
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp._PHOTO_UPLOAD_URL;
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.sdDir;
 
@@ -43,7 +44,7 @@ public class PhotoUploadWorker2 extends Worker {
     private final String TAG = "PhotoUploadWorker2()";
     private final Context mContext;
     private final int photoid;
-    private final String nTitle = "Naunehal: Photo Upload";
+    private final String nTitle = PROJECT_NAME + ": Photo Upload";
     public Boolean errMsg = false;
     HttpsURLConnection urlConnection;
     File fileZero;

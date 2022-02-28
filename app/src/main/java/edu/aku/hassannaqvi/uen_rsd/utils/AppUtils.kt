@@ -1,14 +1,22 @@
 package edu.aku.hassannaqvi.uen_rsd.utils
 
+import android.app.Dialog
 import android.content.Context
 import android.os.Build
 import android.os.Environment
 import android.util.Log
+import android.view.LayoutInflater
+import android.view.Window
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
+import edu.aku.hassannaqvi.uen_rsd.R
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp.PROJECT_NAME
 import edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.DATABASE_COPY
 import edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.DATABASE_NAME
-
+import edu.aku.hassannaqvi.uen_rsd.databinding.EndSectionDialogBinding
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -163,14 +171,15 @@ fun AppCompatActivity.openWarningDialog(title: String, message: String, btnYesTx
         dialog.dismiss()
         //bi.btnOk.setOnClickListener(null)
     }
-}
+}*/
 
 
 @JvmOverloads
-fun AppCompatActivity.openWarningDialog(title: String, response: Int, message: String) {
+fun AppCompatActivity.openWarningDialog(title: String, message: String) {
     val dialog = Dialog(this)
     dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-    val bi: EndSectionDialogBinding = DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
+    val bi: EndSectionDialogBinding =
+        DataBindingUtil.inflate(LayoutInflater.from(this), R.layout.end_section_dialog, null, false)
     dialog.setContentView(bi.root)
     bi.alertTitle.text = title
     bi.alertTitle.setTextColor(ContextCompat.getColor(this, R.color.redLight))
@@ -186,12 +195,13 @@ fun AppCompatActivity.openWarningDialog(title: String, response: Int, message: S
     dialog.window!!.attributes = params
     dialog.show()
     bi.btnOk.setOnClickListener {
-        gotoActivityWithSerializable(EndingActivity::class.java, CONSTANTS.SECTION_MAIN_CHECK_FOR_END, response)
+        dialog.dismiss()
+        //gotoActivityWithSerializable(EndingActivity::class.java, CONSTANTS.SECTION_MAIN_CHECK_FOR_END, response)
     }
     bi.btnNo.setOnClickListener {
         dialog.dismiss()
     }
-}*/
+}
 
 interface EndSectionActivity {
     fun endSecActivity(flag: Boolean)

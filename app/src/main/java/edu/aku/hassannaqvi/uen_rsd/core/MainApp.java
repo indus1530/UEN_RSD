@@ -24,17 +24,18 @@ import edu.aku.hassannaqvi.uen_rsd.models.Users;
 
 public class MainApp extends Application {
 
-    public static final String PROJECT_NAME = "UEN: Routine Service Deliver";
+    public static final String PROJECT_NAME = "UEN: RSD";
     public static final String DIST_ID = null;
     public static final String SYNC_LOGIN = "sync_login";
     public static final String _IP = "https://vcoe1.aku.edu";// .LIVE server
     //public static final String _IP = "http://f38158/smk_hfa";// .TEST server
+    //public static final String _IP = "http://cls-pae-fp51764";// .TEST server
     //public static final String _IP = "http://43.245.131.159:8080";// .TEST server
-    public static final String _HOST_URL = MainApp._IP + "/smk_fi/api/";// .TEST server;
+    public static final String _HOST_URL = MainApp._IP + "/uen_ph2/api/";// .TEST server;
     public static final String _SERVER_URL = "sync.php";
     public static final String _SERVER_GET_URL = "getData.php";
     public static final String _PHOTO_UPLOAD_URL = _HOST_URL + "uploads.php";
-    public static final String _UPDATE_URL = MainApp._IP + "/smk_fi/app/smk_rsd";
+    public static final String _UPDATE_URL = MainApp._IP + "/uen_ph2/app/rsd";
     public static final String DeviceURL = "devices.php";
 
     public static final int HOUSEHOLDS_TO_RANDOMISE = 10;
