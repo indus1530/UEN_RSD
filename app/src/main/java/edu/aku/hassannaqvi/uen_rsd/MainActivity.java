@@ -7,11 +7,13 @@ import android.view.MenuItem;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import edu.aku.hassannaqvi.uen_rsd.core.AndroidManager;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.AndroidDatabaseManager;
+import edu.aku.hassannaqvi.uen_rsd.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.uen_rsd.ui.ChangePasswordActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.SyncActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionAActivity;
@@ -27,10 +29,15 @@ import edu.aku.hassannaqvi.uen_rsd.ui.sections.SectionIdentificationActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding bi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        setSupportActionBar(bi.toolbar);
+        getSupportActionBar().setDisplayUseLogoEnabled(true);
+
         if (MainApp.admin) {
             findViewById(R.id.adminView).setVisibility(View.VISIBLE);
         }
