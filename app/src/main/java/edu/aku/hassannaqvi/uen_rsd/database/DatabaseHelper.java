@@ -1,25 +1,40 @@
 package edu.aku.hassannaqvi.uen_rsd.database;
 
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.IBAHC;
+import static edu.aku.hassannaqvi.uen_rsd.core.UserAuth.checkPassword;
+import static edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.DATABASE_NAME;
+import static edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.SQL_CREATE_DISTRICTS;
+import static edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.SQL_CREATE_ENTRYLOGS;
+import static edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.SQL_CREATE_FORMS;
+import static edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.SQL_CREATE_HEALTH_FACILITIES;
+import static edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.SQL_CREATE_USERS;
+import static edu.aku.hassannaqvi.uen_rsd.database.CreateSQL.SQL_CREATE_VERSIONAPP;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.MatrixCursor;
 import android.util.Log;
+import android.widget.Toast;
 
 import net.sqlcipher.SQLException;
 import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteException;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
+import edu.aku.hassannaqvi.uen_rsd.data.model.EntryLog;
+import edu.aku.hassannaqvi.uen_rsd.data.model.EntryLog.EntryLogTable;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form.FormsTable;
 import edu.aku.hassannaqvi.uen_rsd.models.Districts;
@@ -40,20 +55,21 @@ import edu.aku.hassannaqvi.uen_rsd.models.VersionApp.VersionAppTable;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_PASSWORD = IBAHC;
     private final String TAG = "DatabaseHelper";
+    private final Context mContext;
 
     public DatabaseHelper(Context context) {
-        super(context, CreateSQL.DATABASE_NAME, null, CreateSQL.DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, CreateSQL.DATABASE_VERSION);
+        mContext = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CreateSQL.SQL_CREATE_USERS);
-        db.execSQL(CreateSQL.SQL_CREATE_DISTRICTS);
-
-        db.execSQL(CreateSQL.SQL_CREATE_FORMS);
-        db.execSQL(CreateSQL.SQL_CREATE_VERSIONAPP);
-
-        db.execSQL(CreateSQL.SQL_CREATE_HEALTH_FACILITIES);
+        db.execSQL(SQL_CREATE_USERS);
+        db.execSQL(SQL_CREATE_DISTRICTS);
+        db.execSQL(SQL_CREATE_FORMS);
+        db.execSQL(SQL_CREATE_VERSIONAPP);
+        db.execSQL(SQL_CREATE_HEALTH_FACILITIES);
+        db.execSQL(SQL_CREATE_ENTRYLOGS);
 
     }
 
@@ -69,7 +85,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
      * Addition in DB
      * */
-    public Long addForm(Form form) {
+    public Long addForm(Form form) throws SQLiteException {
 
         // Gets the data repository in write mode
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
@@ -108,6 +124,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         newRowId = db.insert(
                 FormsTable.TABLE_NAME,
                 FormsTable.COLUMN_NAME_NULLABLE,
+                values);
+        return newRowId;
+    }
+
+    public Long addEntryLog(EntryLog entryLog) throws SQLiteException {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
+        ContentValues values = new ContentValues();
+        values.put(EntryLogTable.COLUMN_PROJECT_NAME, entryLog.getProjectName());
+        values.put(EntryLogTable.COLUMN_UUID, entryLog.getUuid());
+        values.put(EntryLogTable.COLUMN_PSU_CODE, entryLog.getPsuCode());
+        values.put(EntryLogTable.COLUMN_HHID, entryLog.getHhid());
+        values.put(EntryLogTable.COLUMN_USERNAME, entryLog.getUserName());
+        values.put(EntryLogTable.COLUMN_SYSDATE, entryLog.getSysDate());
+        values.put(EntryLogTable.COLUMN_ISTATUS, entryLog.getiStatus());
+        values.put(EntryLogTable.COLUMN_ISTATUS96x, entryLog.getiStatus96x());
+        values.put(EntryLogTable.COLUMN_ENTRY_TYPE, entryLog.getEntryType());
+        values.put(EntryLogTable.COLUMN_ENTRY_DATE, entryLog.getEntryDate());
+        values.put(EntryLogTable.COLUMN_DEVICEID, entryLog.getDeviceId());
+        values.put(EntryLogTable.COLUMN_SYNCED, entryLog.getSynced());
+        values.put(EntryLogTable.COLUMN_SYNC_DATE, entryLog.getSyncDate());
+        values.put(EntryLogTable.COLUMN_APPVERSION, entryLog.getAppver());
+
+        long newRowId;
+        newRowId = db.insertOrThrow(
+                EntryLogTable.TABLE_NAME,
+                EntryLogTable.COLUMN_NAME_NULLABLE,
                 values);
         return newRowId;
     }
@@ -460,6 +502,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
+    public int updatesEntryLogColumn(String column, String value, String id) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+        ContentValues values = new ContentValues();
+        values.put(column, value);
+
+        String selection = EntryLogTable._ID + " =? ";
+        String[] selectionArgs = {id};
+
+        return db.update(EntryLogTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+    }
+
 
     public int updateEnding() {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
@@ -569,18 +626,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public int syncUser(JSONArray userList) {
+    public int syncUser(JSONArray userList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(UsersTable.TABLE_NAME, null, null);
         int insertCount = 0;
-        try {
-            for (int i = 0; i < userList.length(); i++) {
+        for (int i = 0; i < userList.length(); i++) {
 
-                JSONObject jsonObjectUser = userList.getJSONObject(i);
+            JSONObject jsonObjectUser = userList.getJSONObject(i);
 
-                Users user = new Users();
-                user.sync(jsonObjectUser);
-                ContentValues values = new ContentValues();
+            Users user = new Users();
+            user.sync(jsonObjectUser);
+            ContentValues values = new ContentValues();
 
                 values.put(UsersTable.COLUMN_USERNAME, user.getUserName());
                 values.put(UsersTable.COLUMN_PASSWORD, user.getPassword());
@@ -589,13 +645,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 long rowID = db.insert(UsersTable.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
-
-        } catch (Exception e) {
-            Log.d(TAG, "syncUser(e): " + e);
             db.close();
-        } finally {
-            db.close();
-        }
         return insertCount;
     }
 
@@ -664,7 +714,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //get UnSyncedTables
-    public JSONArray getUnsyncedForms() {
+    public JSONArray getUnsyncedForms() throws JSONException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
         String[] columns = null;
@@ -681,7 +731,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String orderBy = FormsTable.COLUMN_ID + " ASC";
 
         JSONArray allForms = new JSONArray();
-        try {
             c = db.query(
                     FormsTable.TABLE_NAME,  // The table to query
                     columns,                   // The columns to return
@@ -691,26 +740,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     having,                    // don't filter by row groups
                     orderBy                    // The sort order
             );
-            while (c.moveToNext()) {
-                /** WorkManager Upload
-                 /*Form fc = new Form();
-                 allFC.add(fc.Hydrate(c));*/
-                Log.d(TAG, "getUnsyncedForms: " + c.getCount());
-                Form form = new Form();
-                allForms.put(form.Hydrate(c).toJSONObject());
-
-
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
+        while (c.moveToNext()) {
+            /** WorkManager Upload
+             /*Form fc = new Form();
+             allFC.add(fc.Hydrate(c));*/
+            Log.d(TAG, "getUnsyncedForms: " + c.getCount());
+            Form form = new Form();
+            allForms.put(form.Hydrate(c).toJSONObject());
         }
-        Log.d(TAG, "getUnsyncedForms: " + allForms.toString().length());
-        Log.d(TAG, "getUnsyncedForms: " + allForms);
+        c.close();
+        db.close();
         return allForms;
     }
 
@@ -733,6 +772,38 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values,
                 where,
                 whereArgs);
+    }
+
+    public JSONArray getUnsyncedEntryLog() throws JSONException {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+        Cursor c = null;
+        String[] columns = null;
+        String whereClause;
+        whereClause = EntryLogTable.COLUMN_SYNCED + " = '' ";
+
+        String[] whereArgs = null;
+        String groupBy = null;
+        String having = null;
+        String orderBy = EntryLogTable.COLUMN_ID + " ASC";
+
+        JSONArray all = new JSONArray();
+        c = db.query(
+                EntryLogTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            Log.d(TAG, "getUnsyncedEntryLog: " + c.getCount());
+            EntryLog entryLog = new EntryLog();
+            all.put(entryLog.Hydrate(c).toJSONObject());
+        }
+        Log.d(TAG, "getUnsyncedEntryLog: " + all.toString().length());
+        Log.d(TAG, "getUnsyncedEntryLog: " + all);
+        return all;
     }
 
     public ArrayList<Form> getUnclosedForms() {
@@ -1001,46 +1072,45 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public boolean doLogin(String username, String password) {
+    public boolean doLogin(String username, String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
         Cursor c = null;
-        String[] columns = {
-                UsersTable.COLUMN_ID,
-                UsersTable.COLUMN_USERNAME,
-                UsersTable.COLUMN_PASSWORD,
-                UsersTable.COLUMN_FULLNAME,
-                UsersTable.COLUMN_DIST_ID,
-        };
-        String whereClause = UsersTable.COLUMN_USERNAME + "=? AND " + UsersTable.COLUMN_PASSWORD + "=?";
-        String[] whereArgs = {username, password};
+        String[] columns = null;
+        String whereClause = UsersTable.COLUMN_USERNAME + "=? ";
+        String[] whereArgs = {username};
         String groupBy = null;
         String having = null;
         String orderBy = UsersTable.COLUMN_ID + " ASC";
 
-        Users loggedInUser = null;
-        try {
-            c = db.query(
-                    UsersTable.TABLE_NAME,  // The table to query
-                    columns,                   // The columns to return
-                    whereClause,               // The columns for the WHERE clause
-                    whereArgs,                 // The values for the WHERE clause
-                    groupBy,                   // don't group the rows
-                    having,                    // don't filter by row groups
-                    orderBy                    // The sort order
-            );
-            while (c.moveToNext()) {
-                loggedInUser = new Users().hydrate(c);
-            }
-        } finally {
-            if (c != null) {
-                c.close();
-            }
-            if (db != null) {
-                db.close();
-            }
+        Users loggedInUser = new Users();
+        c = db.query(
+                UsersTable.TABLE_NAME,  // The table to query
+                columns,                   // The columns to return
+                whereClause,               // The columns for the WHERE clause
+                whereArgs,                 // The values for the WHERE clause
+                groupBy,                   // don't group the rows
+                having,                    // don't filter by row groups
+                orderBy                    // The sort order
+        );
+        while (c.moveToNext()) {
+            loggedInUser = new Users().hydrate(c);
+
         }
-        MainApp.user = loggedInUser;
-        return c.getCount() > 0;
+
+        c.close();
+
+        db.close();
+        if (loggedInUser.getPassword().equals("")) {
+            Toast.makeText(mContext, "Stored password is invalid", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (checkPassword(password, loggedInUser.getPassword())) {
+            MainApp.user = loggedInUser;
+            //  MainApp.selectedDistrict = loggedInUser.getDist_id();
+            return c.getCount() > 0;
+        } else {
+            return false;
+        }
     }
 
     public Form getFormByHF(String hfCode, String rMonth) {
@@ -1085,5 +1155,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return allFC;
 
 
+    }
+
+    public int updatePassword(String hashedPassword) {
+        SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
+
+        ContentValues values = new ContentValues();
+        values.put(UsersTable.COLUMN_PASSWORD, hashedPassword);
+        values.put(UsersTable.COLUMN_ISNEW_USER, "");
+
+        String selection = UsersTable.COLUMN_USERNAME + " =? ";
+        String[] selectionArgs = {MainApp.user.getUserName()};
+
+        return db.update(UsersTable.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
     }
 }

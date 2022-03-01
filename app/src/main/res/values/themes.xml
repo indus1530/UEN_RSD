@@ -332,4 +332,18 @@
         <item name="android:textStyle">italic</item>
     </style>
 
+    <style name="CustomToolbarTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:windowBackground">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorAccentLightOverlay</item>
+    </style>
+
+    <style name="CustomPopupTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:textSize">16dp</item>
+    </style>
+
 </resources>

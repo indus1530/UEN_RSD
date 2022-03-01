@@ -8,8 +8,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.scottyab.rootbeer.RootBeer;
-
 import net.sqlcipher.database.SQLiteDatabase;
 
 import org.jetbrains.annotations.NotNull;
@@ -32,11 +30,12 @@ public class MainApp extends Application {
     //public static final String _IP = "http://cls-pae-fp51764";// .TEST server
     //public static final String _IP = "http://43.245.131.159:8080";// .TEST server
     public static final String _HOST_URL = MainApp._IP + "/uen_ph2/api/";// .TEST server;
-    public static final String _SERVER_URL = "sync.php";
-    public static final String _SERVER_GET_URL = "getData.php";
+    public static final String _SERVER_URL = "syncenc.php";
+    public static final String _SERVER_GET_URL = "getDataenc.php";
     public static final String _PHOTO_UPLOAD_URL = _HOST_URL + "uploads.php";
     public static final String _UPDATE_URL = MainApp._IP + "/uen_ph2/app/rsd";
     public static final String DeviceURL = "devices.php";
+    public static final String _USER_URL = "resetpassword.php";
 
     public static final int HOUSEHOLDS_TO_RANDOMISE = 10;
     public static final int MIN_MWRA = 14;
@@ -49,6 +48,8 @@ public class MainApp extends Application {
     public static String[] downloadData;
     public static String IBAHC = "";
     private static final String TAG = "MainApp";
+    public static final String _EMPTY_ = "";
+    public static String deviceid;
 
     public static Form form;
     public static AppInfo appInfo;
