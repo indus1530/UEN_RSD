@@ -121,7 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         // Insert the new row, returning the primary key value of the new row
         long newRowId;
-        newRowId = db.insert(
+        newRowId = db.insertOrThrow(
                 FormsTable.TABLE_NAME,
                 FormsTable.COLUMN_NAME_NULLABLE,
                 values);
@@ -232,10 +232,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 Form form = new Form();
-                form.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                form.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
-                form.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                form.setUsername(c.getString(c.getColumnIndex(FormsTable.COLUMN_USERNAME)));
+                form.setId(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_ID)));
+                form.setUid(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_UID)));
+                form.setSysDate(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_SYSDATE)));
+                form.setUsername(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_USERNAME)));
                 allForms.add(form);
             }
         } finally {
@@ -555,7 +555,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                 values.put(TableDistricts.COLUMN_DISTRICT_CODE, District.getDistrictCode());
                 values.put(TableDistricts.COLUMN_DISTRICT_NAME, District.getDistrictName());
-                long rowID = db.insert(TableDistricts.TABLE_NAME, null, values);
+                long rowID = db.insertOrThrow(TableDistricts.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
 
@@ -584,7 +584,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(TableUCs.COLUMN_UC_NAME, uc.getUcName());
                 values.put(TableUCs.COLUMN_DISTRICT_CODE, uc.getDistrictCode());
 
-                long rowID = db.insert(TableUCs.TABLE_NAME, null, values);
+                long rowID = db.insertOrThrow(TableUCs.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
             db.close();
@@ -614,7 +614,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put(VersionAppTable.COLUMN_VERSION_CODE, Vc.getVersioncode());
             values.put(VersionAppTable.COLUMN_VERSION_NAME, Vc.getVersionname());
 
-            count = db.insert(VersionAppTable.TABLE_NAME, null, values);
+            count = db.insertOrThrow(VersionAppTable.TABLE_NAME, null, values);
             if (count > 0) count = 1;
 
         } catch (Exception ignored) {
@@ -628,7 +628,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public int syncUser(JSONArray userList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
-        db.delete(UsersTable.TABLE_NAME, null, null);
+        db.delete(Users.UsersTable.TABLE_NAME, null, null);
         int insertCount = 0;
         for (int i = 0; i < userList.length(); i++) {
 
@@ -638,59 +638,61 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             user.sync(jsonObjectUser);
             ContentValues values = new ContentValues();
 
-                values.put(UsersTable.COLUMN_USERNAME, user.getUserName());
-                values.put(UsersTable.COLUMN_PASSWORD, user.getPassword());
-                values.put(UsersTable.COLUMN_FULLNAME, user.getFullname());
-                values.put(UsersTable.COLUMN_DIST_ID, user.getDist_id());
-                long rowID = db.insert(UsersTable.TABLE_NAME, null, values);
-                if (rowID != -1) insertCount++;
-            }
-            db.close();
+            values.put(UsersTable.COLUMN_USERNAME, user.getUserName());
+            values.put(UsersTable.COLUMN_PASSWORD, user.getPassword());
+            values.put(UsersTable.COLUMN_FULLNAME, user.getFullname());
+            values.put(UsersTable.COLUMN_ENABLED, user.getEnabled());
+            values.put(UsersTable.COLUMN_ISNEW_USER, user.getNewUser());
+            values.put(UsersTable.COLUMN_PWD_EXPIRY, user.getPwdExpiry());
+            values.put(UsersTable.COLUMN_DESIGNATION, user.getDesignation());
+            values.put(UsersTable.COLUMN_DIST_ID, user.getDist_id());
+            long rowID = db.insertOrThrow(Users.UsersTable.TABLE_NAME, null, values);
+            if (rowID != -1) insertCount++;
+        }
+
+
+        db.close();
         return insertCount;
     }
 
     //    Sync Districts
-    public int syncDistricts(JSONArray districtsList) {
+    public int syncDistricts(JSONArray districtsList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(Districts.TableDistricts.TABLE_NAME, null, null);
         int insertCount = 0;
-        try {
 
-            for (int i = 0; i < districtsList.length(); i++) {
-                JSONObject json = districtsList.getJSONObject(i);
-                Districts districts = new Districts();
-                districts.sync(json);
-                ContentValues values = new ContentValues();
+        for (int i = 0; i < districtsList.length(); i++) {
+            JSONObject json = districtsList.getJSONObject(i);
+            Districts districts = new Districts();
+            districts.sync(json);
+            ContentValues values = new ContentValues();
 
                 values.put(Districts.TableDistricts.COLUMN_DISTRICT_NAME, districts.getDistrictName());
                 values.put(Districts.TableDistricts.COLUMN_DISTRICT_CODE, districts.getDistrictCode());
 
-                long rowID = db.insert(Districts.TableDistricts.TABLE_NAME, null, values);
+            long rowID = db.insertOrThrow(Districts.TableDistricts.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
             db.close();
 
-        } catch (Exception e) {
-            Log.d(TAG, "syncLhw(e): " + e);
+
             db.close();
-        } finally {
-            db.close();
-        }
+
+
         return insertCount;
     }
 
     //    Sync HealthFacilities
-    public int syncHealthFacilities(JSONArray healthFacilitiesList) {
+    public int syncHealthFacilities(JSONArray healthFacilitiesList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(HealthFacilities.TableHealthFacilities.TABLE_NAME, null, null);
         int insertCount = 0;
-        try {
 
-            for (int i = 0; i < healthFacilitiesList.length(); i++) {
-                JSONObject json = healthFacilitiesList.getJSONObject(i);
-                HealthFacilities healthFacilities = new HealthFacilities();
-                healthFacilities.sync(json);
-                ContentValues values = new ContentValues();
+        for (int i = 0; i < healthFacilitiesList.length(); i++) {
+            JSONObject json = healthFacilitiesList.getJSONObject(i);
+            HealthFacilities healthFacilities = new HealthFacilities();
+            healthFacilities.sync(json);
+            ContentValues values = new ContentValues();
 
                 values.put(HealthFacilities.TableHealthFacilities.COLUMN_HF_NAME, healthFacilities.getHf_name());
                 values.put(HealthFacilities.TableHealthFacilities.COLUMN_HF_CODE, healthFacilities.getHfcode());
@@ -698,17 +700,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 values.put(HealthFacilities.TableHealthFacilities.COLUMN_DISTRICT_CODE, healthFacilities.getDist_id());
                 values.put(HealthFacilities.TableHealthFacilities.COLUMN_UC_ID, healthFacilities.getUc_Id());
 
-                long rowID = db.insert(HealthFacilities.TableHealthFacilities.TABLE_NAME, null, values);
+            long rowID = db.insertOrThrow(HealthFacilities.TableHealthFacilities.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
             db.close();
 
-        } catch (Exception e) {
-            Log.d(TAG, "syncLhw(e): " + e);
+
             db.close();
-        } finally {
-            db.close();
-        }
+
+        db.close();
+
         return insertCount;
     }
 
@@ -837,13 +838,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 Form fc = new Form();
-                fc.setId(c.getString(c.getColumnIndex(FormsTable.COLUMN_ID)));
-                fc.setUid(c.getString(c.getColumnIndex(FormsTable.COLUMN_UID)));
-                fc.setSysDate(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYSDATE)));
-                fc.setHfCode(c.getString(c.getColumnIndex(FormsTable.COLUMN_HF_CODE)));
-                fc.setHfName(c.getString(c.getColumnIndex(FormsTable.COLUMN_HF_NAME)));
-                fc.setiStatus(c.getString(c.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
-                fc.setSynced(c.getString(c.getColumnIndex(FormsTable.COLUMN_SYNCED)));
+                fc.setId(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_ID)));
+                fc.setUid(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_UID)));
+                fc.setSysDate(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_SYSDATE)));
+                fc.setHfCode(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_HF_CODE)));
+                fc.setHfName(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_HF_NAME)));
+                fc.setiStatus(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_ISTATUS)));
+                fc.setSynced(c.getString(c.getColumnIndexOrThrow(FormsTable.COLUMN_SYNCED)));
                 allFC.add(fc);
             }
         } finally {
@@ -895,14 +896,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             );
             while (c.moveToNext()) {
                 Form fc = new Form();
-             /*   fc.setId(c.getString(c.getColumnIndex(MHTable.COLUMN_ID)));
-                fc.setUid(c.getString(c.getColumnIndex(MHTable.COLUMN_UID)));
-                fc.setSysDate(c.getString(c.getColumnIndex(MHTable.COLUMN_SYSDATE)));
-                fc.setMh02(c.getString(c.getColumnIndex(MHTable.COLUMN_MH02)));
-                fc.setMh06(c.getString(c.getColumnIndex(MHTable.COLUMN_MH06)));
-                fc.setMh07(c.getString(c.getColumnIndex(MHTable.COLUMN_MH07)));
-                fc.sAHydrate(c.getString(c.getColumnIndex(MHTable.COLUMN_SA)));
-                fc.setSynced(c.getString(c.getColumnIndex(MHTable.COLUMN_SYNCED)));*/
+             /*   fc.setId(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_ID)));
+                fc.setUid(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_UID)));
+                fc.setSysDate(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_SYSDATE)));
+                fc.setMh02(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_MH02)));
+                fc.setMh06(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_MH06)));
+                fc.setMh07(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_MH07)));
+                fc.sAHydrate(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_SA)));
+                fc.setSynced(c.getString(c.getColumnIndexOrThrow(MHTable.COLUMN_SYNCED)));*/
                 allFC.add(fc);
             }
         } finally {

@@ -3063,36 +3063,36 @@ public class Form extends BaseObservable implements Observable {
 
 
     public Form Hydrate(Cursor cursor) {
-        this.id = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ID));
-        this.uid = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_UID));
-        this.username = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_USERNAME));
-        this.sysDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYSDATE));
-        this.districtCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT_CODE));
-        this.districtName = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DISTRICT_NAME));
-        this.hfCode = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HF_CODE));
-        this.hfName = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_HF_NAME));
-        this.reportingMonth = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_REPORTING_MONTH));
-        this.reportingYear = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_REPORTING_YEAR));
-        this.deviceId = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICEID));
-        this.deviceTag = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_DEVICETAGID));
-        this.appver = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_APPVERSION));
-        this.endTime = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ENDINGDATETIME));
-        this.iStatus = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS));
-        this.iStatus96x = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS96x));
-        this.synced = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED));
-        this.syncDate = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SYNCED_DATE));
+        this.id = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ID));
+        this.uid = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_UID));
+        this.username = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_USERNAME));
+        this.sysDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYSDATE));
+        this.districtCode = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DISTRICT_CODE));
+        this.districtName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DISTRICT_NAME));
+        this.hfCode = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_HF_CODE));
+        this.hfName = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_HF_NAME));
+        this.reportingMonth = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_REPORTING_MONTH));
+        this.reportingYear = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_REPORTING_YEAR));
+        this.deviceId = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DEVICEID));
+        this.deviceTag = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_DEVICETAGID));
+        this.appver = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_APPVERSION));
+        this.endTime = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ENDINGDATETIME));
+        this.iStatus = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ISTATUS));
+        this.iStatus96x = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_ISTATUS96x));
+        this.synced = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYNCED));
+        this.syncDate = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SYNCED_DATE));
 
         //For childCount
-        //this.sA = cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA));
+        //this.sA = cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SA));
 
-        sAHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SA)));
-        sBHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SB)));
-        sCHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SC)));
-        sDHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SD)));
-        sEHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SE)));
-        sFHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SF)));
-        sGHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SG)));
-        sHHydrate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_SH)));
+        sAHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SA)));
+        sBHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SB)));
+        sCHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SC)));
+        sDHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SD)));
+        sEHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SE)));
+        sFHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SF)));
+        sGHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SG)));
+        sHHydrate(cursor.getString(cursor.getColumnIndexOrThrow(FormsTable.COLUMN_SH)));
 
         return this;
     }

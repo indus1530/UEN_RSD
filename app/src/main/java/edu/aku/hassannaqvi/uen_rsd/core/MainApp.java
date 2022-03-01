@@ -17,6 +17,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Random;
 
+import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.models.Users;
 
@@ -66,8 +67,9 @@ public class MainApp extends Application {
     public static int randHHNoIndex;
     @NotNull
     public static int selectedFemale;
-    SharedPreferences.Editor editor;
-    SharedPreferences sharedPref;
+
+    public static SharedPreferences.Editor editor;
+    public static SharedPreferences sharedPref;
     String[] marker = new String[HOUSEHOLDS_TO_RANDOMISE];
 
     public static void hideSystemUI(View decorView) {
@@ -185,7 +187,8 @@ public class MainApp extends Application {
         }*/
 
         appInfo = new AppInfo(this);
-
+        sharedPref = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
+        editor = sharedPref.edit();
         initSecure();
     }
 

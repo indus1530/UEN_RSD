@@ -1,8 +1,11 @@
 package edu.aku.hassannaqvi.uen_rsd.data.model;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class SyncModel {
     String tableName;
     String status;
+    String info;
     int statusID;
     String message;
     String filter = null;
@@ -11,9 +14,9 @@ public class SyncModel {
     public SyncModel(String tableName) {
 
         this.tableName = tableName;
-        this.status = "";
+        this.status = StringUtils.EMPTY;
         this.statusID = 0;
-        this.message = "";
+        this.message = StringUtils.EMPTY;
 
 
     }
@@ -21,18 +24,18 @@ public class SyncModel {
     public SyncModel(String tableName, String select) {
 
         this.tableName = tableName;
-        this.status = "";
+        this.status = StringUtils.EMPTY;
         this.statusID = 0;
-        this.message = "";
+        this.message = StringUtils.EMPTY;
         this.select = select;
     }
 
     public SyncModel(String tableName, String select, String filter) {
 
         this.tableName = tableName;
-        this.status = "";
+        this.status = StringUtils.EMPTY;
         this.statusID = 0;
-        this.message = "";
+        this.message = StringUtils.EMPTY;
         this.select = select;
         this.filter = filter;
 
@@ -53,6 +56,14 @@ public class SyncModel {
 
     public void setstatus(String status) {
         this.status = status;
+    }
+
+    public String getInfo() {
+        return info;
+    }
+
+    public void setInfo(String info) {
+        this.info = info;
     }
 
     public int getstatusID() {

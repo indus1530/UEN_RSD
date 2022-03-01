@@ -14,7 +14,6 @@ import java.util.List;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.SyncModel;
 import edu.aku.hassannaqvi.uen_rsd.databinding.SyncListAdapterBinding;
-import edu.aku.hassannaqvi.uen_rsd.utils.AppUtilsKt;
 
 
 public class SyncListAdapter extends RecyclerView.Adapter<SyncListAdapter.SyncListViewHolder> {
@@ -77,8 +76,9 @@ public class SyncListAdapter extends RecyclerView.Adapter<SyncListAdapter.SyncLi
 
         public void bindUser(SyncModel model) {
             binding.statusColor.setBackgroundColor(checkStatus(model.getstatusID()));
-            binding.tvTableName.setText(AppUtilsKt.convertStringToUpperCase(model.gettableName()));
+            binding.tvTableName.setText(model.gettableName().toUpperCase());
             binding.tvStatus.setText(model.getstatus());
+            binding.tvInfo.setText(model.getInfo());
             binding.tvMsg.setText(model.getmessage());
             if (model.getstatusID() == 1 || model.getstatusID() == 3 || model.getstatusID() == 4) {
                 binding.pb.setVisibility(View.GONE);

@@ -179,13 +179,13 @@ public class SectionIdentificationActivity extends AppCompatActivity {
         hfNames.add("....");
         hfCodes.add("....");
 
-        hfNames.add("Test HF 1");
+/*        hfNames.add("Test HF 1");
         hfNames.add("Test HF 2");
         hfNames.add("Test HF 3");
 
         hfCodes.add("999991");
         hfCodes.add("999992");
-        hfCodes.add("999993");
+        hfCodes.add("999993");*/
 
 
         ArrayList<HealthFacilities> pc = db.getHfByDist(MainApp.user.getDist_id());
@@ -202,14 +202,14 @@ public class SectionIdentificationActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
                 if (position == 0) return;
-                if (position < 4) {
+/*                if (position < 4) {
                     dc = new Districts();
                     dc.setDistrictName("Test District");
                     dc.setDistrictCode("9999");
 
                     //    bi.distname.setAdapter(new ArrayAdapter<>(context, android.R.layout.simple_spinner_dropdown_item, hfNames));
 
-                }
+                }*/
 
                 //Toast.makeText(Section01Activity.this, String.valueOf(hfCodes.get(bi.a13.getSelectedItemPosition())), Toast.LENGTH_SHORT).show();
             }

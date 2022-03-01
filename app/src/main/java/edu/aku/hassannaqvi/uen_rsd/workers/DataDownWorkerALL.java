@@ -34,6 +34,7 @@ import java.security.cert.CertificateExpiredException;
 import java.security.cert.CertificateFactory;
 import java.security.cert.CertificateNotYetValidException;
 import java.security.cert.X509Certificate;
+import java.util.concurrent.TimeUnit;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
@@ -57,8 +58,13 @@ public class DataDownWorkerALL extends Worker {
 
     private final int position;
     private final Context mContext;
-    private final String uploadTable, uploadWhere, uploadColumns;
+    private final String uploadTable;
+    private final String uploadWhere;
+    private final String uploadColumns;
     HttpsURLConnection urlConnection;
+    private long startTime;
+    private int responseLength = 0, requestLength = 0;
+
 
     public DataDownWorkerALL(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -66,7 +72,7 @@ public class DataDownWorkerALL extends Worker {
         uploadTable = workerParams.getInputData().getString("table");
         position = workerParams.getInputData().getInt("position", -2);
         uploadColumns = workerParams.getInputData().getString("select");
-        uploadWhere = workerParams.getInputData().getString("filter");
+        uploadWhere = workerParams.getInputData().getString("where");
 
     }
 
@@ -137,6 +143,7 @@ public class DataDownWorkerALL extends Worker {
     @NonNull
     @Override
     public Result doWork() {
+        startTime = System.currentTimeMillis();
 
         String nTitle = uploadTable + " : Data Upload";
 
@@ -182,8 +189,7 @@ public class DataDownWorkerALL extends Worker {
 
             urlConnection = (HttpsURLConnection) url.openConnection();
             urlConnection.setSSLSocketFactory(buildSslSocketFactory(mContext));
-            urlConnection.setReadTimeout(5000 /* milliseconds */);
-            urlConnection.setConnectTimeout(5000 /* milliseconds */);
+
             urlConnection.setRequestMethod("POST");
             urlConnection.setDoOutput(true);
             urlConnection.setDoInput(true);
@@ -191,6 +197,7 @@ public class DataDownWorkerALL extends Worker {
             urlConnection.setRequestProperty("Content-Type", "application/json");
             urlConnection.setRequestProperty("charset", "utf-8");
             urlConnection.setUseCaches(false);
+            startTime = System.currentTimeMillis();
             urlConnection.connect();
 
             Certificate[] certs = urlConnection.getServerCertificates();
@@ -221,15 +228,21 @@ public class DataDownWorkerALL extends Worker {
 
 
                 Log.d(TAG + " : " + uploadTable, "doWork: jsonTable: " + jsonTable);
-                wr.writeBytes(CipherSecure.encrypt(String.valueOf(jsonTable)));
-                Log.d(TAG + " : " + uploadTable, "doWork: Encrypted: " + CipherSecure.encrypt(String.valueOf(jsonTable)));
+                String cipheredRequest = CipherSecure.encrypt(String.valueOf(jsonTable));
+                requestLength = cipheredRequest.length();
+                wr.writeBytes(cipheredRequest);
+
+                Log.d(TAG, "Content Length: " + uploadTable + " Request " + cipheredRequest.length());
+
+                Log.d(TAG + " : " + uploadTable, "doWork: Encrypted: " + cipheredRequest);
                 wr.flush();
                 wr.close();
 
 
                 if (urlConnection.getResponseCode() == HttpsURLConnection.HTTP_OK) {
 
-                    int length = urlConnection.getContentLength();
+                    responseLength = urlConnection.getContentLength();
+                    Log.d(TAG, "Content Length: " + uploadTable + " conn " + responseLength);
 
                     InputStream in = new BufferedInputStream(urlConnection.getInputStream());
 
@@ -241,10 +254,14 @@ public class DataDownWorkerALL extends Worker {
 
                     }
                     Log.d(TAG + " : " + uploadTable, "doWork: result-server: " + result);
+                    Log.d(TAG, "Content Length: " + uploadTable + " response " + result.length());
                     try {
                         result = new StringBuilder(CipherSecure.decrypt(result.toString()));
+
                     } catch (IllegalArgumentException e) {
                         data = new Data.Builder()
+                                .putString("time", getTime())
+                                .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                                 .putString("error", e.getMessage() + " | " + Html.fromHtml(String.valueOf(result)))
                                 .putInt("position", this.position)
                                 .build();
@@ -254,6 +271,8 @@ public class DataDownWorkerALL extends Worker {
 
                     if (result.toString().equals("[]")) {
                         data = new Data.Builder()
+                                .putString("time", getTime())
+                                .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                                 .putString("error", "No data received from server: " + result)
                                 .putInt("position", this.position)
                                 .build();
@@ -261,6 +280,8 @@ public class DataDownWorkerALL extends Worker {
                     }
                 } else {
                     data = new Data.Builder()
+                            .putString("time", getTime())
+                            .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                             .putString("error", String.valueOf(urlConnection.getResponseCode()))
                             .putInt("position", this.position)
                             .build();
@@ -268,6 +289,8 @@ public class DataDownWorkerALL extends Worker {
                 }
             } else {
                 data = new Data.Builder()
+                        .putString("time", getTime())
+                        .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                         .putString("error", "Invalid Certificate")
                         .putInt("position", this.position)
                         .build();
@@ -276,6 +299,8 @@ public class DataDownWorkerALL extends Worker {
             }
         } catch (java.net.SocketTimeoutException e) {
             data = new Data.Builder()
+                    .putString("time", getTime())
+                    .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                     .putString("error", e.getMessage())
                     .putInt("position", this.position)
                     .build();
@@ -284,6 +309,8 @@ public class DataDownWorkerALL extends Worker {
         } catch (SSLPeerUnverifiedException e) {
             Toast.makeText(mContext, "(SSLPeerUnverifiedException): %s" + e.getMessage(), Toast.LENGTH_SHORT).show();
             data = new Data.Builder()
+                    .putString("time", getTime())
+                    .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                     .putString("error", e.getMessage())
                     .putInt("position", this.position)
                     .build();
@@ -291,6 +318,8 @@ public class DataDownWorkerALL extends Worker {
             return Result.failure(data);
         } catch (IOException | JSONException | NoSuchPaddingException | NoSuchAlgorithmException | InvalidAlgorithmParameterException | InvalidKeyException | BadPaddingException | IllegalBlockSizeException e) {
             data = new Data.Builder()
+                    .putString("time", getTime())
+                    .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
                     .putString("error", e.getMessage())
                     .putInt("position", this.position)
                     .build();
@@ -303,12 +332,30 @@ public class DataDownWorkerALL extends Worker {
         MainApp.downloadData[this.position] = String.valueOf(result);
 
         data = new Data.Builder()
+                .putString("time", getTime())
+                .putString("size", getSize(requestLength) + "/" + getSize(responseLength))
+
                 //     .putString("data", String.valueOf(result))
                 .putInt("position", this.position)
                 .build();
 
 
         return Result.success(data);
+    }
+
+    private String getSize(int length) {
+        if (length < 0) return "0B";
+        double lengthM = length / 1024 / 1024;
+        return lengthM > 1 ? lengthM + "MB" : (length / 1024) > 1 ? (length / 1024) + "KB" : length + "B";
+    }
+
+    private String getTime() {
+
+        long timeElapsed = System.currentTimeMillis() - startTime;
+        long toMinutes = TimeUnit.MILLISECONDS.toMinutes(timeElapsed);
+        long toSeconds = TimeUnit.MILLISECONDS.toSeconds(timeElapsed - (toMinutes * 60 * 1000));
+
+        return toMinutes > 0 ? toMinutes + "m " + toSeconds + "s" : toSeconds > 0 ? TimeUnit.MILLISECONDS.toSeconds(timeElapsed) + "s" : timeElapsed + "ms";
     }
 
     private boolean certIsValid(Certificate[] certs, Certificate ca) {

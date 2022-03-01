@@ -45,13 +45,19 @@ object CreateSQL {
             + " );")
 
 
-    const val SQL_CREATE_USERS = ("CREATE TABLE " + Users.UsersTable.TABLE_NAME + "("
+    const val SQL_CREATE_USERS = ("CREATE TABLE "
+            + Users.UsersTable.TABLE_NAME + "("
             + Users.UsersTable.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + Users.UsersTable.COLUMN_USERNAME + " TEXT,"
             + Users.UsersTable.COLUMN_PASSWORD + " TEXT,"
             + Users.UsersTable.COLUMN_FULLNAME + " TEXT,"
-            + Users.UsersTable.COLUMN_DIST_ID + " TEXT"
-            + " );")
+            + Users.UsersTable.COLUMN_DIST_ID + " TEXT,"
+            + Users.UsersTable.COLUMN_ENABLED + " TEXT,"
+            + Users.UsersTable.COLUMN_ISNEW_USER + " TEXT,"
+            + Users.UsersTable.COLUMN_PWD_EXPIRY + " TEXT,"
+            + Users.UsersTable.COLUMN_DESIGNATION + " TEXT"
+            + " );"
+            )
 
     const val SQL_CREATE_DISTRICTS = ("CREATE TABLE " + Districts.TableDistricts.TABLE_NAME + "("
             + Districts.TableDistricts.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"

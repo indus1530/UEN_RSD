@@ -136,10 +136,10 @@
         <!-- <meta-data android:name="YEK_REVRES" android:value="V@ca#!0n$urvIv0r" /> -->
         <meta-data
             android:name="YEK_REVRES"
-            android:value="mYq3t6M@!rRiaGMU@lTIpL1)J@NcRfTjWnZr4u7x!A%D*G-KaPdSgVkXp2s5v8y/B?E(H+MbQe" />
+            android:value="3sA!ttiTuDPr%esENc3WmZq4t7w!zSCnF)J@NcRfUjXn2r5u8x/A?D*G-KaPdSgV" />
         <meta-data
             android:name="YEK_TRATS"
-            android:value="6" />
+            android:value="3" />
     </application>
 
 </manifest>
