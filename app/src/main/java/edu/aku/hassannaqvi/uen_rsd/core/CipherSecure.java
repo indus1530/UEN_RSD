@@ -39,7 +39,7 @@ import javax.net.ssl.TrustManagerFactory;
 public class CipherSecure {
     private static final String TAG = "CipherSecure";
 
-    public static String encrypt(String plain) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+    public static String encrypt(String plain) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, IllegalArgumentException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         Log.d(TAG, "encrypt: " + IBAHC);
         byte[] iv = new byte[16];
         new SecureRandom().nextBytes(iv);
@@ -53,7 +53,7 @@ public class CipherSecure {
 
     }
 
-    public static String decrypt(String encoded) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException {
+    public static String decrypt(String encoded) throws NoSuchPaddingException, NoSuchAlgorithmException, BadPaddingException, IllegalArgumentException, IllegalBlockSizeException, InvalidAlgorithmParameterException, InvalidKeyException {
         Log.d(TAG, "decrypt: encoded " + encoded);
         byte[] ivAndCipherText = Base64.decode(encoded, Base64.NO_WRAP);
         byte[] iv = Arrays.copyOfRange(ivAndCipherText, 0, 16);
