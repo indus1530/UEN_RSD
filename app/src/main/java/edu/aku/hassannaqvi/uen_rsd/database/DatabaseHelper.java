@@ -756,7 +756,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     //update SyncedTables
-    public void updateSyncedFormsRSD(String id) {
+    public void updateSyncedFormRSD(String id) {
         SQLiteDatabase db = this.getReadableDatabase(DATABASE_PASSWORD);
 
 // New value for one column
