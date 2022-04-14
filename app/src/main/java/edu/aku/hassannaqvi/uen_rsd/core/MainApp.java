@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 
@@ -189,6 +190,8 @@ public class MainApp extends Application {
         appInfo = new AppInfo(this);
         sharedPref = getSharedPreferences(getString(R.string.app_name), MODE_PRIVATE);
         editor = sharedPref.edit();
+        deviceid = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+
         initSecure();
     }
 
