@@ -61,7 +61,6 @@
                 <Button
                     android:id="@+id/btnUpload"
                     style="@style/TextAppearance.AppCompat.Small"
-
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
@@ -78,7 +77,6 @@
                     android:id="@+id/btnUploadPhotos"
                     style="@style/TextAppearance.AppCompat.Small"
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:background="@color/colorPrimary"
@@ -199,11 +197,11 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="12dp"
                             android:layout_marginBottom="1dp"
-
                             android:background="@color/whiteOverlay"
                             android:elevation="1dp"
                             android:gravity="center_horizontal"
                             android:paddingBottom="1dp"
+                            android:textColor="@color/gray"
                             android:shadowColor="@color/grayLight"
                             android:shadowDx="1"
                             android:shadowDy="1"
