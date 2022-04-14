@@ -1,7 +1,6 @@
 package edu.aku.hassannaqvi.uen_rsd.ui;
 
 import static edu.aku.hassannaqvi.uen_rsd.core.MainApp.form;
-import static edu.aku.hassannaqvi.uen_rsd.utils.extension.ActivityExtKt.gotoActivity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,13 +11,15 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
 
+import net.sqlcipher.database.SQLiteException;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import edu.aku.hassannaqvi.uen_rsd.MainActivity;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.core.MainApp;
+import edu.aku.hassannaqvi.uen_rsd.data.model.EntryLog;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivityEndingBinding;
 
@@ -27,6 +28,7 @@ public class EndingActivity extends AppCompatActivity {
 
     ActivityEndingBinding bi;
     int sectionMainCheck;
+    private DatabaseHelper db;
 
 
     @Override
@@ -35,6 +37,7 @@ public class EndingActivity extends AppCompatActivity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_ending);
         bi.setForm(MainApp.form);
         setSupportActionBar(bi.toolbar);
+        db = MainApp.appInfo.dbHelper;
 
         boolean check = getIntent().getBooleanExtra("complete", false);
         //sectionMainCheck = getIntent().getIntExtra(SECTION_MAIN_CHECK_FOR_END, 0);
@@ -90,6 +93,27 @@ public class EndingActivity extends AppCompatActivity {
         return Validator.emptyCheckingContainer(this, bi.fldGrpEnd);
     }
 
+
+    private void recordEntry() {
+
+        EntryLog entryLog = new EntryLog();
+        entryLog.populateMetaHHForm();
+        Long rowId = null;
+        try {
+            rowId = db.addEntryLog(entryLog);
+        } catch (SQLiteException e) {
+            Toast.makeText(this, "SQLiteException(EntryLog)" + entryLog, Toast.LENGTH_SHORT).show();
+        }
+        if (rowId != -1) {
+            entryLog.setId(String.valueOf(rowId));
+            entryLog.setUid(entryLog.getDeviceId() + entryLog.getId());
+            db.updatesEntryLogColumn(EntryLog.EntryLogTable.COLUMN_UID, entryLog.getUid(), entryLog.getId());
+        } else {
+            Toast.makeText(this, R.string.upd_db_error, Toast.LENGTH_SHORT).show();
+
+        }
+
+    }
 
     @Override
     public void onBackPressed() {
