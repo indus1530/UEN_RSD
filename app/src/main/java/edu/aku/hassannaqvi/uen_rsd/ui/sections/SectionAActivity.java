@@ -18,6 +18,10 @@ import androidx.databinding.DataBindingUtil;
 
 import com.validatorcrawler.aliazaz.Validator;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
@@ -110,6 +114,7 @@ public class SectionAActivity extends AppCompatActivity {
         form.setId(String.valueOf(rowid));
         if (rowid > 0) {
             form.setUid(form.getDeviceId() + form.getId());
+            form.setSysDate(new SimpleDateFormat("dd-MM-yyyy HH:mm:ss", Locale.ENGLISH).format(new Date().getTime()));
             db.updatesFormColumn(Form.FormsTable.COLUMN_UID, form.getUid());
             return true;
         } else {

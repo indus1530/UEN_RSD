@@ -22,7 +22,6 @@ import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.data.model.Form;
 import edu.aku.hassannaqvi.uen_rsd.database.DatabaseHelper;
 import edu.aku.hassannaqvi.uen_rsd.databinding.ActivitySectionC2Binding;
-import edu.aku.hassannaqvi.uen_rsd.ui.RegisterActivity;
 import edu.aku.hassannaqvi.uen_rsd.ui.TakePhoto;
 
 
@@ -106,10 +105,10 @@ public class SectionC2Activity extends AppCompatActivity {
     }
 
 
-    public void BtnEnd(View view) {
+    public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
         finish();
-      //  startActivity(new Intent(this, RegisterActivity.class));
+        //  startActivity(new Intent(this, RegisterActivity.class));
     }
 
 

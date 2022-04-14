@@ -70,6 +70,7 @@ public class EndingActivity extends AppCompatActivity {
         if (!formValidation()) return;
         saveDraft();
         if (UpdateDB()) {
+            recordEntry();
             finish();
      //       gotoActivity(this, MainActivity.class);
         } else {
