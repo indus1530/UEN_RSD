@@ -588,6 +588,10 @@
     <string name="f342a">Achievements (In Numbers)</string>
     <string name="f342b">Not Reported</string>
     <string name="f342c">Service not Provided</string>
+    <string name="f343">Birth Asphyxia Cases</string>
+    <string name="f343a">Achievements (In Numbers)</string>
+    <string name="f343b">Not Reported</string>
+    <string name="f343c">Service not Provided</string>
     <string name="f3image">F3-OBS</string>
     <string name="f4title"> Family Planning </string>
     <string name="f401">Total Family Planning Visits</string>
@@ -912,6 +916,7 @@
     <string name='Q_f340'>f340</string>
     <string name='Q_f341'>f341</string>
     <string name='Q_f342'>f342</string>
+    <string name='Q_f343'>f343</string>
     <string name='Q_f3image'>f3image</string>
     <string name='Q_f3title'>f3title</string>
     <string name='Q_f401'>f401</string>

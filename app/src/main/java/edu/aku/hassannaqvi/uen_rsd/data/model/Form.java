@@ -165,6 +165,8 @@ public class Form extends BaseObservable implements Observable {
     private String f341ax = StringUtils.EMPTY;
     private String f342 = StringUtils.EMPTY;
     private String f342ax = StringUtils.EMPTY;
+    private String f343 = StringUtils.EMPTY;
+    private String f343ax = StringUtils.EMPTY;
     private String f3image = StringUtils.EMPTY;
     private String f401 = StringUtils.EMPTY;
     private String f401ax = StringUtils.EMPTY;
@@ -1710,6 +1712,26 @@ public class Form extends BaseObservable implements Observable {
     }
 
     @Bindable
+    public String getF343() {
+        return f343;
+    }
+
+    public void setF343(String f343) {
+        this.f343 = f343;
+        notifyPropertyChanged(BR.f343);
+    }
+
+    @Bindable
+    public String getF343ax() {
+        return f343ax;
+    }
+
+    public void setF343ax(String f343ax) {
+        this.f343ax = f343ax;
+        notifyPropertyChanged(BR.f343ax);
+    }
+
+    @Bindable
     public String getF3image() {
         return f3image;
     }
@@ -3233,6 +3255,8 @@ public class Form extends BaseObservable implements Observable {
                     .put("f341ax", f341ax)
                     .put("f342", f342)
                     .put("f342ax", f342ax)
+                    .put("f343", f343)
+                    .put("f343ax", f343ax)
                     .put("f3image", f3image);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -3585,6 +3609,8 @@ public class Form extends BaseObservable implements Observable {
                 this.f341ax = json.getString("f341ax");
                 this.f342 = json.getString("f342");
                 this.f342ax = json.getString("f342ax");
+                this.f343 = json.getString("f343");
+                this.f343ax = json.getString("f343ax");
                 this.f3image = json.getString("f3image");
             } catch (JSONException e) {
                 e.printStackTrace();
