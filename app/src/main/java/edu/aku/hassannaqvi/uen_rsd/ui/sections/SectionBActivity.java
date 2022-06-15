@@ -105,6 +105,7 @@ public class SectionBActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
+        form.setF203("");
         finish();
     }
 

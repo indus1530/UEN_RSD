@@ -107,6 +107,7 @@ public class SectionC2Activity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
+        form.setF342("");
         finish();
         //  startActivity(new Intent(this, RegisterActivity.class));
     }

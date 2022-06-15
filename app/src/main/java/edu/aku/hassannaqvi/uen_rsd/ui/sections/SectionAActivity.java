@@ -98,6 +98,7 @@ public class SectionAActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
+        form.setF106("");
         finish();
     }
 

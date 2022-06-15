@@ -37,6 +37,7 @@ import androidx.work.WorkManager;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import java.io.File;
 import java.lang.reflect.InvocationTargetException;
@@ -200,11 +201,17 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
                 } else {
                     select = " * ";
+
+                    if (MainApp.user != null)
                     filter = " col_flag is null AND dist_id = '" + MainApp.user.getDist_id() + "' ";
+                    else  filter = " col_flag is null";
+
+
                     downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME, select, filter));
-                    downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME, select, filter));
                     downloadTables.add(new SyncModel(Districts.TableDistricts.TABLE_NAME, select, filter));
                     downloadTables.add(new SyncModel(HealthFacilities.TableHealthFacilities.TABLE_NAME, select, filter));
+                    downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME, select, filter));
+
                 }
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
@@ -286,10 +293,23 @@ public class SyncActivity extends AppCompatActivity {
 
                                 case VersionApp.VersionAppTable.TABLE_NAME:
                                     try {
-                                        jsonArray = new JSONArray(result);
-                                        insertCount = db.syncVersionApp(new JSONObject(result));
 
-                                        if (insertCount == 1) jsonArray.put("1");
+                                        Object json = new JSONTokener(result).nextValue();
+                                        if (json instanceof JSONArray){
+                                            jsonArray = new JSONArray(result);
+                                            insertCount = db.syncVersionApp(new JSONObject(result));
+                                            if (insertCount == 1) jsonArray.put("1");
+
+                                        }else if(json instanceof JSONObject)  {
+                                            insertCount = db.syncVersionApp(new JSONObject(result));
+                                            if (insertCount == 1) jsonArray.put("1");
+
+                                        }else {
+                                            downloadTables.get(position).setstatus("Process Failed");
+                                            downloadTables.get(position).setstatusID(1);
+                                            downloadTables.get(position).setmessage("Json Object Cannot be Converted to Json Array");
+                                            syncListAdapter.updatesyncList(downloadTables);
+                                        }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
                                         downloadTables.get(position).setstatus("Process Failed");

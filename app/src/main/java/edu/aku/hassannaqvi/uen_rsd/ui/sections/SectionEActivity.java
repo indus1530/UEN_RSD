@@ -108,6 +108,8 @@ public class SectionEActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
+        form.setF603("");
+
         finish();
         //startActivity(new Intent(this, RegisterActivity.class));
     }

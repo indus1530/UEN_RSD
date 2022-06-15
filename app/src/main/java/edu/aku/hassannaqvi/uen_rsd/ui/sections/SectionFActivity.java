@@ -108,6 +108,7 @@ public class SectionFActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
+        form.setF705("");
         finish();
         // startActivity(new Intent(this, RegisterActivity.class));
     }

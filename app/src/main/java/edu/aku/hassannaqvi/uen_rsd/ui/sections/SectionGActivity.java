@@ -107,6 +107,7 @@ public class SectionGActivity extends AppCompatActivity {
 
     public void btnEnd(View view) {
         setResult(RESULT_CANCELED);
+        form.setF8091("");
         finish();
         //startActivity(new Intent(this, RegisterActivity.class));
     }
