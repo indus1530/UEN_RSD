@@ -189,9 +189,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (c != null) {
                 c.close();
             }
-            if (db != null) {
-                db.close();
-            }
         }
         return allForms;
     }
@@ -239,9 +236,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             if (c != null) {
                 c.close();
-            }
-            if (db != null) {
-                db.close();
             }
         }
         return allForms;
@@ -439,9 +433,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             if (c != null) {
                 c.close();
-            }
-            if (db != null) {
-                db.close();
             }
         }
         return allFC;
@@ -655,14 +646,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long rowID = db.insertOrThrow(Users.UsersTable.TABLE_NAME, null, values);
             if (rowID != -1) insertCount++;
         }
-
-
-        db.close();
         return insertCount;
     }
 
     //    Sync Districts
-    public int syncDistricts(JSONArray districtsList) throws JSONException {
+    public int syncdistrict(JSONArray districtsList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(Districts.TableDistricts.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -679,17 +667,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long rowID = db.insertOrThrow(Districts.TableDistricts.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
-            db.close();
-
-
-            db.close();
-
-
         return insertCount;
     }
 
     //    Sync HealthFacilities
-    public int syncHealthFacilities(JSONArray healthFacilitiesList) throws JSONException {
+    public int syncHealthFacility(JSONArray healthFacilitiesList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(HealthFacilities.TableHealthFacilities.TABLE_NAME, null, null);
         int insertCount = 0;
@@ -709,13 +691,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             long rowID = db.insertOrThrow(HealthFacilities.TableHealthFacilities.TABLE_NAME, null, values);
                 if (rowID != -1) insertCount++;
             }
-            db.close();
-
-
-            db.close();
-
-        db.close();
-
         return insertCount;
     }
 
@@ -756,7 +731,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             allForms.put(form.Hydrate(c).toJSONObject());
         }
         c.close();
-        db.close();
         return allForms;
     }
 
@@ -857,9 +831,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (c != null) {
                 c.close();
             }
-            if (db != null) {
-                db.close();
-            }
         }
         return allFC;
     }
@@ -915,9 +886,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             if (c != null) {
                 c.close();
-            }
-            if (db != null) {
-                db.close();
             }
         }
         return allFC;
@@ -997,9 +965,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (c != null) {
                 c.close();
             }
-            if (db != null) {
-                db.close();
-            }
         }
         return all;
     }
@@ -1033,9 +998,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             if (c != null) {
                 c.close();
-            }
-            if (db != null) {
-                db.close();
             }
         }
         return dist;
@@ -1071,9 +1033,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if (c != null) {
                 c.close();
             }
-            if (db != null) {
-                db.close();
-            }
         }
         return hf;
     }
@@ -1106,7 +1065,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         c.close();
 
-        db.close();
         if (loggedInUser.getPassword().equals("")) {
             Toast.makeText(mContext, "Stored password is invalid", Toast.LENGTH_SHORT).show();
             return false;
@@ -1154,9 +1112,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         } finally {
             if (c != null) {
                 c.close();
-            }
-            if (db != null) {
-                db.close();
             }
         }
         return allFC;

@@ -47,7 +47,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import edu.aku.hassannaqvi.uen_rsd.CONSTANTS;
 import edu.aku.hassannaqvi.uen_rsd.R;
 import edu.aku.hassannaqvi.uen_rsd.adapters.SyncListAdapter;
 import edu.aku.hassannaqvi.uen_rsd.core.AppInfo;
@@ -110,8 +109,6 @@ public class SyncActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
         dbBackup(this);
-        toKeepUnusedFunctions();
-
 
     }
 
@@ -187,7 +184,7 @@ public class SyncActivity extends AppCompatActivity {
                 bi.mTextViewS.setVisibility(View.GONE);
                 bi.pBar.setVisibility(View.GONE);
                 downloadTables.clear();
-                boolean sync_flag = getIntent().getBooleanExtra(CONSTANTS.SYNC_LOGIN, false);
+                boolean sync_flag = getIntent().getBooleanExtra("login", false);
 
                 // set select and filter to default, set again with the table in case of special requirements
                 String select = " * ";
@@ -195,6 +192,20 @@ public class SyncActivity extends AppCompatActivity {
 
                 // Add Download Tables here
                 if (sync_flag) {
+                    select = " * ";
+                    filter = "  ";
+
+                    downloadTables.add(new SyncModel(Users.UsersTable.TABLE_NAME));
+                    downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME));
+                } else {
+                    select = " * ";
+                    filter = " colflag is null AND district_code = '" + MainApp.user.getDist_id() + "' ";
+                    downloadTables.add(new SyncModel(Districts.TableDistricts.TABLE_NAME, select, filter));
+                    filter = " colflag is null AND dist_id = '" + MainApp.user.getDist_id() + "' ";
+                    downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME, select, filter));
+                    downloadTables.add(new SyncModel(HealthFacilities.TableHealthFacilities.TABLE_NAME, select, filter));
+                }
+/*                if (sync_flag) {
                     select = " * ";
                     filter = "  ";
 
@@ -213,7 +224,7 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.add(new SyncModel(HealthFacilities.TableHealthFacilities.TABLE_NAME, select, filter));
                     downloadTables.add(new SyncModel(VersionApp.VersionAppTable.TABLE_NAME, select, filter));
 
-                }
+                }*/
                 MainApp.downloadData = new String[downloadTables.size()];
                 setAdapter(downloadTables);
                 BeginDownload();
