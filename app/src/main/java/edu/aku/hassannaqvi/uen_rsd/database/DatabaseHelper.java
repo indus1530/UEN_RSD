@@ -41,8 +41,6 @@ import edu.aku.hassannaqvi.uen_rsd.models.Districts;
 import edu.aku.hassannaqvi.uen_rsd.models.HealthFacilities;
 import edu.aku.hassannaqvi.uen_rsd.models.Users;
 import edu.aku.hassannaqvi.uen_rsd.models.Users.UsersTable;
-import edu.aku.hassannaqvi.uen_rsd.models.VersionApp;
-import edu.aku.hassannaqvi.uen_rsd.models.VersionApp.VersionAppTable;
 
 
 /*import edu.aku.hassannaqvi.naunehal.models.Immunization;*/
@@ -53,7 +51,7 @@ import edu.aku.hassannaqvi.uen_rsd.models.VersionApp.VersionAppTable;
  */
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_PASSWORD = IBAHC;
+    public static final String DATABASE_PASSWORD = IBAHC;
     private final String TAG = "DatabaseHelper";
     private final Context mContext;
 
@@ -599,34 +597,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }*/
 
 
-    public int syncVersionApp(JSONObject VersionList) {
+    public int syncversionApp(JSONArray VersionList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
-        db.delete(VersionAppTable.TABLE_NAME, null, null);
         long count = 0;
-        try {
-            JSONObject jsonObjectCC = ((JSONArray) VersionList.get(VersionAppTable.COLUMN_VERSION_PATH)).getJSONObject(0);
-            VersionApp Vc = new VersionApp();
-            Vc.sync(jsonObjectCC);
+
+        JSONObject jsonObjectVersion = ((JSONArray) VersionList.getJSONObject(0).get("elements")).getJSONObject(0);
+
+        String appPath = jsonObjectVersion.getString("outputFile");
+        String versionCode = jsonObjectVersion.getString("versionCode");
+
+        MainApp.editor.putString("outputFile", jsonObjectVersion.getString("outputFile"));
+        MainApp.editor.putString("versionCode", jsonObjectVersion.getString("versionCode"));
+        MainApp.editor.putString("versionName", jsonObjectVersion.getString("versionName") + ".");
+        MainApp.editor.apply();
+        count++;
+          /*  VersionApp Vc = new VersionApp();
+            Vc.sync(jsonObjectVersion);
 
             ContentValues values = new ContentValues();
 
-            values.put(VersionAppTable.COLUMN_PATH_NAME, Vc.getPathname());
-            values.put(VersionAppTable.COLUMN_VERSION_CODE, Vc.getVersioncode());
-            values.put(VersionAppTable.COLUMN_VERSION_NAME, Vc.getVersionname());
+            values.put(VersionTable.COLUMN_PATH_NAME, Vc.getPathname());
+            values.put(VersionTable.COLUMN_VERSION_CODE, Vc.getVersioncode());
+            values.put(VersionTable.COLUMN_VERSION_NAME, Vc.getVersionname());
 
-            count = db.insertOrThrow(VersionAppTable.TABLE_NAME, null, values);
+            count = db.insert(VersionTable.TABLE_NAME, null, values);
             if (count > 0) count = 1;
 
         } catch (Exception ignored) {
         } finally {
             db.close();
-        }
+        }*/
 
         return (int) count;
     }
 
 
-    public int syncUser(JSONArray userList) throws JSONException {
+    public int syncAppUser(JSONArray userList) throws JSONException {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSWORD);
         db.delete(Users.UsersTable.TABLE_NAME, null, null);
         int insertCount = 0;
