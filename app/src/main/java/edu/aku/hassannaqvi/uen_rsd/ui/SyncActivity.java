@@ -10,16 +10,21 @@ import static edu.aku.hassannaqvi.uen_rsd.utils.AppUtilsKt.dbBackup;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
@@ -269,7 +274,6 @@ public class SyncActivity extends AppCompatActivity {
                 int position = workInfo.getOutputData().getInt("position", 0);
                 String time = workInfo.getOutputData().getString("time");
                 String size = workInfo.getOutputData().getString("size");
-
                /* Log.d(TAG, "workInfo(getState): " + workInfo.getState());
                 Log.d(TAG, "workInfo(data): " + MainApp.downloadData[position]);
                 Log.d(TAG, "workInfo(error): " + workInfo.getOutputData().getString("error"));
@@ -289,12 +293,12 @@ public class SyncActivity extends AppCompatActivity {
                             System.out.println("SYSTEM onChanged: result" + result);
                             db = MainApp.appInfo.dbHelper;
                             JSONArray jsonArray = new JSONArray();
-//                            int insertCount = 0;
+                            //int insertCount = 0;
 
                             Method method = null;
                             for (Method method1 : db.getClass().getDeclaredMethods()) {
 
-//                                Log.d(TAG, "onChanged Methods: " + method1.getName());
+                                // Log.d(TAG, "onChanged Methods: " + method1.getName());
                                 /**
                                  * MAKE SURE TABLE_NAME = <table> IS SAME AS sync<table> :
                                  *
@@ -304,8 +308,8 @@ public class SyncActivity extends AppCompatActivity {
                                  *      e.g: Forms and syncForms
                                  *
                                  */
-                                /*Log.d(TAG, "onChanged Names: sync" + tableName);
-                                Log.d(TAG, "onChanged Compare: " + method1.getName().equals("sync" + tableName));*/
+                                //Log.d(TAG, "onChanged Names: sync" + tableName);
+                                //  Log.d(TAG, "onChanged Compare: " + method1.getName().equals("sync" + tableName));
                                 if (method1.getName().equals("sync" + tableName)) {
                                     method = method1;
                                     //Toast.makeText(SyncActivity.this, "updateSynced not found: updateSynced" + tableName, Toast.LENGTH_SHORT).show();
@@ -339,6 +343,7 @@ public class SyncActivity extends AppCompatActivity {
 
                                         SyncModel downloadTable = downloadTables.get(position);
                                         new Thread(new Runnable() {
+
                                             @Override
                                             public void run() {
 
@@ -380,7 +385,6 @@ public class SyncActivity extends AppCompatActivity {
                                             }
                                         }).start();
                                     }
-
 
                                 } catch (JSONException ite) {
                                     ite.printStackTrace();
@@ -490,6 +494,13 @@ public class SyncActivity extends AppCompatActivity {
                     downloadTables.get(position).setmessage(message);
                     syncListAdapter.updatesyncList(downloadTables);
 
+                    if (position == 0 && workInfo.getOutputData().getString("deviceTime") != null) {
+
+                        String serverTime = workInfo.getOutputData().getString("serverTime");
+                        String deviceTime = workInfo.getOutputData().getString("deviceTime");
+                        Log.d(TAG, "BeginDownload: p=" + position + "sT=" + serverTime + " dT=" + deviceTime);
+                        showDateError(serverTime, deviceTime);
+                    }
                 }
             }
         });
@@ -876,6 +887,36 @@ public class SyncActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+    private void showDateError(String serverTime, String deviceTime) {
+
+        View alertCustomdialog = LayoutInflater.from(SyncActivity.this).inflate(R.layout.date_error_dialog, null);
+
+        AlertDialog.Builder dateErrorAlert = new AlertDialog.Builder(this);
+        dateErrorAlert.setView(alertCustomdialog);
+        TextView txtDia = alertCustomdialog.findViewById(R.id.txtDia);
+        Button btnYes = alertCustomdialog.findViewById(R.id.btnYes);
+        txtDia.setText("Your device date & time is \n" + deviceTime + "\n\nServer date & time is \n" + serverTime);
+
+        AlertDialog dateErrorDialog = dateErrorAlert.create();
+
+        dateErrorDialog.show();
+        dateErrorDialog.setCanceledOnTouchOutside(false);
+
+        btnYes.setOnClickListener(new View.OnClickListener(
+
+        ) {
+            @Override
+            public void onClick(View view) {
+                dateErrorDialog.dismiss();
+                startActivityForResult(new Intent(Settings.ACTION_DATE_SETTINGS), 0);
+                downloadTables = new ArrayList<>();
+                syncListAdapter.updatesyncList(downloadTables);
+                //finish();
+            }
+        });
+    }
+
 
     private String getTime() {
 
